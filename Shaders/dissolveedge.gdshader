@@ -22,19 +22,19 @@ float _linearizeScale(vec4 view){
 void fragment() {
 	//depth sample at screen_uv coords;
 	float depthSample = texture(DEPTH_TEXTURE, SCREEN_UV).x;
-	
+
 	vec3 ndc = vec3(SCREEN_UV, depthSample);
 	vec4 view = (INV_PROJECTION_MATRIX * vec4(ndc, 1.0));
 	float realDepth = _linearizeScale(view);
-	
+
 	if (flatColor) {
 		if (realDepth > 0.0) {
 			realDepth = 1.0;
 		}
 	}
-	
+
 	ALBEDO = vec3(realDepth) * effectColor.rgb;
-	
+
 //	debug;
 //	vec4 originalColor = texture(SCREEN_TEXTURE, SCREEN_UV);
 //	ALBEDO = originalColor.rgb;

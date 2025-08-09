@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddgp1kqvms6fp"]
+
+[ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/DetectObjectRaycast.gd" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://bsuiio5dae7ct" path="res://Scripts/Player/UI.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://cudrv2bl5i8q1" path="res://Scripts/Player/LabelDialogo.gd" id="3_hqtel"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI")]
+script = ExtResource("1_4flbx")
+camera = NodePath("Camera3D")
+raycast = NodePath("Camera3D/DetectObjectRaycast")
+UI = NodePath("UI")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1044, 0)
+
+[node name="DetectObjectRaycast" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148726, -0.152356)
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("2_i3pqv")
+
+[node name="LabelDialogo" type="Label3D" parent="Camera3D"]
+transform = Transform3D(-0.709563, 0.118045, -0.694685, 0.0887824, 0.992988, 0.0780508, 0.699027, -0.00629378, -0.715068, -0.0986329, 0.418088, -1.93012)
+modulate = Color(1, 1, 1, 0)
+outline_modulate = Color(1, 1, 1, 0)
+text = "frerergeg"
+script = ExtResource("3_hqtel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
+shape = SubResource("CapsuleShape3D_d4maf")
+
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("Pointer")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1916.0
+offset_bottom = 1071.0
+script = ExtResource("2_onrkg")
+Pointer = NodePath("ManoCerrada")
+
+[node name="ManoCerrada" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 1000.0
+offset_bottom = 580.0
+
+[node name="ManoCerrada2" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 960.0
+offset_top = 540.0
+offset_right = 1000.0
+offset_bottom = 580.0
+
+[node name="ManoAbierta" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
