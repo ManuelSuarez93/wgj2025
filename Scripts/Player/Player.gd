@@ -7,6 +7,7 @@ class_name Player
 @export var camera : Node3D
 @export var raycast : DetectObjectRaycast
 @export var UI : PlayerUI
+@export var AudioPlayer : AudioStreamPlayer3D
 
 var detectedObject : Triggerable
 var enableMovement : bool
@@ -61,3 +62,8 @@ func move(delta: float):
 
 func setEnableMovement(enable : bool):
 	enableMovement = enable
+	
+func playSound(sound : AudioStream):
+	AudioPlayer.stop()
+	AudioPlayer.stream = sound
+	AudioPlayer.play()

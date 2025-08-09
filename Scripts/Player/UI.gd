@@ -8,9 +8,10 @@ enum Menu {Phone, Photo, Hangman, None, Pause}
 @export var ManoCerrada : Control 
 @export var MenuHangman : Control
 @export var MenuTelefono : MenuPhone
-@export var MenuPause : Control
+@export var MenuPause : Control 
+@export var MenuImages : MenuPicture
 
-@onready var Menus := [MenuTelefono, MenuHangman, MenuPause]
+@onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages]
 
 var collider : Triggerable 
 var isOnMenu : bool
@@ -67,8 +68,7 @@ func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 			MenuHangman.visible = !isVisible
 			MenuTelefono.visible = !isVisible
 			MenuPause.visible = isVisible
-		Menu.None:
-			
+		Menu.None: 
 			MenuHangman.visible = isVisible
 			MenuTelefono.visible = isVisible
 			MenuPause.visible = isVisible
