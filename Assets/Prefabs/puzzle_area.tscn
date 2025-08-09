@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6gg6inqwrpu"]
+
+[ext_resource type="Script" uid="uid://y50fqm785oda" path="res://Scripts/PuzzleArea.gd" id="1_k7o6l"]
+
+[node name="PuzzleArea" type="Node3D"]
+script = ExtResource("1_k7o6l")
