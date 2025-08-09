@@ -2,44 +2,74 @@ extends Control
 
 class_name PlayerUI
 
+enum Menu {Phone, Photo, Hangman, None, Pause}
+
 @export var ManoAbierta : Control
 @export var ManoCerrada : Control 
 @export var MenuHangman : Control
+@export var MenuTelefono : MenuPhone
+@export var MenuPause : Control
+
+@onready var Menus := [MenuTelefono, MenuHangman, MenuPause]
 
 var collider : Triggerable 
 var isOnMenu : bool
+var currentMenu : Menu
 
 func _ready():
 	isOnMenu = false
 	# Capturar y ocultar el mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+
 func _input(event):
 	captureMouse(event)
 
 func captureMouse(event):
 	if event.is_action_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
-			GameManager.player.setEnableMovement(false)
+		if !isOnMenu:
+			isOnMenu = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			SetMenuVisible(Menu.Pause, true, false)
 		else:
-			MenuHangman.visible = false 
-			GameManager.player.setEnableMovement(true)
+			isOnMenu = false
+			SetMenuVisible(Menu.None, false, true) 
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+
 func interact():
 	pass
 
 func onDetectedObject(collider):  
 	ManoCerrada.visible = true
 	ManoAbierta.visible = false
-	
+
 func onNonDetectingObject(): 
 	ManoCerrada.visible = false
 	ManoAbierta.visible = false
-	
-func SetMenuHangmanVisible():  
+
+func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	GameManager.player.setEnableMovement(false)
-	isOnMenu = !MenuHangman.visible 
-	MenuHangman.visible = !MenuHangman.visible
+	GameManager.player.setEnableMovement(enableMovement)
+	isOnMenu = isVisible
+	if isOnMenu:
+		currentMenu = menuToOpen
+		
+	match menuToOpen:
+		Menu.Phone:
+			MenuTelefono.visible = isVisible
+			MenuHangman.visible = !isVisible
+			MenuPause.visible = !isVisible
+			
+		Menu.Hangman:
+			MenuHangman.visible = isVisible
+			MenuTelefono.visible = !isVisible
+			MenuPause.visible = !isVisible
+		Menu.Pause:
+			MenuHangman.visible = !isVisible
+			MenuTelefono.visible = !isVisible
+			MenuPause.visible = isVisible
+		Menu.None:
+			
+			MenuHangman.visible = isVisible
+			MenuTelefono.visible = isVisible
+			MenuPause.visible = isVisible
+			currentMenu = Menu.None

@@ -1,166 +1,206 @@
-[gd_scene load_steps=12 format=3 uid="uid://ftyvnfq8bysl"]
+[gd_scene load_steps=31 format=3 uid="uid://ftyvnfq8bysl"]
 
 [ext_resource type="PackedScene" uid="uid://ddgp1kqvms6fp" path="res://Assets/Prefabs/player.tscn" id="1_a6omc"]
-[ext_resource type="Script" uid="uid://bi6khx5wghelo" path="res://Scripts/GameManager.gd" id="1_p02ar"]
 [ext_resource type="PackedScene" uid="uid://6gg6inqwrpu" path="res://Assets/Prefabs/puzzle_area.tscn" id="2_d4maf"]
+[ext_resource type="PackedScene" uid="uid://clgrbe0wn23pb" path="res://Assets/Models/base.glb" id="2_r862i"]
 [ext_resource type="Script" uid="uid://bmyllshloler0" path="res://Scripts/LightSwitch.gd" id="3_4gvat"]
 [ext_resource type="PackedScene" uid="uid://cvfdpps2d3e4e" path="res://Assets/Prefabs/door.tscn" id="3_7ntn3"]
 [ext_resource type="PackedScene" uid="uid://bg6fwxh3xbt8" path="res://Assets/Prefabs/puzzle.tscn" id="3_nq0l7"]
-[ext_resource type="Script" uid="uid://dgyvbxqx0v3v0" path="res://Scripts/Triggerable.gd" id="7_p02ar"]
-[ext_resource type="Script" uid="uid://dahbpbmf4b2b8" path="res://Assets/Prefabs/HangmanTrigger.gd" id="7_se04o"]
+[ext_resource type="Script" uid="uid://hjsd30fl4sdl" path="res://Scripts/AreaCalendario.gd" id="4_b0s15"]
+[ext_resource type="Texture2D" uid="uid://dwp10jgc1hfv7" path="res://Assets/2D/Calendario.png" id="4_h1tcu"]
+[ext_resource type="Texture2D" uid="uid://bp2a4hpvnyqbv" path="res://Assets/2D/calendario sin fecha.png" id="5_m2ggp"]
+[ext_resource type="Script" uid="uid://dahbpbmf4b2b8" path="res://Scripts/HangmanTrigger.gd" id="7_se04o"]
+[ext_resource type="AudioStream" uid="uid://cos85mxn88jd6" path="res://Assets/Sounds/foleys/switch luz/switch on.wav" id="9_qhr7g"]
+[ext_resource type="Texture2D" uid="uid://bpqswnfqj3wh" path="res://Assets/2D/Interruptor apagado.png" id="9_r58c4"]
+[ext_resource type="AudioStream" uid="uid://27e28arstcr2" path="res://Assets/Sounds/foleys/switch luz/switch off.wav" id="10_2d7ec"]
+[ext_resource type="Script" uid="uid://dv0swg851lvkt" path="res://Scripts/FirstRoom.gd" id="10_h1tcu"]
+[ext_resource type="Texture2D" uid="uid://dbd4uneqawxa0" path="res://Assets/2D/Interruptor encendido.png" id="10_h1yu4"]
+[ext_resource type="Script" uid="uid://bio4a0e50wwia" path="res://Scripts/Telephone.gd" id="11_m2ggp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6omc"]
-albedo_color = Color(0.345098, 0.211765, 1, 1)
+[sub_resource type="Environment" id="Environment_h1tcu"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.169245, 0.169245, 0.169245, 1)
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.15
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1tcu"]
+size = Vector3(15, 7.096, 1.602)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r862i"]
+size = Vector3(42.3065, 1, 32.5833)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r58c4"]
+albedo_texture = ExtResource("5_m2ggp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h1yu4"]
+material = SubResource("StandardMaterial3D_r58c4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1tcu"]
+albedo_texture = ExtResource("4_h1tcu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r862i"]
+material = SubResource("StandardMaterial3D_h1tcu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4maf"]
 albedo_color = Color(0.919875, 0.966723, 0.996456, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yu4"]
+albedo_texture = ExtResource("9_r58c4")
+uv1_scale = Vector3(0.47, 0.47, 0.47)
+uv1_offset = Vector3(0.25, 0.22, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m2ggp"]
+material = SubResource("StandardMaterial3D_h1yu4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u2f0"]
+albedo_texture = ExtResource("10_h1yu4")
+uv1_scale = Vector3(0.47, 0.47, 0.47)
+uv1_offset = Vector3(0.25, 0.22, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qhr7g"]
+material = SubResource("StandardMaterial3D_6u2f0")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_kam1k"]
 size = Vector3(2.88489, 1, 1.50964)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6omc"]
+albedo_color = Color(0.345098, 0.211765, 1, 1)
+
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_p02ar")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["Enviroment"]]
+environment = SubResource("Environment_h1tcu")
+
+[node name="Nivel" type="StaticBody3D" parent="."]
+
+[node name="base2" parent="Nivel" instance=ExtResource("2_r862i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4, 13.6, -10)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(-0.998161, 0, 0.0608745, 0, 1, 0, -0.0608745, 0, -0.998161, 31.1793, 14.0701, -19.7635)
+shape = SubResource("BoxShape3D_h1tcu")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 44.2222, 10.89, -7.61437)
+shape = SubResource("BoxShape3D_r862i")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_a6omc")]
-transform = Transform3D(-0.998145, 0, 0.0608744, 0, 1, 0, -0.0608744, 0, -0.998145, 2.47854, 0, 1.59987)
+transform = Transform3D(-0.998145, 0, 0.0608744, 0, 1, 0, -0.0608744, 0, -0.998145, 31.0428, 11.0219, -17.7058)
 
-[node name="PuzzleArea" parent="." node_paths=PackedStringArray("Door") instance=ExtResource("2_d4maf")]
+[node name="PuzzleArea1Calendario" parent="." node_paths=PackedStringArray("CalendarioApagado", "CalendarioPrendido", "InterrutporApagado", "InterruptorPrendido", "Interruptor", "Door") instance=ExtResource("2_d4maf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.526, 14.4325, -7.32136)
+script = ExtResource("4_b0s15")
+CalendarioApagado = NodePath("CalendarioApagado")
+CalendarioPrendido = NodePath("CalendarioPrendido")
+InterrutporApagado = NodePath("LuzCalendario/Interruptor/InterruptorApagado")
+InterruptorPrendido = NodePath("LuzCalendario/Interruptor/InterruptorEncendido")
+Interruptor = NodePath("LuzCalendario/Interruptor")
 Door = NodePath("Door")
 
-[node name="Cuarto" type="Node3D" parent="PuzzleArea"]
+[node name="CalendarioApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.92659, -0.96034, -3.49335)
+mesh = SubResource("QuadMesh_h1yu4")
+skeleton = NodePath("../Cinematicas/LuzComienzo")
 
-[node name="Piso" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, -0.289795, 0.206549)
-use_collision = true
-size = Vector3(31.1987, 0.42041, 33.9856)
+[node name="CalendarioPrendido" type="MeshInstance3D" parent="PuzzleArea1Calendario"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.92659, -0.96034, -3.49335)
+visible = false
+mesh = SubResource("QuadMesh_r862i")
+skeleton = NodePath("../Cinematicas/LuzComienzo")
 
-[node name="Techo" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, 16.072, 0.206549)
-use_collision = true
-size = Vector3(31.1987, 0.42041, 33.9856)
+[node name="Cinematicas" type="Node3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("timerLuzComienzo", "luzComienzo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.526, -14.4325, 7.32136)
+script = ExtResource("10_h1tcu")
+timerLuzComienzo = NodePath("Timer")
+luzComienzo = NodePath("LuzComienzo")
 
-[node name="Pared" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, 7.60846, -16.1007)
-use_collision = true
-size = Vector3(31.1987, 16.2169, 1.37115)
-material = SubResource("StandardMaterial3D_a6omc")
+[node name="LuzComienzo" type="SpotLight3D" parent="PuzzleArea1Calendario/Cinematicas"]
+transform = Transform3D(-1, 8.74228e-08, 0, -1.04251e-15, -1.19249e-08, 1, 8.74228e-08, 1, 1.19249e-08, 31.7213, 16.56, -8.24332)
+visible = false
+light_energy = 10.0
+spot_range = 6.9501
 
-[node name="Pared2" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20628, 7.60846, -0.464724)
-use_collision = true
-size = Vector3(2.69568, 16.2169, 32.643)
-material = SubResource("StandardMaterial3D_a6omc")
+[node name="Timer" type="Timer" parent="PuzzleArea1Calendario/Cinematicas"]
+one_shot = true
+autostart = true
 
-[node name="Pared3" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6459, 7.60846, 14.4388)
-use_collision = true
-size = Vector3(13.0728, 16.2169, 2.83604)
-material = SubResource("StandardMaterial3D_a6omc")
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/Cinematicas"]
 
-[node name="Pared5" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17658, 7.60846, 14.4388)
-use_collision = true
-size = Vector3(12.0568, 16.2169, 2.83604)
-material = SubResource("StandardMaterial3D_a6omc")
-
-[node name="Pared4" type="CSGBox3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7725, 7.60846, -0.412037)
-use_collision = true
-size = Vector3(4.81961, 16.2169, 32.5376)
-material = SubResource("StandardMaterial3D_a6omc")
-
-[node name="Luz" type="CSGSphere3D" parent="PuzzleArea/Cuarto"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.1297, 7.60917, -3.5937)
+[node name="LuzCalendario" type="CSGSphere3D" parent="PuzzleArea1Calendario"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.88081, 0.0729351, -3.5937)
 material = SubResource("StandardMaterial3D_d4maf")
 
-[node name="Interruptor" type="Area3D" parent="PuzzleArea/Cuarto/Luz" node_paths=PackedStringArray("lights")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62788, -2.28969, -1.91449)
+[node name="Interruptor" type="Area3D" parent="PuzzleArea1Calendario/LuzCalendario" node_paths=PackedStringArray("lights", "audioPlayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62788, 1.0621, -1.91449)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_4gvat")
 lights = [NodePath("../OmniLight3D"), NodePath("../SpotLight3D")]
+interruptorOnAudio = ExtResource("9_qhr7g")
+interruptorOffAudio = ExtResource("10_2d7ec")
+audioPlayer = NodePath("AudioInterruptor")
 
-[node name="Model" type="CSGBox3D" parent="PuzzleArea/Cuarto/Luz/Interruptor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.55719, 2.28699)
+[node name="InterruptorApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario/LuzCalendario/Interruptor"]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.0478935, -3.42946, 1.87745)
+mesh = SubResource("QuadMesh_m2ggp")
+skeleton = NodePath("../../../Cinematicas/LuzComienzo")
 
-[node name="Collision" type="CollisionShape3D" parent="PuzzleArea/Cuarto/Luz/Interruptor"]
+[node name="InterruptorEncendido" type="MeshInstance3D" parent="PuzzleArea1Calendario/LuzCalendario/Interruptor"]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.0478935, -3.42946, 1.87745)
+visible = false
+mesh = SubResource("QuadMesh_qhr7g")
+skeleton = NodePath("../../../Cinematicas/LuzComienzo")
+
+[node name="Collision" type="CollisionShape3D" parent="PuzzleArea1Calendario/LuzCalendario/Interruptor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123846, -3.55575, 2.7458)
 shape = SubResource("BoxShape3D_kam1k")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea/Cuarto/Luz"]
-transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.043685, -0.208468, 0.609242)
+[node name="AudioInterruptor" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/LuzCalendario/Interruptor"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea1Calendario/LuzCalendario"]
+transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, -0.010438, -0.893725, 0.152821)
 visible = false
 light_color = Color(1, 1, 0.701961, 1)
-light_energy = 3.698
 light_indirect_energy = 3.305
 light_volumetric_fog_energy = 3.355
 light_specular = 0.83
 light_bake_mode = 1
-omni_range = 1.798
-omni_attenuation = 0.32
+omni_range = 0.341478
 
-[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea/Cuarto/Luz"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.00546026, 0.632244, 0.607147)
+[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea1Calendario/LuzCalendario"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.0575409, 0.632244, 0.133347)
 visible = false
-light_energy = 8.189
+light_color = Color(1, 1, 0.701961, 1)
 light_indirect_energy = 6.72
 light_specular = 1.332
 light_bake_mode = 1
 spot_range = 27.09
 spot_angle = 26.2147
 
-[node name="Door" parent="PuzzleArea" instance=ExtResource("3_7ntn3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9881, 0.420399, 13.9964)
+[node name="Door" parent="PuzzleArea1Calendario" instance=ExtResource("3_7ntn3")]
+transform = Transform3D(-0.110099, 0, 0.993921, 0, 1, 0, -0.993921, 0, -0.110099, 3.58413, -3.36194, 1.27359)
 TweenRotation = Vector3(0, -1.5, 0)
 TweenDuration = 1.0
 
-[node name="Puzzle" parent="PuzzleArea" instance=ExtResource("3_nq0l7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.919069, 2.70781, 0)
-script = ExtResource("7_p02ar")
+[node name="Puzzle" parent="PuzzleArea1Calendario" instance=ExtResource("3_nq0l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21696, -1.92789, -0.566449)
+script = ExtResource("11_m2ggp")
 
-[node name="PuzzleArea2" parent="." instance=ExtResource("2_d4maf")]
+[node name="Cuarto1" type="Node3D" parent="PuzzleArea1Calendario"]
+transform = Transform3D(-1, 8.74228e-08, 0, -1.04251e-15, -1.19249e-08, 1, 8.74228e-08, 1, 1.19249e-08, -2.8047, 2.12756, -0.921957)
 
-[node name="Cuarto" type="Node3D" parent="PuzzleArea2"]
+[node name="PuzzleArea2Fotos" parent="." instance=ExtResource("2_d4maf")]
+visible = false
 
-[node name="Piso" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, -0.289795, 32.106)
-use_collision = true
-size = Vector3(31.1987, 0.42041, 33.9856)
+[node name="Cuarto" type="Node3D" parent="PuzzleArea2Fotos"]
 
-[node name="Techo" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, 16.072, 32.106)
-use_collision = true
-size = Vector3(31.1987, 0.42041, 33.9856)
-
-[node name="Pared2" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20628, 7.60846, 31.4347)
-use_collision = true
-size = Vector3(2.69568, 16.2169, 32.643)
-material = SubResource("StandardMaterial3D_a6omc")
-
-[node name="Pared3" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6459, 7.60846, 46.3382)
-use_collision = true
-size = Vector3(13.0728, 16.2169, 2.83604)
-material = SubResource("StandardMaterial3D_a6omc")
-
-[node name="Pared5" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17658, 7.60846, 46.3382)
-use_collision = true
-size = Vector3(12.0568, 16.2169, 2.83604)
-material = SubResource("StandardMaterial3D_a6omc")
-
-[node name="Pared4" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7725, 7.60846, 31.4874)
-use_collision = true
-size = Vector3(4.81961, 16.2169, 32.5376)
-material = SubResource("StandardMaterial3D_a6omc")
-
-[node name="Luz" type="CSGSphere3D" parent="PuzzleArea2/Cuarto"]
+[node name="Luz" type="CSGSphere3D" parent="PuzzleArea2Fotos/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26625, 10.4633, 36.7552)
 material = SubResource("StandardMaterial3D_d4maf")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea2/Cuarto/Luz"]
+[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea2Fotos/Cuarto/Luz"]
 transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.043685, -0.208468, 0.609242)
 light_energy = 3.698
 light_indirect_energy = 3.305
@@ -169,18 +209,18 @@ light_specular = 0.83
 omni_range = 11.225
 omni_attenuation = 7.949
 
-[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea2/Cuarto/Luz"]
+[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea2Fotos/Cuarto/Luz"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.345902, 1.87882, 3.9997)
 light_energy = 5.889
 light_indirect_energy = 7.111
 spot_range = 27.09
 spot_angle = 26.2147
 
-[node name="Luz2" type="CSGSphere3D" parent="PuzzleArea2/Cuarto"]
+[node name="Luz2" type="CSGSphere3D" parent="PuzzleArea2Fotos/Cuarto"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.26625, 10.4633, 26.218)
 material = SubResource("StandardMaterial3D_d4maf")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea2/Cuarto/Luz2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea2Fotos/Cuarto/Luz2"]
 transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.043685, -0.208468, 0.609242)
 light_energy = 3.698
 light_indirect_energy = 3.305
@@ -189,7 +229,7 @@ light_specular = 0.83
 omni_range = 11.225
 omni_attenuation = 7.949
 
-[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea2/Cuarto/Luz2"]
+[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea2Fotos/Cuarto/Luz2"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.345902, 2.89274, 3.9997)
 light_color = Color(0.305882, 0.509804, 1, 1)
 light_energy = 5.889
@@ -197,57 +237,58 @@ light_indirect_energy = 7.111
 spot_range = 27.09
 spot_angle = 26.2147
 
-[node name="Puzzle" parent="PuzzleArea2/Cuarto" instance=ExtResource("3_nq0l7")]
+[node name="Puzzle" parent="PuzzleArea2Fotos/Cuarto" instance=ExtResource("3_nq0l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03571, 3.22005, 27.6773)
 script = ExtResource("7_se04o")
 
-[node name="CSGBox3D" parent="PuzzleArea2/Cuarto/Puzzle" index="0"]
+[node name="CSGBox3D" parent="PuzzleArea2Fotos/Cuarto/Puzzle" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.15608, 0)
 
-[node name="CollisionShape3D" parent="PuzzleArea2/Cuarto/Puzzle" index="1"]
+[node name="CollisionShape3D" parent="PuzzleArea2Fotos/Cuarto/Puzzle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08012, 0)
 
-[node name="Mesa" type="CSGBox3D" parent="PuzzleArea2/Cuarto"]
+[node name="Mesa" type="CSGBox3D" parent="PuzzleArea2Fotos/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.84263, -1.69614, 30.0524)
 size = Vector3(9.38239, 4.8783, 7.93359)
 
-[node name="PuzzleArea3" parent="." instance=ExtResource("2_d4maf")]
+[node name="PuzzleArea3Ahorcado" parent="." instance=ExtResource("2_d4maf")]
+visible = false
 
-[node name="Cuarto" type="Node3D" parent="PuzzleArea3"]
+[node name="Cuarto" type="Node3D" parent="PuzzleArea3Ahorcado"]
 
-[node name="Piso" type="CSGBox3D" parent="PuzzleArea3/Cuarto"]
+[node name="Piso" type="CSGBox3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, -0.289795, 64.5554)
 use_collision = true
 size = Vector3(31.1987, 0.42041, 33.9856)
 
-[node name="Techo" type="CSGBox3D" parent="PuzzleArea3/Cuarto"]
+[node name="Techo" type="CSGBox3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04525, 16.072, 64.5554)
 use_collision = true
 size = Vector3(31.1987, 0.42041, 33.9856)
 
-[node name="Pared2" type="CSGBox3D" parent="PuzzleArea3/Cuarto"]
+[node name="Pared2" type="CSGBox3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.20628, 7.60846, 63.8841)
 use_collision = true
 size = Vector3(2.69568, 16.2169, 32.643)
 material = SubResource("StandardMaterial3D_a6omc")
 
-[node name="Pared3" type="CSGBox3D" parent="PuzzleArea3/Cuarto"]
+[node name="Pared3" type="CSGBox3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.90243, 7.60846, 78.7876)
 use_collision = true
 size = Vector3(30.5599, 16.2169, 2.83604)
 material = SubResource("StandardMaterial3D_a6omc")
 
-[node name="Pared4" type="CSGBox3D" parent="PuzzleArea3/Cuarto"]
+[node name="Pared4" type="CSGBox3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7725, 7.60846, 63.9368)
 use_collision = true
 size = Vector3(4.81961, 16.2169, 32.5376)
 material = SubResource("StandardMaterial3D_a6omc")
 
-[node name="Luz" type="CSGSphere3D" parent="PuzzleArea3/Cuarto"]
+[node name="Luz" type="CSGSphere3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26625, 10.4633, 69.2045)
 material = SubResource("StandardMaterial3D_d4maf")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea3/Cuarto/Luz"]
+[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea3Ahorcado/Cuarto/Luz"]
 transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.043685, -0.208468, 0.609242)
 light_energy = 3.698
 light_indirect_energy = 3.305
@@ -256,18 +297,18 @@ light_specular = 0.83
 omni_range = 11.225
 omni_attenuation = 7.949
 
-[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea3/Cuarto/Luz"]
+[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea3Ahorcado/Cuarto/Luz"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.345902, 1.87882, 3.9997)
 light_energy = 5.889
 light_indirect_energy = 7.111
 spot_range = 27.09
 spot_angle = 26.2147
 
-[node name="Luz2" type="CSGSphere3D" parent="PuzzleArea3/Cuarto"]
+[node name="Luz2" type="CSGSphere3D" parent="PuzzleArea3Ahorcado/Cuarto"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.26625, 10.4633, 58.6674)
 material = SubResource("StandardMaterial3D_d4maf")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea3/Cuarto/Luz2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea3Ahorcado/Cuarto/Luz2"]
 transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.043685, -0.208468, 0.609242)
 light_energy = 3.698
 light_indirect_energy = 3.305
@@ -276,7 +317,7 @@ light_specular = 0.83
 omni_range = 11.225
 omni_attenuation = 7.949
 
-[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea3/Cuarto/Luz2"]
+[node name="SpotLight3D" type="SpotLight3D" parent="PuzzleArea3Ahorcado/Cuarto/Luz2"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0.345902, 2.89274, 3.9997)
 light_color = Color(0.305882, 0.509804, 1, 1)
 light_energy = 5.889
@@ -284,5 +325,5 @@ light_indirect_energy = 7.111
 spot_range = 27.09
 spot_angle = 26.2147
 
-[editable path="PuzzleArea"]
-[editable path="PuzzleArea2/Cuarto/Puzzle"]
+[editable path="PuzzleArea1Calendario"]
+[editable path="PuzzleArea2Fotos/Cuarto/Puzzle"]

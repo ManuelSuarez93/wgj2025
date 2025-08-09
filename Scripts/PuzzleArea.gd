@@ -7,12 +7,11 @@ class_name PuzzleArea
 var puzzles : Array[Triggerable]
 var finishedPuzzles: Array[Triggerable]
 
-func _ready():
+func checkForPuzzles():
 	for children in self.get_children():
 		if children is Triggerable:
 			puzzles.append(children)
 			children.onTrigger.connect(puzzleSolved)
-			print("Added children!")
 
 func puzzleSolved(puzzle : Triggerable):
 	finishedPuzzles.append(puzzle)
