@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmytqan70xo38"
+path="res://.godot/imported/sonido papel.wav-fc0c5e32e676ec8194cb05fb5b339e7d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/foleys/sonido papel.wav"
+dest_files=["res://.godot/imported/sonido papel.wav-fc0c5e32e676ec8194cb05fb5b339e7d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

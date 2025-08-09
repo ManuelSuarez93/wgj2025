@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bn5xu6vcnxv2e"
+path="res://.godot/imported/grito psicopata.wav-e5f78a8b3a58233212f3bb4997add2ef.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/foleys/sonidos del personaje/grito psicopata.wav"
+dest_files=["res://.godot/imported/grito psicopata.wav-e5f78a8b3a58233212f3bb4997add2ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

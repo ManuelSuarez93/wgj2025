@@ -3,19 +3,20 @@
 [ext_resource type="Script" uid="uid://cv8utdgw6g7vt" path="res://Scripts/Door.gd" id="1_tx1ww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nq0l7"]
-size = Vector3(10.8556, 11.0346, 2.9458)
+size = Vector3(1.10263, 1.43834, 2.9458)
 
 [node name="Door" type="Area3D" node_paths=PackedStringArray("CollisionShape")]
 script = ExtResource("1_tx1ww")
 CollisionShape = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80592, 4.68971, -0.0832701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17352, 2.30648, -0.0832701)
+visible = false
 shape = SubResource("BoxShape3D_nq0l7")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13479, 4.68481, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0)
 use_collision = true
-size = Vector3(6.45142, 10.3696, 1)
+size = Vector3(2, 4, 0.25)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
