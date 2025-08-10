@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="8_8nnst"]
 [ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="8_eot0c"]
 [ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Scripts/PuzzleFotos/MenuPicture.gd" id="11_2ehil"]
-[ext_resource type="Theme" uid="uid://daqsxiwqwblwi" path="res://Assets/Prefabs/themeLetters.tres" id="12_7erfr"]
+[ext_resource type="Theme" uid="uid://bacft48tk83a1" path="res://Assets/Prefabs/themeLetters.tres" id="12_7erfr"]
 [ext_resource type="Texture2D" uid="uid://bmgy07dw3egtj" path="res://Assets/2D/telefono.svg" id="13_iyhcw"]
 [ext_resource type="Texture2D" uid="uid://db7eu6ksnnl8b" path="res://Assets/2D/ahorcado/ahorcado 1.png" id="14_onktn"]
 [ext_resource type="AudioStream" uid="uid://didwjl2ivpw4f" path="res://Assets/Sounds/foleys/telefono/ring llamada.wav" id="14_tdns3"]
@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://chm7mdcbtr6rm" path="res://Assets/2D/ahorcado/ahorcado 6.png" id="19_hw4ag"]
 [ext_resource type="AudioStream" uid="uid://daemfa1yjvofp" path="res://Assets/Sounds/foleys/telefono/beep 1.wav" id="19_pblxa"]
 [ext_resource type="AudioStream" uid="uid://bx7od3fyu5w36" path="res://Assets/Sounds/foleys/telefono/beep 2.wav" id="20_7erfr"]
-[ext_resource type="Script" uid="uid://fttabnivwj7g" path="res://Assets/Prefabs/MenPause.gd" id="22_muf8v"]
+[ext_resource type="Script" path="res://Assets/Prefabs/MenPause.gd" id="22_muf8v"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
@@ -52,7 +52,7 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_muf8v"]
 font_size = 24
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer", "AudioTimer")]
+[node name="Player2" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer", "AudioTimer")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
 raycast = NodePath("Camera3D/DetectObjectRaycast")

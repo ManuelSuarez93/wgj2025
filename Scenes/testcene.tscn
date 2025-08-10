@@ -34,7 +34,9 @@
 [ext_resource type="AudioStream" uid="uid://bl12wxrn0js08" path="res://Assets/Sounds/dialogo.wav" id="25_wp0vb"]
 
 [sub_resource type="Environment" id="Environment_2a36k"]
-tonemap_exposure = 12.0
+tonemap_exposure = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1tcu"]
 size = Vector3(15, 7.096, 1.602)
@@ -209,7 +211,7 @@ shape = SubResource("BoxShape3D_kam1k")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.61042, 1.81235)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea1Calendario/LuzCalendario"]
-transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, -0.107912, -1.55677, 0)
+transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, -0.107912, -1.55677, -0.193422)
 visible = false
 light_color = Color(1, 1, 0.701961, 1)
 light_energy = 4.913
@@ -224,11 +226,12 @@ omni_attenuation = -0.887
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.0254822, -0.361685, 0)
 visible = false
 light_color = Color(1, 1, 0.701961, 1)
-light_indirect_energy = 6.72
+light_indirect_energy = 6.235
 light_specular = 1.332
 light_bake_mode = 1
-spot_range = 27.09
-spot_angle = 26.2147
+spot_range = 22.9
+spot_attenuation = -0.82
+spot_angle = 35.3
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("AudioPlayer")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.72753, -3.58727, 1.06555)
@@ -290,7 +293,7 @@ mesh = SubResource("QuadMesh_2woa5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07955, -0.803603, 1.27586)
 collision_layer = 2
 script = ExtResource("16_i5mvb")
-picturePartNumber = 2
+picturePartNumber = 3
 pickupAudio = ExtResource("18_bynss")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart3"]
