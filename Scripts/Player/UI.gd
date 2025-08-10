@@ -2,7 +2,7 @@ extends Control
 
 class_name PlayerUI
 
-enum Menu {Phone, Photo, Hangman, None, Pause}
+enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 
 @export var ManoAbierta : Control
 @export var ManoCerrada : Control 
@@ -10,8 +10,9 @@ enum Menu {Phone, Photo, Hangman, None, Pause}
 @export var MenuTelefono : MenuPhone
 @export var MenuPause : Control 
 @export var MenuImages : MenuPicture
+@export var MenuGameOver : Control
 
-@onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages]
+@onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages, MenuGameOver]
 
 var collider : Triggerable 
 var isOnMenu : bool
@@ -36,12 +37,13 @@ func captureMouse(event):
 			SetMenuVisible(Menu.None, false, true) 
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func interact():
-	pass
-
-func onDetectedObject(collider):  
+func interact(): 
 	ManoCerrada.visible = true
 	ManoAbierta.visible = false
+
+func onDetectedObject(collider):  
+	ManoCerrada.visible = false
+	ManoAbierta.visible = true
 
 func onNonDetectingObject(): 
 	ManoCerrada.visible = false
@@ -59,17 +61,26 @@ func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 			MenuTelefono.visible = isVisible
 			MenuHangman.visible = !isVisible
 			MenuPause.visible = !isVisible
+			MenuGameOver.visible = !isVisible
 			
 		Menu.Hangman:
 			MenuHangman.visible = isVisible
 			MenuTelefono.visible = !isVisible
 			MenuPause.visible = !isVisible
+			MenuGameOver.visible = !isVisible
 		Menu.Pause:
 			MenuHangman.visible = !isVisible
 			MenuTelefono.visible = !isVisible
 			MenuPause.visible = isVisible
+			MenuGameOver.visible = !isVisible
+		Menu.GameOver:
+			MenuHangman.visible = !isVisible
+			MenuTelefono.visible = !isVisible
+			MenuPause.visible = !isVisible
+			MenuGameOver.visible = isVisible
 		Menu.None: 
 			MenuHangman.visible = isVisible
 			MenuTelefono.visible = isVisible
 			MenuPause.visible = isVisible
+			MenuGameOver.visible = isVisible
 			currentMenu = Menu.None

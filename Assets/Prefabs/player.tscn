@@ -1,19 +1,24 @@
-[gd_scene load_steps=27 format=4 uid="uid://ddgp1kqvms6fp"]
+[gd_scene load_steps=29 format=4 uid="uid://ddgp1kqvms6fp"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://bsuiio5dae7ct" path="res://Scripts/Player/UI.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cudrv2bl5i8q1" path="res://Scripts/Player/LabelDialogo.gd" id="3_hqtel"]
 [ext_resource type="Script" uid="uid://yf1asljkyusg" path="res://Scripts/PuzzleAhorcado/HangmanText.gd" id="5_1kvxw"]
+[ext_resource type="Texture2D" uid="uid://bgq0aukwxtfyn" path="res://Assets/2D/mouse abierto.png" id="5_b5xh7"]
 [ext_resource type="Script" uid="uid://cve1j5827av64" path="res://Scripts/PuzzleAhorcado/hangmanLetter.gd" id="5_m0ojv"]
 [ext_resource type="AudioStream" uid="uid://xq1r7mf0kgh1" path="res://Assets/Sounds/foleys/ahorcado/correcto.wav" id="6_7xaxw"]
+[ext_resource type="Texture2D" uid="uid://dl84e22yyy4ru" path="res://Assets/2D/mouse cerrado.png" id="6_hmsos"]
 [ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/MenuPhone.gd" id="7_j73l1"]
 [ext_resource type="AudioStream" uid="uid://bhmg2px0263td" path="res://Assets/Sounds/foleys/ahorcado/incorrecto.wav" id="7_v0672"]
 [ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="8_8nnst"]
-[ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Assets/Prefabs/MenuPicture.gd" id="11_2ehil"]
+[ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Scripts/PuzzleFotos/MenuPicture.gd" id="11_2ehil"]
 [ext_resource type="Texture2D" uid="uid://dwp10jgc1hfv7" path="res://Assets/2D/Calendario.png" id="11_v0672"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8nnst"]
+font_size = 128
 
 [sub_resource type="Image" id="Image_m0ojv"]
 data = {
@@ -1142,9 +1147,6 @@ LineEdit/styles/read_only = SubResource("StyleBoxFlat_hmsos")
 [sub_resource type="LabelSettings" id="LabelSettings_j73l1"]
 font_size = 64
 
-[sub_resource type="LabelSettings" id="LabelSettings_8nnst"]
-font_size = 128
-
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
@@ -1180,46 +1182,63 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
 shape = SubResource("CapsuleShape3D_d4maf")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1916.0
 offset_bottom = 1071.0
 script = ExtResource("2_onrkg")
-ManoAbierta = NodePath("ManoAbierta2")
-ManoCerrada = NodePath("ManoCerrada2")
+ManoAbierta = NodePath("ManoAbierta")
+ManoCerrada = NodePath("ManoCerrada")
 MenuHangman = NodePath("MenuAhorcado")
 MenuTelefono = NodePath("MenuPhone")
 MenuPause = NodePath("MenuPause")
 MenuImages = NodePath("MenuPause/MenuPicture")
-
-[node name="ManoAbierta2" type="ColorRect" parent="UI"]
-visible = false
-layout_mode = 0
-offset_left = 960.0
-offset_top = 540.0
-offset_right = 1000.0
-offset_bottom = 580.0
-
-[node name="ManoCerrada2" type="ColorRect" parent="UI"]
-visible = false
-layout_mode = 0
-offset_left = 960.0
-offset_top = 540.0
-offset_right = 1000.0
-offset_bottom = 580.0
+MenuGameOver = NodePath("MenuGameOver")
 
 [node name="ManoAbierta" type="TextureRect" parent="UI"]
 visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 940.0
+offset_top = 540.0
+offset_right = 1083.0
+offset_bottom = 722.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_b5xh7")
 
-[node name="Control2" type="Control" parent="UI"]
+[node name="ManoCerrada" type="TextureRect" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = 940.0
+offset_top = 540.0
+offset_right = 1083.0
+offset_bottom = 722.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hmsos")
+
+[node name="MenuGameOver" type="Control" parent="UI"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="UI/MenuGameOver"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UI/MenuGameOver"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 730.0
+offset_top = 321.0
+offset_right = 1090.0
+offset_bottom = 674.0
+grow_horizontal = 2
+text = "GAME
+OVER"
+label_settings = SubResource("LabelSettings_8nnst")
 
 [node name="MenuAhorcado" type="Control" parent="UI"]
 visible = false

@@ -5,16 +5,15 @@
 [ext_resource type="AudioStream" uid="uid://c07wsxivaqmhs" path="res://Assets/Sounds/foleys/puerta.wav" id="2_fmnvw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nq0l7"]
-size = Vector3(2, 4.05, 0)
+size = Vector3(2, 4.05, 0.781952)
 
-[node name="Door" type="Area3D" node_paths=PackedStringArray("CollisionShape", "AudioPlayer")]
+[node name="Door" type="Area3D" node_paths=PackedStringArray("AudioPlayer")]
 script = ExtResource("1_tx1ww")
-CollisionShape = NodePath("CollisionShape3D")
 Audio = ExtResource("2_fmnvw")
 AudioPlayer = NodePath("AudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985181, 1.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985181, 1.9, -0.155777)
 shape = SubResource("BoxShape3D_nq0l7")
 
 [node name="PUERTA" parent="." instance=ExtResource("2_5gein")]

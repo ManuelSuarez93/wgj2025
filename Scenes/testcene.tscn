@@ -1,10 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://ftyvnfq8bysl"]
+[gd_scene load_steps=41 format=3 uid="uid://ftyvnfq8bysl"]
 
 [ext_resource type="PackedScene" uid="uid://ddgp1kqvms6fp" path="res://Assets/Prefabs/player.tscn" id="1_a6omc"]
 [ext_resource type="PackedScene" uid="uid://6gg6inqwrpu" path="res://Assets/Prefabs/puzzle_area.tscn" id="2_d4maf"]
 [ext_resource type="PackedScene" uid="uid://clgrbe0wn23pb" path="res://Assets/Models/base.glb" id="2_r862i"]
 [ext_resource type="Script" uid="uid://bmyllshloler0" path="res://Scripts/PuzzleTelefono/LightSwitch.gd" id="3_4gvat"]
-[ext_resource type="PackedScene" uid="uid://cvfdpps2d3e4e" path="res://Assets/Prefabs/door.tscn" id="3_7ntn3"]
 [ext_resource type="PackedScene" uid="uid://bg6fwxh3xbt8" path="res://Assets/Prefabs/puzzle.tscn" id="3_nq0l7"]
 [ext_resource type="Script" uid="uid://hjsd30fl4sdl" path="res://Scripts/PuzzleTelefono/AreaCalendario.gd" id="4_b0s15"]
 [ext_resource type="Texture2D" uid="uid://dwp10jgc1hfv7" path="res://Assets/2D/Calendario.png" id="4_h1tcu"]
@@ -16,9 +15,14 @@
 [ext_resource type="Script" uid="uid://dv0swg851lvkt" path="res://Scripts/PuzzleTelefono/FirstRoom.gd" id="10_h1tcu"]
 [ext_resource type="Texture2D" uid="uid://dbd4uneqawxa0" path="res://Assets/2D/Interruptor encendido.png" id="10_h1yu4"]
 [ext_resource type="Script" uid="uid://bio4a0e50wwia" path="res://Scripts/PuzzleTelefono/Telephone.gd" id="11_m2ggp"]
-[ext_resource type="Script" uid="uid://cbhvx0m5hppjl" path="res://Assets/Prefabs/AreaFotos.gd" id="16_2d7ec"]
-[ext_resource type="Script" uid="uid://dlmvk5y3osoha" path="res://Scenes/PicturePart.gd" id="16_i5mvb"]
+[ext_resource type="Script" uid="uid://cv8utdgw6g7vt" path="res://Scripts/Door.gd" id="13_crfcr"]
+[ext_resource type="PackedScene" uid="uid://dou5jrnrsilkw" path="res://Assets/Models/AssetsImported/puerta.tscn" id="13_ff4kf"]
+[ext_resource type="AudioStream" uid="uid://c07wsxivaqmhs" path="res://Assets/Sounds/foleys/puerta.wav" id="14_crfcr"]
+[ext_resource type="Script" uid="uid://cbhvx0m5hppjl" path="res://Scripts/PuzzleFotos/AreaFotos.gd" id="16_2d7ec"]
+[ext_resource type="Script" uid="uid://dlmvk5y3osoha" path="res://Scripts/PuzzleFotos/PicturePart.gd" id="16_i5mvb"]
 [ext_resource type="AudioStream" uid="uid://c6jxuubeynsd3" path="res://Assets/Sounds/foleys/acciones/pick up.wav" id="18_bynss"]
+[ext_resource type="Script" uid="uid://blhoucj5m62yu" path="res://Assets/Prefabs/AreaAhorcado.gd" id="19_ttfme"]
+[ext_resource type="AudioStream" uid="uid://dnpqeufirkff3" path="res://Assets/Sounds/musica_loop_what_did_you_do.wav" id="23_ev46m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhr7g"]
 
@@ -74,6 +78,9 @@ material = SubResource("StandardMaterial3D_6u2f0")
 [sub_resource type="BoxShape3D" id="BoxShape3D_kam1k"]
 size = Vector3(2.88489, 1, 1.50964)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_crfcr"]
+size = Vector3(2, 4.05, 0.781952)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2d7ec"]
 
 [node name="Node3D" type="Node3D"]
@@ -105,7 +112,7 @@ CalendarioPrendido = NodePath("CalendarioPrendido")
 InterrutporApagado = NodePath("LuzCalendario/Interruptor/InterruptorApagado")
 InterruptorPrendido = NodePath("LuzCalendario/Interruptor/InterruptorEncendido")
 Interruptor = NodePath("LuzCalendario/Interruptor")
-Door = NodePath("Door")
+Door = NodePath("AnimatableBody3D")
 
 [node name="CalendarioApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.34329, -1.55288, 3.06216)
@@ -191,10 +198,27 @@ light_bake_mode = 1
 spot_range = 27.09
 spot_angle = 26.2147
 
-[node name="Door" parent="PuzzleArea1Calendario" instance=ExtResource("3_7ntn3")]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("AudioPlayer")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.72753, -3.58727, 1.06555)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("13_crfcr")
 TweenRotation = Vector3(0, -1.5, 0)
 TweenDuration = 1.0
+Audio = ExtResource("14_crfcr")
+AudioPlayer = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea1Calendario/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985181, 1.9, -0.155777)
+shape = SubResource("BoxShape3D_crfcr")
+
+[node name="PUERTA" parent="PuzzleArea1Calendario/AnimatableBody3D" instance=ExtResource("13_ff4kf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73518, 1.9, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/AnimatableBody3D"]
 
 [node name="Telephone" parent="PuzzleArea1Calendario" instance=ExtResource("3_nq0l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47096, -1.92789, -0.566449)
@@ -203,7 +227,7 @@ script = ExtResource("11_m2ggp")
 [node name="PuzzleArea2Fotos" parent="." node_paths=PackedStringArray("Door") instance=ExtResource("2_d4maf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07975, 13.3562, 12.2925)
 script = ExtResource("16_2d7ec")
-Door = NodePath("Door2")
+Door = NodePath("AnimatableBody3D")
 
 [node name="PicturePart" type="Area3D" parent="PuzzleArea2Fotos" node_paths=PackedStringArray("image") groups=["Picture"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06392, -0.803603, -1.81741)
@@ -264,13 +288,31 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart4"]
 shape = SubResource("BoxShape3D_2d7ec")
 
-[node name="Door2" parent="PuzzleArea2Fotos" instance=ExtResource("3_7ntn3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.54634, -2.51097, 5.31365)
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PuzzleArea2Fotos" node_paths=PackedStringArray("AudioPlayer")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.77745, -2.63914, 5.2614)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("13_crfcr")
 TweenRotation = Vector3(0, -1.5, 0)
 TweenDuration = 1.0
+Audio = ExtResource("14_crfcr")
+AudioPlayer = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985181, 1.9, -0.155777)
+shape = SubResource("BoxShape3D_crfcr")
+
+[node name="PUERTA" parent="PuzzleArea2Fotos/AnimatableBody3D" instance=ExtResource("13_ff4kf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73518, 1.9, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea2Fotos/AnimatableBody3D"]
 
 [node name="PuzzleArea3Ahorcado" parent="." instance=ExtResource("2_d4maf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29366, 13.9547, 6.72569)
+script = ExtResource("19_ttfme")
 
 [node name="Mesa" type="CSGBox3D" parent="PuzzleArea3Ahorcado"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66664, -2.99628, 2.42389)
@@ -285,6 +327,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176579, -2.15608, 0.0948753
 
 [node name="CollisionShape3D" parent="PuzzleArea3Ahorcado/Puzzle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08012, 0)
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("23_ev46m")
+autoplay = true
 
 [editable path="PuzzleArea1Calendario"]
 [editable path="PuzzleArea3Ahorcado/Puzzle"]

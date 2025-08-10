@@ -15,8 +15,8 @@ func checkForPuzzles():
 
 func puzzleSolved(puzzle : Triggerable):
 	finishedPuzzles.append(puzzle)
-	checkDoorOpen()
+	checkForFinishPuzzles()
 	
-func checkDoorOpen():
+func checkForFinishPuzzles():
 	if(finishedPuzzles.size() == puzzles.size()):
 		Door.open()

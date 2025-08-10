@@ -1,8 +1,6 @@
-extends Area3D
+extends AnimatableBody3D
 
 class_name Door
-
-@export var CollisionShape : CollisionShape3D
 
 @export_category("Tween")
 @export var TweenRotation : Vector3

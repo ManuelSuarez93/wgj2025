@@ -11,6 +11,7 @@ signal solutionFound
 func _ready() -> void:
 	for letter in get_tree().get_nodes_in_group("HangmanLetter"):
 		if letter is HangmanLetter:
+			letters.append(letter)
 			letter.onLetterPressed.connect(onLetterSubmitted) 
 
 func onLetterSubmitted(letter: HangmanLetter):
@@ -21,17 +22,15 @@ func onLetterSubmitted(letter: HangmanLetter):
 		audioPlayer.stream = audioCorrect
 	else:
 		audioPlayer.stream = audioIncorrect
-	audioPlayer.play()
+	audioPlayer.play() 
+	checkAllCorrectLetters()
 
 func checkAllCorrectLetters():
-	var isCorrect = false
+	var correctLetters = 0
 	for letter in letters:
-		if letter is HangmanLetter:
 			if letter.isCorrectLetter():
-				isCorrect = true
-			else:
-				isCorrect = false
-				break;
+				letter.editable = false;
+				correctLetters += 1
 	
-	if(isCorrect):
-		solutionFound.emit()
+	if(correctLetters == letters.size()):
+		GameManager.player.UI.SetMenuVisible(PlayerUI.Menu.GameOver, true, false)

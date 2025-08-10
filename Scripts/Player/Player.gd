@@ -36,6 +36,7 @@ func removeDetectedObject():
 	detectedObject = null
 	
 func interact():
+	UI.interact()
 	detectedObject.doTrigger()
 
 func cameraRotation(event):
