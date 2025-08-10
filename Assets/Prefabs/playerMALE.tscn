@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=4 uid="uid://d0iv2m6r5rws6"]
+[gd_scene load_steps=51 format=4 uid="uid://d0iv2m6r5rws6"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://bsuiio5dae7ct" path="res://Scripts/Player/UI.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cudrv2bl5i8q1" path="res://Scripts/Player/LabelDialogo.gd" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://c6ywsb1dysbe7" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_1.png" id="4_xld26"]
 [ext_resource type="Script" uid="uid://yf1asljkyusg" path="res://Scripts/PuzzleAhorcado/HangmanText.gd" id="5_1kvxw"]
 [ext_resource type="Texture2D" uid="uid://bgq0aukwxtfyn" path="res://Assets/2D/mouse abierto.png" id="5_b5xh7"]
 [ext_resource type="Script" uid="uid://cve1j5827av64" path="res://Scripts/PuzzleAhorcado/hangmanLetter.gd" id="5_m0ojv"]
@@ -15,15 +16,66 @@
 [ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="8_8nnst"]
 [ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="8_eot0c"]
 [ext_resource type="Texture2D" uid="uid://d4owdvlpumwn" path="res://Assets/2D/game over screen.png" id="9_138bc"]
+[ext_resource type="Texture2D" uid="uid://dh2dap4bt5rj3" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_2.png" id="10_t22m2"]
 [ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Scripts/PuzzleFotos/MenuPicture.gd" id="11_2ehil"]
+[ext_resource type="Texture2D" uid="uid://dmh61t7bkgwfx" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_3.png" id="11_xld26"]
+[ext_resource type="Texture2D" uid="uid://bypxbuu75vpfx" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_4.png" id="12_csoex"]
 [ext_resource type="Texture2D" uid="uid://bmgy07dw3egtj" path="res://Assets/2D/telefono.svg" id="13_iyhcw"]
+[ext_resource type="Texture2D" uid="uid://mjr5cnu0kxu8" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_5.png" id="13_kr1xi"]
+[ext_resource type="Texture2D" uid="uid://4kktckvcrdd5" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_6.png" id="14_8s8yg"]
 [ext_resource type="FontFile" uid="uid://q6k5or4uycpv" path="res://Assets/Font/BarlowCondensed-BoldItalic.ttf" id="14_u4lcu"]
 [ext_resource type="Texture2D" uid="uid://cet1fwjse4qe2" path="res://Assets/2D/Fotos/foto_1.png" id="14_x3p7f"]
+[ext_resource type="Texture2D" uid="uid://dboabuc2yjekt" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_7.png" id="15_4kp5w"]
 [ext_resource type="Texture2D" uid="uid://ywqvh5jjk05l" path="res://Assets/2D/Fotos/foto_2.png" id="15_fpcuf"]
 [ext_resource type="Texture2D" uid="uid://4hy4dmkdlvjj" path="res://Assets/2D/iconos/play.svg" id="15_u4lcu"]
+[ext_resource type="Texture2D" uid="uid://tn4uwb3i6c17" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_8.png" id="16_is61v"]
 [ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="16_l3xo7"]
 [ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="17_iyhcw"]
+[ext_resource type="Texture2D" uid="uid://c722wkk8insnj" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_9.png" id="17_l6pel"]
+[ext_resource type="Texture2D" uid="uid://mnsaaejcf5lw" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_10.png" id="18_0n3mf"]
+[ext_resource type="Texture2D" uid="uid://qg2c4hphe5ge" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_11.png" id="19_1b3yt"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_138bc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xld26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t22m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xld26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_csoex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kr1xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8s8yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4kp5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_is61v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_l6pel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0n3mf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1b3yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
 
@@ -1074,7 +1126,7 @@ cache/0/1/0/glyphs/66/size = Vector2(3, 3)
 cache/0/1/0/glyphs/66/uv_rect = Rect2(6, 1, 3, 3)
 cache/0/1/0/glyphs/66/texture_idx = 0
 
-[sub_resource type="Image" id="Image_2ka66"]
+[sub_resource type="Image" id="Image_a7opl"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///2D///8A////AP///wD///8A////AP///wD///8A////AP///2D///9g////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///wD///8A////AP///2D///+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////YP///7////+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///9g////v////7////+/////YP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////9g////YP///7////+/////v////2D///8A////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////+/////YP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////9g////AP///wD///8A////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///2D///9g////AP///wD///8A////AP///wD///8A////AP///wD///9g////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
 "format": "RGBA8",
@@ -1084,7 +1136,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_v0672"]
-image = SubResource("Image_2ka66")
+image = SubResource("Image_a7opl")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ehil"]
 content_margin_left = 4.0
@@ -1170,7 +1222,7 @@ metadata/_edit_vertical_guides_ = [754.0, 1158.0, 870.0, 901.0, 1011.0, 1040.0]
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1044, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1044, -2.16237)
 
 [node name="DetectObjectRaycast" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148726, -0.152356)
@@ -1190,6 +1242,14 @@ script = ExtResource("3_hqtel")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 current = true
+
+[node name="CreditsAnimation" type="AnimatedSprite3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.11204)
+visible = false
+sprite_frames = SubResource("SpriteFrames_138bc")
+frame_progress = 0.215981
+
+[node name="Timer" type="Timer" parent="Camera3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
@@ -1273,6 +1333,8 @@ grow_horizontal = 0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("8_eot0c")
 
+[node name="Timer" type="Timer" parent="UI/MenuGameOver"]
+
 [node name="MenuAhorcado" type="Control" parent="UI" node_paths=PackedStringArray("game_over_audio")]
 visible = false
 layout_mode = 1
@@ -1302,6 +1364,7 @@ grow_vertical = 2
 theme_override_constants/separation = 80
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+visible = false
 layout_mode = 2
 use_top_left = true
 

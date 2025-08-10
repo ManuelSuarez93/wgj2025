@@ -4,6 +4,7 @@ extends Control
 @export_category("Audio")
 @export var audioCorrect : AudioStream
 @export var audioIncorrect : AudioStream
+@export var ahorcadoImages : Array[Control]
 
 var letters : Array[HangmanLetter]
 
@@ -22,6 +23,10 @@ func onLetterSubmitted(letter: HangmanLetter):
 	audioPlayer.stop()
 	if(letter.isCorrectLetter()):
 		audioPlayer.stream = audioCorrect
+		for image in ahorcadoImages:
+			if !image.visible:
+				image.visible = true
+				break
 	else:
 		audioPlayer.stream = audioIncorrect
 	audioPlayer.play() 
