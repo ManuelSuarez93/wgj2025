@@ -16,7 +16,6 @@ var numbers : String
 signal onCallCorrect(enable : bool)
 signal onCallWrong()
 
-
 func _ready():
 	timerSoundPlayer.timeout.connect(callSoundPlayer.stop)
 	for button in self.get_children():

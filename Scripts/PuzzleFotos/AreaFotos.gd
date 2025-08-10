@@ -1,7 +1,8 @@
 extends PuzzleArea
 
-@export var timerEndPuzzle : Timer
-
 func _ready():
-	
 	checkForPuzzles()
+	
+func checkForFinishPuzzles():
+	if(finishedPuzzles.size() == puzzles.size()):
+		GameManager.player.UI.MenuImages.PlayAnimation(func(): super.finishPuzzle()) 

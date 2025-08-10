@@ -247,6 +247,20 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart"]
 shape = SubResource("BoxShape3D_2d7ec")
 
+[node name="PicturePart5" type="Area3D" parent="PuzzleArea2Fotos" node_paths=PackedStringArray("image") groups=["Picture"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06392, -0.803603, -1.81741)
+collision_layer = 2
+script = ExtResource("16_i5mvb")
+image = NodePath("CSGBox3D")
+pickupAudio = ExtResource("18_bynss")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PuzzleArea2Fotos/PicturePart5"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart5"]
+shape = SubResource("BoxShape3D_2d7ec")
+
 [node name="PicturePart2" type="Area3D" parent="PuzzleArea2Fotos" node_paths=PackedStringArray("image") groups=["Picture"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07955, -0.803603, -1.81741)
 collision_layer = 2

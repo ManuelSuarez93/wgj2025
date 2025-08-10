@@ -14,18 +14,8 @@ var tween : Tween
 	
 func showPhoto(number : int, show : bool):
 	Fotos[number].visible = show
-	checkAllPhotosCollected()
-
-func checkAllPhotosCollected():
-	var fotosVisibles = 0
-	for foto in Fotos:
-		if foto.visible == true:
-			fotosVisibles += 1
 	
-	if(fotosVisibles == Fotos.size()):
-		PlayAnimation()
-
-func PlayAnimation():
+func PlayAnimation(callback : Callable):
 	tween = create_tween()
 	for i in range(Fotos.size()):
 		var foto = Fotos[i]
@@ -33,6 +23,11 @@ func PlayAnimation():
 		tween.tween_property(foto, "position", final.position, TweenDuration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
 	tween.tween_interval(CloseMenuWait)
-	tween.tween_callback(func() : GameManager.player.UI.MenuImages.visible = false)
+	tween.tween_callback(func() : 
+		print("LA PUTA MADRE QUE LOS PARIO")
+		GameManager.player.UI.MenuImages.visible = false
+		callback.call()
+		)
+	
 	tween.play()
 	
