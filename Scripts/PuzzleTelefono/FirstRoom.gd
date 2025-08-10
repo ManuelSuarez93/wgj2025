@@ -18,12 +18,12 @@ class_name Cinematics
 func _ready(): 
 	GameManager.player.UI.MenuTelefono.onCallCorrect.connect(onPuzzleFinished)
 	timerLuzComienzo.timeout.connect(onTimerLightFinished)
+	playDialogue(dialogo1)
 	
 func onTimerLightFinished():
 	luzComienzo.visible = true
 	audioLuzPlayer.stream = audioLuz
 	audioLuzPlayer.play()
-	playDialogue(dialogo1)
 	GameManager.player.levelStarted = true
 	GameManager.player.enableMovement = true
 	GameManager.player.UI.BlackoutImage.visible = false
