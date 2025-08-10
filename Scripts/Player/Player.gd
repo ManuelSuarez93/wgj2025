@@ -13,6 +13,8 @@ var detectedObject : Triggerable
 var enableMovement : bool
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+signal interacted
+
 func _ready():
 	enableMovement = true
 	raycast.detectedObject.connect(UI.onDetectedObject)
@@ -23,6 +25,7 @@ func _ready():
 func _input(event):
 	cameraRotation(event)
 	if event.is_action_pressed("interact") && detectedObject != null:
+		interacted.emit()
 		detectedObject.doTrigger()
 
 func _physics_process(delta):

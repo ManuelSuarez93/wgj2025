@@ -1,5 +1,6 @@
 extends Control
- 
+
+@export var game_over_audio : AudioStreamPlayer
 @export_category("Audio")
 @export var audioCorrect : AudioStream
 @export var audioIncorrect : AudioStream
@@ -9,6 +10,7 @@ var letters : Array[HangmanLetter]
 signal solutionFound
  
 func _ready() -> void:
+	
 	for letter in get_tree().get_nodes_in_group("HangmanLetter"):
 		if letter is HangmanLetter:
 			letters.append(letter)
@@ -34,3 +36,6 @@ func checkAllCorrectLetters():
 	
 	if(correctLetters == letters.size()):
 		GameManager.player.UI.SetMenuVisible(PlayerUI.Menu.GameOver, true, false)
+		game_over_audio.play()
+		get_tree().paused = true
+		

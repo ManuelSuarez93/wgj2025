@@ -4,6 +4,8 @@ class_name PlayerUI
 
 enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 
+@export var player : Player
+
 @export var ManoAbierta : Control
 @export var ManoCerrada : Control 
 @export var MenuHangman : Control
@@ -12,14 +14,27 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var MenuImages : MenuPicture
 @export var MenuGameOver : Control
 
+@export var play_button : TextureButton
+
+@export var quit_button : TextureButton
+
 @onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages, MenuGameOver]
 
 var collider : Triggerable 
 var isOnMenu : bool
 var currentMenu : Menu
 
+var is_interacting : bool = false
+
 func _ready():
 	isOnMenu = false
+	player.interacted.connect(interact)
+	
+	quit_button.pressed.connect(func(): get_tree().quit())
+	play_button.pressed.connect(func():
+		isOnMenu = false
+		SetMenuVisible(Menu.None, false, true) 
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED))
 	# Capturar y ocultar el mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -38,12 +53,16 @@ func captureMouse(event):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func interact(): 
+	is_interacting = true
 	ManoCerrada.visible = true
 	ManoAbierta.visible = false
+	await get_tree().create_timer(0.3).timeout
+	is_interacting = false
 
 func onDetectedObject(collider):  
-	ManoCerrada.visible = false
-	ManoAbierta.visible = true
+	if is_interacting == false:
+		ManoCerrada.visible = false
+		ManoAbierta.visible = true
 
 func onNonDetectingObject(): 
 	ManoCerrada.visible = false
@@ -55,7 +74,6 @@ func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 	isOnMenu = isVisible
 	if isOnMenu:
 		currentMenu = menuToOpen
-		
 	match menuToOpen:
 		Menu.Phone:
 			MenuTelefono.visible = isVisible

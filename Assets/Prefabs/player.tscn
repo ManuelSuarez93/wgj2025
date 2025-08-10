@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ddgp1kqvms6fp"]
+[gd_scene load_steps=38 format=4 uid="uid://ddgp1kqvms6fp"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
@@ -9,15 +9,25 @@
 [ext_resource type="Script" uid="uid://cve1j5827av64" path="res://Scripts/PuzzleAhorcado/hangmanLetter.gd" id="5_m0ojv"]
 [ext_resource type="AudioStream" uid="uid://xq1r7mf0kgh1" path="res://Assets/Sounds/foleys/ahorcado/correcto.wav" id="6_7xaxw"]
 [ext_resource type="Texture2D" uid="uid://dl84e22yyy4ru" path="res://Assets/2D/mouse cerrado.png" id="6_hmsos"]
+[ext_resource type="FontFile" uid="uid://dlqh6olm6lao3" path="res://Assets/Font/BarlowCondensed-Light.ttf" id="7_fpcuf"]
 [ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/MenuPhone.gd" id="7_j73l1"]
 [ext_resource type="AudioStream" uid="uid://bhmg2px0263td" path="res://Assets/Sounds/foleys/ahorcado/incorrecto.wav" id="7_v0672"]
 [ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="8_8nnst"]
+[ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="8_eot0c"]
 [ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Scripts/PuzzleFotos/MenuPicture.gd" id="11_2ehil"]
-[ext_resource type="Texture2D" uid="uid://dwp10jgc1hfv7" path="res://Assets/2D/Calendario.png" id="11_v0672"]
+[ext_resource type="Texture2D" uid="uid://bmgy07dw3egtj" path="res://Assets/2D/telefono.svg" id="13_iyhcw"]
+[ext_resource type="FontFile" uid="uid://q6k5or4uycpv" path="res://Assets/Font/BarlowCondensed-BoldItalic.ttf" id="14_u4lcu"]
+[ext_resource type="Texture2D" uid="uid://cet1fwjse4qe2" path="res://Assets/2D/Fotos/foto_1.png" id="14_x3p7f"]
+[ext_resource type="Texture2D" uid="uid://ywqvh5jjk05l" path="res://Assets/2D/Fotos/foto_2.png" id="15_fpcuf"]
+[ext_resource type="Texture2D" uid="uid://4hy4dmkdlvjj" path="res://Assets/2D/iconos/play.svg" id="15_u4lcu"]
+[ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="16_l3xo7"]
+[ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="17_iyhcw"]
+[ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8nnst"]
+font = ExtResource("7_fpcuf")
 font_size = 128
 
 [sub_resource type="Image" id="Image_m0ojv"]
@@ -1063,7 +1073,7 @@ cache/0/1/0/glyphs/66/size = Vector2(3, 3)
 cache/0/1/0/glyphs/66/uv_rect = Rect2(6, 1, 3, 3)
 cache/0/1/0/glyphs/66/texture_idx = 0
 
-[sub_resource type="Image" id="Image_2ehil"]
+[sub_resource type="Image" id="Image_hmsos"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///2D///8A////AP///wD///8A////AP///wD///8A////AP///2D///9g////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///wD///8A////AP///2D///+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////YP///7////+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///9g////v////7////+/////YP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////9g////YP///7////+/////v////2D///8A////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////+/////YP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////9g////AP///wD///8A////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///2D///9g////AP///wD///8A////AP///wD///8A////AP///wD///9g////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
 "format": "RGBA8",
@@ -1073,7 +1083,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_v0672"]
-image = SubResource("Image_2ehil")
+image = SubResource("Image_hmsos")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ehil"]
 content_margin_left = 4.0
@@ -1153,6 +1163,8 @@ camera = NodePath("Camera3D")
 raycast = NodePath("Camera3D/DetectObjectRaycast")
 UI = NodePath("UI")
 AudioPlayer = NodePath("AudioStreamPlayer3D")
+metadata/_edit_horizontal_guides_ = [518.0, 562.0, 708.0, 662.0, 797.0, 417.0]
+metadata/_edit_vertical_guides_ = [754.0, 1158.0, 870.0, 901.0, 1011.0, 1040.0]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
@@ -1182,19 +1194,22 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
 shape = SubResource("CapsuleShape3D_d4maf")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("player", "ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver", "play_button", "quit_button")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1916.0
 offset_bottom = 1071.0
 script = ExtResource("2_onrkg")
+player = NodePath("..")
 ManoAbierta = NodePath("ManoAbierta")
 ManoCerrada = NodePath("ManoCerrada")
 MenuHangman = NodePath("MenuAhorcado")
 MenuTelefono = NodePath("MenuPhone")
 MenuPause = NodePath("MenuPause")
-MenuImages = NodePath("MenuPause/MenuPicture")
+MenuImages = NodePath("MenuPicture")
 MenuGameOver = NodePath("MenuGameOver")
+play_button = NodePath("MenuPause/Play")
+quit_button = NodePath("MenuGameOver/TextureButton")
 
 [node name="ManoAbierta" type="TextureRect" parent="UI"]
 visible = false
@@ -1218,11 +1233,15 @@ texture = ExtResource("6_hmsos")
 
 [node name="MenuGameOver" type="Control" parent="UI"]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI/MenuGameOver"]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
@@ -1231,37 +1250,64 @@ color = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 730.0
-offset_top = 321.0
-offset_right = 1090.0
-offset_bottom = 674.0
+offset_left = 719.0
+offset_top = 471.0
+offset_right = 1173.0
+offset_bottom = 625.0
 grow_horizontal = 2
-text = "GAME
-OVER"
+text = "GAME OVER"
 label_settings = SubResource("LabelSettings_8nnst")
 
-[node name="MenuAhorcado" type="Control" parent="UI"]
+[node name="TextureButton" type="TextureButton" parent="UI/MenuGameOver"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 62.0
+offset_right = -16.0
+offset_bottom = 302.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("8_eot0c")
+
+[node name="MenuAhorcado" type="Control" parent="UI" node_paths=PackedStringArray("game_over_audio")]
 visible = false
-anchors_preset = 0
-offset_left = 722.0
-offset_top = 505.0
-offset_right = 762.0
-offset_bottom = 545.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_1kvxw")
+game_over_audio = NodePath("../../GameOverStream")
 audioCorrect = ExtResource("6_7xaxw")
 audioIncorrect = ExtResource("7_v0672")
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/MenuAhorcado"]
-layout_mode = 0
-offset_right = 252.0
-offset_bottom = 96.0
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MenuAhorcado"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+layout_mode = 2
 use_top_left = true
 
-[node name="Letter1" type="LineEdit" parent="UI/MenuAhorcado/CenterContainer" groups=["HangmanLetter"]]
+[node name="Letter1" type="LineEdit" parent="UI/MenuAhorcado/HBoxContainer/CenterContainer" groups=["HangmanLetter"]]
 layout_mode = 2
 theme = SubResource("Theme_imxiu")
 theme_override_font_sizes/font_size = 64
-text = "L"
 placeholder_text = "_"
 alignment = 1
 max_length = 1
@@ -1269,14 +1315,11 @@ expand_to_text_length = true
 script = ExtResource("5_m0ojv")
 correctLetter = "P"
 
-[node name="CenterContainer2" type="CenterContainer" parent="UI/MenuAhorcado"]
-layout_mode = 0
-offset_left = 84.0
-offset_right = 336.0
-offset_bottom = 96.0
+[node name="CenterContainer2" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+layout_mode = 2
 use_top_left = true
 
-[node name="Letter2" type="LineEdit" parent="UI/MenuAhorcado/CenterContainer2" groups=["HangmanLetter"]]
+[node name="Letter2" type="LineEdit" parent="UI/MenuAhorcado/HBoxContainer/CenterContainer2" groups=["HangmanLetter"]]
 layout_mode = 2
 theme = SubResource("Theme_imxiu")
 theme_override_font_sizes/font_size = 64
@@ -1288,14 +1331,11 @@ script = ExtResource("5_m0ojv")
 index = 1
 correctLetter = "O"
 
-[node name="CenterContainer3" type="CenterContainer" parent="UI/MenuAhorcado"]
-layout_mode = 0
-offset_left = 177.0
-offset_right = 429.0
-offset_bottom = 96.0
+[node name="CenterContainer3" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+layout_mode = 2
 use_top_left = true
 
-[node name="Letter3" type="LineEdit" parent="UI/MenuAhorcado/CenterContainer3" groups=["HangmanLetter"]]
+[node name="Letter3" type="LineEdit" parent="UI/MenuAhorcado/HBoxContainer/CenterContainer3" groups=["HangmanLetter"]]
 layout_mode = 2
 theme = SubResource("Theme_imxiu")
 theme_override_font_sizes/font_size = 64
@@ -1307,14 +1347,11 @@ script = ExtResource("5_m0ojv")
 index = 2
 correctLetter = "I"
 
-[node name="CenterContainer4" type="CenterContainer" parent="UI/MenuAhorcado"]
-layout_mode = 0
-offset_left = 263.0
-offset_right = 515.0
-offset_bottom = 96.0
+[node name="CenterContainer4" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+layout_mode = 2
 use_top_left = true
 
-[node name="Letter4" type="LineEdit" parent="UI/MenuAhorcado/CenterContainer4" groups=["HangmanLetter"]]
+[node name="Letter4" type="LineEdit" parent="UI/MenuAhorcado/HBoxContainer/CenterContainer4" groups=["HangmanLetter"]]
 layout_mode = 2
 theme = SubResource("Theme_imxiu")
 theme_override_font_sizes/font_size = 64
@@ -1326,14 +1363,11 @@ script = ExtResource("5_m0ojv")
 index = 3
 correctLetter = "S"
 
-[node name="CenterContainer5" type="CenterContainer" parent="UI/MenuAhorcado"]
-layout_mode = 0
-offset_left = 371.0
-offset_right = 623.0
-offset_bottom = 96.0
+[node name="CenterContainer5" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+layout_mode = 2
 use_top_left = true
 
-[node name="Letter5" type="LineEdit" parent="UI/MenuAhorcado/CenterContainer5" groups=["HangmanLetter"]]
+[node name="Letter5" type="LineEdit" parent="UI/MenuAhorcado/HBoxContainer/CenterContainer5" groups=["HangmanLetter"]]
 layout_mode = 2
 theme = SubResource("Theme_imxiu")
 theme_override_font_sizes/font_size = 64
@@ -1345,14 +1379,11 @@ script = ExtResource("5_m0ojv")
 index = 4
 correctLetter = "O"
 
-[node name="CenterContainer6" type="CenterContainer" parent="UI/MenuAhorcado"]
-layout_mode = 0
-offset_left = 469.0
-offset_right = 721.0
-offset_bottom = 96.0
+[node name="CenterContainer6" type="CenterContainer" parent="UI/MenuAhorcado/HBoxContainer"]
+layout_mode = 2
 use_top_left = true
 
-[node name="Letter6" type="LineEdit" parent="UI/MenuAhorcado/CenterContainer6" groups=["HangmanLetter"]]
+[node name="Letter6" type="LineEdit" parent="UI/MenuAhorcado/HBoxContainer/CenterContainer6" groups=["HangmanLetter"]]
 layout_mode = 2
 theme = SubResource("Theme_imxiu")
 theme_override_font_sizes/font_size = 64
@@ -1374,93 +1405,130 @@ Solution = "1212"
 NumberText = NodePath("Numbers")
 NumberLimit = 4
 
+[node name="Telefono" type="TextureRect" parent="UI/MenuPhone"]
+layout_mode = 0
+offset_left = 725.0
+offset_top = -130.0
+offset_right = 1181.0
+offset_bottom = 1230.0
+texture = ExtResource("13_iyhcw")
+
 [node name="Button1" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 829.0
-offset_top = 325.0
-offset_right = 893.0
-offset_bottom = 389.0
+offset_left = 756.0
+offset_top = 417.0
+offset_right = 820.0
+offset_bottom = 481.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "1"
 script = ExtResource("8_8nnst")
 
 [node name="Button2" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 929.0
-offset_top = 325.0
-offset_right = 993.0
-offset_bottom = 389.0
+offset_left = 900.0
+offset_top = 419.0
+offset_right = 964.0
+offset_bottom = 483.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "2"
 script = ExtResource("8_8nnst")
 
 [node name="Button3" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 1029.0
-offset_top = 325.0
-offset_right = 1093.0
-offset_bottom = 389.0
+offset_left = 1038.0
+offset_top = 420.0
+offset_right = 1102.0
+offset_bottom = 484.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "3"
 script = ExtResource("8_8nnst")
 
 [node name="Button4" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 829.0
-offset_top = 425.0
-offset_right = 893.0
-offset_bottom = 489.0
+offset_left = 754.0
+offset_top = 561.0
+offset_right = 818.0
+offset_bottom = 625.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "4"
 script = ExtResource("8_8nnst")
 
 [node name="Button5" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 929.0
-offset_top = 425.0
-offset_right = 993.0
-offset_bottom = 489.0
+offset_left = 897.0
+offset_top = 562.0
+offset_right = 961.0
+offset_bottom = 626.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "5"
 script = ExtResource("8_8nnst")
 
 [node name="Button6" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 1029.0
-offset_top = 425.0
-offset_right = 1093.0
-offset_bottom = 489.0
+offset_left = 1041.0
+offset_top = 560.0
+offset_right = 1105.0
+offset_bottom = 624.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "6"
 script = ExtResource("8_8nnst")
 
 [node name="Button7" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 829.0
-offset_top = 525.0
-offset_right = 893.0
-offset_bottom = 589.0
+offset_left = 754.0
+offset_top = 706.0
+offset_right = 818.0
+offset_bottom = 770.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "7"
 script = ExtResource("8_8nnst")
 
 [node name="Button8" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 929.0
-offset_top = 525.0
-offset_right = 993.0
-offset_bottom = 589.0
+offset_left = 897.0
+offset_top = 705.0
+offset_right = 961.0
+offset_bottom = 769.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "8"
 script = ExtResource("8_8nnst")
 
 [node name="Button9" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 1029.0
-offset_top = 525.0
-offset_right = 1093.0
-offset_bottom = 589.0
+offset_left = 1041.0
+offset_top = 706.0
+offset_right = 1105.0
+offset_bottom = 770.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 40
 text = "9"
 script = ExtResource("8_8nnst")
 
 [node name="Numbers" type="Label" parent="UI/MenuPhone"]
+visible = false
 layout_mode = 0
-offset_left = 811.0
-offset_top = 609.0
-offset_right = 1111.0
-offset_bottom = 697.0
+offset_left = 874.0
+offset_top = 679.0
+offset_right = 1174.0
+offset_bottom = 767.0
+scale = Vector2(0.659763, 0.580821)
 label_settings = SubResource("LabelSettings_j73l1")
 
 [node name="MenuPause" type="Control" parent="UI"]
@@ -1469,66 +1537,86 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="UI/MenuPause"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 730.0
-offset_right = 1090.0
-offset_bottom = 175.0
-grow_horizontal = 2
-text = "PAUSE"
-label_settings = SubResource("LabelSettings_8nnst")
-
 [node name="ColorRect" type="ColorRect" parent="UI/MenuPause"]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.282353)
 
-[node name="MenuPicture" type="Control" parent="UI/MenuPause" node_paths=PackedStringArray("Fotos")]
+[node name="Label" type="Label" parent="UI/MenuPause"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 724.0
+offset_top = 421.0
+offset_right = 966.0
+offset_bottom = 596.0
+grow_horizontal = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_8nnst")
+
+[node name="Play" type="TextureButton" parent="UI/MenuPause"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1024.0
+offset_top = 349.0
+offset_right = 1264.0
+offset_bottom = 589.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("15_u4lcu")
+
+[node name="MenuPicture" type="Control" parent="UI" node_paths=PackedStringArray("Fotos")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("11_2ehil")
-Fotos = [NodePath("TextureRect"), NodePath("TextureRect2"), NodePath("TextureRect3"), NodePath("TextureRect4")]
+Fotos = [NodePath("foto 1"), NodePath("foto 2"), NodePath("foto 3"), NodePath("foto 4")]
 
-[node name="TextureRect" type="TextureRect" parent="UI/MenuPause/MenuPicture"]
+[node name="foto 1" type="TextureRect" parent="UI/MenuPicture"]
 visible = false
 layout_mode = 0
 offset_left = 492.0
 offset_top = 218.0
 offset_right = 778.0
 offset_bottom = 490.0
-texture = ExtResource("11_v0672")
+texture = ExtResource("14_x3p7f")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="UI/MenuPause/MenuPicture"]
+[node name="foto 2" type="TextureRect" parent="UI/MenuPicture"]
 visible = false
 layout_mode = 0
 offset_left = 794.0
 offset_top = 217.0
 offset_right = 1080.0
 offset_bottom = 489.0
-texture = ExtResource("11_v0672")
+texture = ExtResource("15_fpcuf")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="UI/MenuPause/MenuPicture"]
+[node name="foto 3" type="TextureRect" parent="UI/MenuPicture"]
 visible = false
 layout_mode = 0
 offset_left = 503.0
 offset_top = 551.0
 offset_right = 789.0
 offset_bottom = 823.0
-texture = ExtResource("11_v0672")
+texture = ExtResource("16_l3xo7")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="UI/MenuPause/MenuPicture"]
+[node name="foto 4" type="TextureRect" parent="UI/MenuPicture"]
 visible = false
 layout_mode = 0
 offset_left = 846.0
 offset_top = 549.0
 offset_right = 1132.0
 offset_bottom = 821.0
-texture = ExtResource("11_v0672")
+texture = ExtResource("17_iyhcw")
 expand_mode = 1
+
+[node name="GameOverStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_sfrhn")
