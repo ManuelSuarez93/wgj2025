@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://d0iv2m6r5rws6"]
+[gd_scene load_steps=47 format=4 uid="uid://d0iv2m6r5rws6"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://4hy4dmkdlvjj" path="res://Assets/2D/iconos/play.svg" id="15_u4lcu"]
 [ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="16_l3xo7"]
 [ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="17_iyhcw"]
+[ext_resource type="StyleBox" uid="uid://c1i4mf3pw52uu" path="res://grabber.tres" id="19_gnwoc"]
+[ext_resource type="StyleBox" uid="uid://cxk141rvnx008" path="res://grabber highlight.tres" id="20_fqql5"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
@@ -1074,7 +1076,7 @@ cache/0/1/0/glyphs/66/size = Vector2(3, 3)
 cache/0/1/0/glyphs/66/uv_rect = Rect2(6, 1, 3, 3)
 cache/0/1/0/glyphs/66/texture_idx = 0
 
-[sub_resource type="Image" id="Image_2ka66"]
+[sub_resource type="Image" id="Image_138bc"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///2D///8A////AP///wD///8A////AP///wD///8A////AP///2D///9g////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///wD///8A////AP///2D///+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////YP///7////+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///9g////v////7////+/////YP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////9g////YP///7////+/////v////2D///8A////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////+/////YP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////9g////AP///wD///8A////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///2D///9g////AP///wD///8A////AP///wD///8A////AP///wD///9g////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
 "format": "RGBA8",
@@ -1084,7 +1086,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_v0672"]
-image = SubResource("Image_2ka66")
+image = SubResource("Image_138bc")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ehil"]
 content_margin_left = 4.0
@@ -1158,6 +1160,26 @@ LineEdit/styles/read_only = SubResource("StyleBoxFlat_hmsos")
 [sub_resource type="LabelSettings" id="LabelSettings_j73l1"]
 font_size = 64
 
+[sub_resource type="LabelSettings" id="LabelSettings_i2cda"]
+font = ExtResource("7_fpcuf")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5tkd"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onktn"]
+bg_color = Color(0.564706, 0.580392, 0.592157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcoha"]
+bg_color = Color(0.776471, 0.760784, 0.00392157, 1)
+
+[sub_resource type="Theme" id="Theme_odmgv"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_onktn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_mcoha")
+HSlider/styles/slider = null
+
+[sub_resource type="Theme" id="Theme_42a2x"]
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
@@ -1209,7 +1231,7 @@ MenuTelefono = NodePath("MenuPhone")
 MenuPause = NodePath("MenuPause")
 MenuImages = NodePath("MenuPicture")
 MenuGameOver = NodePath("MenuGameOver")
-play_button = NodePath("MenuPause/Play")
+play_button = NodePath("")
 quit_button = NodePath("MenuGameOver/TextureButton")
 
 [node name="ManoAbierta" type="TextureRect" parent="UI"]
@@ -1233,6 +1255,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_hmsos")
 
 [node name="MenuGameOver" type="Control" parent="UI"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1539,8 +1562,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="UI/MenuPause"]
-visible = false
-layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.282353)
@@ -1549,13 +1570,51 @@ color = Color(0, 0, 0, 0.282353)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 724.0
-offset_top = 421.0
-offset_right = 966.0
-offset_bottom = 596.0
+offset_left = 745.0
+offset_top = 430.0
+offset_right = 987.0
+offset_bottom = 605.0
 grow_horizontal = 2
 text = "PAUSE"
-label_settings = SubResource("LabelSettings_8nnst")
+label_settings = SubResource("LabelSettings_i2cda")
+
+[node name="MusicText" type="Label" parent="UI/MenuPause"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 752.0
+offset_top = 771.0
+offset_right = 994.0
+offset_bottom = 864.0
+grow_horizontal = 2
+text = "Music
+"
+label_settings = SubResource("LabelSettings_j5tkd")
+
+[node name="Dialgoue" type="Label" parent="UI/MenuPause"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 753.0
+offset_top = 706.0
+offset_right = 995.0
+offset_bottom = 799.0
+grow_horizontal = 2
+text = "Dialogue
+"
+label_settings = SubResource("LabelSettings_j5tkd")
+
+[node name="Effect" type="Label" parent="UI/MenuPause"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 752.0
+offset_top = 654.0
+offset_right = 860.0
+offset_bottom = 725.0
+grow_horizontal = 2
+text = "Effect"
+label_settings = SubResource("LabelSettings_j5tkd")
 
 [node name="Play" type="TextureButton" parent="UI/MenuPause"]
 layout_mode = 1
@@ -1564,13 +1623,66 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 1024.0
-offset_top = 349.0
-offset_right = 1264.0
-offset_bottom = 589.0
+offset_left = 975.0
+offset_top = 370.0
+offset_right = 1215.0
+offset_bottom = 610.0
 grow_horizontal = 0
 grow_vertical = 2
 texture_normal = ExtResource("15_u4lcu")
+
+[node name="QuitButton" type="TextureButton" parent="UI/MenuPause"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 62.0
+offset_right = -16.0
+offset_bottom = 302.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("8_eot0c")
+
+[node name="VoulmeEffectSlider" type="HSlider" parent="UI/MenuPause"]
+offset_left = 1014.0
+offset_top = 663.0
+offset_right = 1255.0
+offset_bottom = 679.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_odmgv")
+theme_override_styles/grabber_area = ExtResource("19_gnwoc")
+theme_override_styles/grabber_area_highlight = ExtResource("20_fqql5")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="DialogueSlider" type="HSlider" parent="UI/MenuPause"]
+offset_left = 1013.0
+offset_top = 715.0
+offset_right = 1254.0
+offset_bottom = 731.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_42a2x")
+theme_override_styles/grabber_area = ExtResource("19_gnwoc")
+theme_override_styles/grabber_area_highlight = ExtResource("20_fqql5")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="MusicSlider" type="HSlider" parent="UI/MenuPause"]
+offset_left = 1012.0
+offset_top = 768.0
+offset_right = 1253.0
+offset_bottom = 784.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_42a2x")
+theme_override_styles/grabber_area = ExtResource("19_gnwoc")
+theme_override_styles/grabber_area_highlight = ExtResource("20_fqql5")
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="MenuPicture" type="Control" parent="UI" node_paths=PackedStringArray("Fotos")]
 anchors_preset = 0
