@@ -7,7 +7,6 @@ extends PuzzleArea
 @export var InterruptorPrendido : Node3D
 @export var Interruptor : Triggerable
 
-
 func _ready():
 	Interruptor.onTrigger.connect(onLightTurnedOn)
 	GameManager.player.UI.MenuTelefono.onCallCorrect.connect(onCallCorrect)

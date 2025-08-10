@@ -13,15 +13,16 @@ class_name Player
 @export var AudioPlayer : AudioStreamPlayer3D
 @export var AudioTimer : Timer
 
-
 var detectedObject : Triggerable
 var enableMovement : bool
+var levelStarted : bool
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 signal interacted
 
 func _ready():
-	enableMovement = true
+	levelStarted = false
+	enableMovement = false
 	raycast.detectedObject.connect(UI.onDetectedObject)
 	raycast.notDetecting.connect(UI.onNonDetectingObject)
 	raycast.detectedObject.connect(saveDetectedObject)
@@ -48,7 +49,7 @@ func interact():
 	detectedObject.doTrigger()
 
 func cameraRotation(event):
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if levelStarted and event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)

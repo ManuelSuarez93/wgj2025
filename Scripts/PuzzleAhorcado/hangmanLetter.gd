@@ -14,7 +14,8 @@ func onTextChanged(newText : String):
 	if(text == ""):
 		text = "_"
 	else:
+		text = text.to_upper()
 		onLetterPressed.emit(self)
 		
 func isCorrectLetter() -> bool:
-	return text == correctLetter
+	return text.to_upper() == correctLetter

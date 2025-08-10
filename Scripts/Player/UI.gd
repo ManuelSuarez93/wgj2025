@@ -19,6 +19,8 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var quit_button : TextureButton
 @export var quitButtonPause : TextureButton
 
+@export var BlackoutImage : ColorRect
+
 @onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages, MenuGameOver]
 
 var collider : Triggerable 
@@ -44,7 +46,7 @@ func _input(event):
 	captureMouse(event)
 
 func captureMouse(event):
-	if event.is_action_pressed("ui_cancel"):
+	if GameManager.player.levelStarted and event.is_action_pressed("ui_cancel") and GameManager.player.levelStarted:
 		if !isOnMenu:
 			isOnMenu = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -103,4 +105,4 @@ func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 			MenuTelefono.visible = isVisible
 			MenuPause.visible = isVisible
 			MenuGameOver.visible = isVisible
-			currentMenu = Menu.None
+			currentMenu = Menu.None 
