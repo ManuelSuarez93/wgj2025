@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ddgp1kqvms6fp"]
+[gd_scene load_steps=42 format=4 uid="uid://ddgp1kqvms6fp"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
@@ -16,12 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="8_eot0c"]
 [ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Scripts/PuzzleFotos/MenuPicture.gd" id="11_2ehil"]
 [ext_resource type="Texture2D" uid="uid://bmgy07dw3egtj" path="res://Assets/2D/telefono.svg" id="13_iyhcw"]
+[ext_resource type="AudioStream" uid="uid://didwjl2ivpw4f" path="res://Assets/Sounds/foleys/telefono/ring llamada.wav" id="14_tdns3"]
 [ext_resource type="FontFile" uid="uid://q6k5or4uycpv" path="res://Assets/Font/BarlowCondensed-BoldItalic.ttf" id="14_u4lcu"]
 [ext_resource type="Texture2D" uid="uid://cet1fwjse4qe2" path="res://Assets/2D/Fotos/foto_1.png" id="14_x3p7f"]
 [ext_resource type="Texture2D" uid="uid://ywqvh5jjk05l" path="res://Assets/2D/Fotos/foto_2.png" id="15_fpcuf"]
 [ext_resource type="Texture2D" uid="uid://4hy4dmkdlvjj" path="res://Assets/2D/iconos/play.svg" id="15_u4lcu"]
+[ext_resource type="AudioStream" uid="uid://bwq5mhv11i7sn" path="res://Assets/Sounds/foleys/telefono/fin de la llamada.wav" id="15_xm8wl"]
 [ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="16_l3xo7"]
 [ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="17_iyhcw"]
+[ext_resource type="AudioStream" uid="uid://daemfa1yjvofp" path="res://Assets/Sounds/foleys/telefono/beep 1.wav" id="19_pblxa"]
+[ext_resource type="AudioStream" uid="uid://bx7od3fyu5w36" path="res://Assets/Sounds/foleys/telefono/beep 2.wav" id="20_7erfr"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
@@ -1157,16 +1161,19 @@ LineEdit/styles/read_only = SubResource("StyleBoxFlat_hmsos")
 [sub_resource type="LabelSettings" id="LabelSettings_j73l1"]
 font_size = 64
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer", "AudioTimer")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
 raycast = NodePath("Camera3D/DetectObjectRaycast")
 UI = NodePath("UI")
 AudioPlayer = NodePath("AudioStreamPlayer3D")
+AudioTimer = NodePath("AudioStreamPlayer3D/Timer")
 metadata/_edit_horizontal_guides_ = [518.0, 562.0, 708.0, 662.0, 797.0, 417.0]
 metadata/_edit_vertical_guides_ = [754.0, 1158.0, 870.0, 901.0, 1011.0, 1040.0]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Timer" type="Timer" parent="AudioStreamPlayer3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1044, 0)
@@ -1194,7 +1201,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
 shape = SubResource("CapsuleShape3D_d4maf")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("player", "ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver", "play_button", "quit_button")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("player", "ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver", "play_button", "quit_button", "quitButtonPause")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1916.0
@@ -1210,6 +1217,7 @@ MenuImages = NodePath("MenuPicture")
 MenuGameOver = NodePath("MenuGameOver")
 play_button = NodePath("MenuPause/Play")
 quit_button = NodePath("MenuGameOver/TextureButton")
+quitButtonPause = NodePath("MenuPause/QuitButton")
 
 [node name="ManoAbierta" type="TextureRect" parent="UI"]
 visible = false
@@ -1252,6 +1260,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="UI/MenuGameOver/ColorRect/TextureRect"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -1404,7 +1413,7 @@ script = ExtResource("5_m0ojv")
 index = 5
 correctLetter = "N"
 
-[node name="MenuPhone" type="Control" parent="UI" node_paths=PackedStringArray("NumberText")]
+[node name="MenuPhone" type="Control" parent="UI" node_paths=PackedStringArray("NumberText", "callSoundPlayer", "timerSoundPlayer")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
@@ -1413,122 +1422,138 @@ script = ExtResource("7_j73l1")
 Solution = "1212"
 NumberText = NodePath("Numbers")
 NumberLimit = 4
+callCorrectAudio = ExtResource("14_tdns3")
+callIncorrectAudio = ExtResource("15_xm8wl")
+callSoundPlayer = NodePath("AudioStreamPlayer3D")
+timerSoundPlayer = NodePath("Timer")
 
 [node name="Telefono" type="TextureRect" parent="UI/MenuPhone"]
-layout_mode = 0
-offset_left = 725.0
-offset_top = -130.0
-offset_right = 1181.0
-offset_bottom = 1230.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.305
+anchor_bottom = 26.725
+offset_left = 780.0
+offset_top = 12.0
+offset_right = -791.2
 texture = ExtResource("13_iyhcw")
+expand_mode = 1
 
 [node name="Button1" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 756.0
+offset_left = 805.0
 offset_top = 417.0
-offset_right = 820.0
+offset_right = 837.0
 offset_bottom = 481.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "1"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Button2" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 900.0
+offset_left = 925.0
 offset_top = 419.0
-offset_right = 964.0
+offset_right = 957.0
 offset_bottom = 483.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "2"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Button3" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 1038.0
+offset_left = 1045.0
 offset_top = 420.0
-offset_right = 1102.0
+offset_right = 1077.0
 offset_bottom = 484.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "3"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Button4" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 754.0
-offset_top = 561.0
-offset_right = 818.0
-offset_bottom = 625.0
-scale = Vector2(1.784, 1.49647)
-theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
-text = "4"
-script = ExtResource("8_8nnst")
-
-[node name="Button5" type="Button" parent="UI/MenuPhone"]
-layout_mode = 0
-offset_left = 897.0
-offset_top = 562.0
-offset_right = 961.0
-offset_bottom = 626.0
-scale = Vector2(1.784, 1.49647)
-theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
-text = "5"
-script = ExtResource("8_8nnst")
-
-[node name="Button6" type="Button" parent="UI/MenuPhone"]
-layout_mode = 0
-offset_left = 1041.0
+offset_left = 805.0
 offset_top = 560.0
-offset_right = 1105.0
+offset_right = 837.0
 offset_bottom = 624.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
+text = "4"
+script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
+
+[node name="Button5" type="Button" parent="UI/MenuPhone"]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 560.0
+offset_right = 954.0
+offset_bottom = 624.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 35
+text = "5"
+script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
+
+[node name="Button6" type="Button" parent="UI/MenuPhone"]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 560.0
+offset_right = 1077.0
+offset_bottom = 624.0
+scale = Vector2(1.784, 1.49647)
+theme_override_fonts/font = ExtResource("14_u4lcu")
+theme_override_font_sizes/font_size = 35
 text = "6"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Button7" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 754.0
+offset_left = 805.0
 offset_top = 706.0
-offset_right = 818.0
+offset_right = 837.0
 offset_bottom = 770.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "7"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Button8" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 897.0
+offset_left = 922.0
 offset_top = 705.0
-offset_right = 961.0
+offset_right = 954.0
 offset_bottom = 769.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "8"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Button9" type="Button" parent="UI/MenuPhone"]
 layout_mode = 0
-offset_left = 1041.0
+offset_left = 1045.0
 offset_top = 706.0
-offset_right = 1105.0
+offset_right = 1077.0
 offset_bottom = 770.0
 scale = Vector2(1.784, 1.49647)
 theme_override_fonts/font = ExtResource("14_u4lcu")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "9"
 script = ExtResource("8_8nnst")
+telephoneSound = Array[AudioStream]([ExtResource("19_pblxa"), ExtResource("20_7erfr")])
 
 [node name="Numbers" type="Label" parent="UI/MenuPhone"]
 visible = false
@@ -1539,6 +1564,10 @@ offset_right = 1174.0
 offset_bottom = 767.0
 scale = Vector2(0.659763, 0.580821)
 label_settings = SubResource("LabelSettings_j73l1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="UI/MenuPhone"]
+
+[node name="Timer" type="Timer" parent="UI/MenuPhone"]
 
 [node name="MenuPause" type="Control" parent="UI"]
 visible = false
@@ -1580,12 +1609,27 @@ grow_horizontal = 0
 grow_vertical = 2
 texture_normal = ExtResource("15_u4lcu")
 
-[node name="MenuPicture" type="Control" parent="UI" node_paths=PackedStringArray("Fotos")]
+[node name="QuitButton" type="TextureButton" parent="UI/MenuPause"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 62.0
+offset_right = -16.0
+offset_bottom = 302.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("8_eot0c")
+
+[node name="MenuPicture" type="Control" parent="UI" node_paths=PackedStringArray("Fotos", "PosicionFinalFotos")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("11_2ehil")
 Fotos = [NodePath("foto 1"), NodePath("foto 2"), NodePath("foto 3"), NodePath("foto 4")]
+PosicionFinalFotos = [NodePath("foto 5"), NodePath("foto 6"), NodePath("foto 7"), NodePath("foto 8")]
 
 [node name="foto 1" type="TextureRect" parent="UI/MenuPicture"]
 visible = false
@@ -1624,6 +1668,46 @@ offset_left = 846.0
 offset_top = 549.0
 offset_right = 1132.0
 offset_bottom = 821.0
+texture = ExtResource("17_iyhcw")
+expand_mode = 1
+
+[node name="foto 5" type="TextureRect" parent="UI/MenuPicture"]
+visible = false
+layout_mode = 0
+offset_left = 626.0
+offset_top = 335.0
+offset_right = 912.0
+offset_bottom = 607.0
+texture = ExtResource("14_x3p7f")
+expand_mode = 1
+
+[node name="foto 6" type="TextureRect" parent="UI/MenuPicture"]
+visible = false
+layout_mode = 0
+offset_left = 755.0
+offset_top = 335.0
+offset_right = 1041.0
+offset_bottom = 607.0
+texture = ExtResource("15_fpcuf")
+expand_mode = 1
+
+[node name="foto 7" type="TextureRect" parent="UI/MenuPicture"]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 420.0
+offset_right = 926.0
+offset_bottom = 692.0
+texture = ExtResource("16_l3xo7")
+expand_mode = 1
+
+[node name="foto 8" type="TextureRect" parent="UI/MenuPicture"]
+visible = false
+layout_mode = 0
+offset_left = 792.0
+offset_top = 409.0
+offset_right = 1078.0
+offset_bottom = 681.0
 texture = ExtResource("17_iyhcw")
 expand_mode = 1
 

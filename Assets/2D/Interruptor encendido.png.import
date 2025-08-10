@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbd4uneqawxa0"
 path.s3tc="res://.godot/imported/Interruptor encendido.png-a528ccde1a507ee491f88be92a329d59.s3tc.ctex"
+path.etc2="res://.godot/imported/Interruptor encendido.png-a528ccde1a507ee491f88be92a329d59.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/2D/Interruptor encendido.png"
-dest_files=["res://.godot/imported/Interruptor encendido.png-a528ccde1a507ee491f88be92a329d59.s3tc.ctex"]
+dest_files=["res://.godot/imported/Interruptor encendido.png-a528ccde1a507ee491f88be92a329d59.s3tc.ctex", "res://.godot/imported/Interruptor encendido.png-a528ccde1a507ee491f88be92a329d59.etc2.ctex"]
 
 [params]
 

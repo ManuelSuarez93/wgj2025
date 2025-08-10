@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c610dpovsb7ay"
 path.s3tc="res://.godot/imported/Comoda_Black and white terrazo material_Normal.jpg-f6cf10d2fb59127b450d33ff21dfdf94.s3tc.ctex"
+path.etc2="res://.godot/imported/Comoda_Black and white terrazo material_Normal.jpg-f6cf10d2fb59127b450d33ff21dfdf94.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Models/3D/Comoda_Black and white terrazo material_Normal.jpg"
-dest_files=["res://.godot/imported/Comoda_Black and white terrazo material_Normal.jpg-f6cf10d2fb59127b450d33ff21dfdf94.s3tc.ctex"]
+dest_files=["res://.godot/imported/Comoda_Black and white terrazo material_Normal.jpg-f6cf10d2fb59127b450d33ff21dfdf94.s3tc.ctex", "res://.godot/imported/Comoda_Black and white terrazo material_Normal.jpg-f6cf10d2fb59127b450d33ff21dfdf94.etc2.ctex"]
 
 [params]
 

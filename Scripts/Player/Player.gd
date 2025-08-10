@@ -1,13 +1,18 @@
 extends CharacterBody3D
 
 class_name Player
-# Configuración de movimiento
+
+@export_category("Movement")
 @export var speed = 5.0  
 @export var mouse_sensitivity = 0.002
 @export var camera : Node3D
+@export_category("UI")
 @export var raycast : DetectObjectRaycast
 @export var UI : PlayerUI
+@export_category("Audio")
 @export var AudioPlayer : AudioStreamPlayer3D
+@export var AudioTimer : Timer
+
 
 var detectedObject : Triggerable
 var enableMovement : bool
@@ -67,7 +72,14 @@ func move(delta: float):
 func setEnableMovement(enable : bool):
 	enableMovement = enable
 	
-func playSound(sound : AudioStream):
+func playSound(sound : AudioStream, startAt: float = 0, endAt : float =0):
+	if(!AudioTimer.is_stopped()):
+		AudioTimer.stop()
+	
+	if(endAt > 0):
+		AudioTimer.wait_time = endAt 
+		AudioTimer.timeout.connect(AudioTimer.stop) 
+		
 	AudioPlayer.stop()
 	AudioPlayer.stream = sound
-	AudioPlayer.play()
+	AudioPlayer.play(startAt)

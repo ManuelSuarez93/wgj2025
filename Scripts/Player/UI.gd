@@ -17,6 +17,7 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var play_button : TextureButton
 
 @export var quit_button : TextureButton
+@export var quitButtonPause : TextureButton
 
 @onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages, MenuGameOver]
 
@@ -31,6 +32,7 @@ func _ready():
 	player.interacted.connect(interact)
 	
 	quit_button.pressed.connect(func(): get_tree().quit())
+	quitButtonPause.pressed.connect(func(): get_tree().quit())
 	play_button.pressed.connect(func():
 		isOnMenu = false
 		SetMenuVisible(Menu.None, false, true) 

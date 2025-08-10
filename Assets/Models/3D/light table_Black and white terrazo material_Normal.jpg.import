@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp32xswsi5kgo"
 path.s3tc="res://.godot/imported/light table_Black and white terrazo material_Normal.jpg-30e3adab0fd71651f7f455957cc7e34a.s3tc.ctex"
+path.etc2="res://.godot/imported/light table_Black and white terrazo material_Normal.jpg-30e3adab0fd71651f7f455957cc7e34a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Models/3D/light table_Black and white terrazo material_Normal.jpg"
-dest_files=["res://.godot/imported/light table_Black and white terrazo material_Normal.jpg-30e3adab0fd71651f7f455957cc7e34a.s3tc.ctex"]
+dest_files=["res://.godot/imported/light table_Black and white terrazo material_Normal.jpg-30e3adab0fd71651f7f455957cc7e34a.s3tc.ctex", "res://.godot/imported/light table_Black and white terrazo material_Normal.jpg-30e3adab0fd71651f7f455957cc7e34a.etc2.ctex"]
 
 [params]
 

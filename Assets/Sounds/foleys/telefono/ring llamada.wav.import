@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://didwjl2ivpw4f"
+path="res://.godot/imported/ring llamada.wav-a85297113228ac2aafddbb41dc6c3649.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/foleys/telefono/ring llamada.wav"
+dest_files=["res://.godot/imported/ring llamada.wav-a85297113228ac2aafddbb41dc6c3649.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

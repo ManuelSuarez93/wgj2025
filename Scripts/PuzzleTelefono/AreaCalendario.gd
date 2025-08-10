@@ -20,7 +20,7 @@ func onLightTurnedOn(trigger : Triggerable):
 	InterrutporApagado.visible = !isVisible
 	InterruptorPrendido.visible = isVisible
 
-func onCallCorrect():
+func onCallCorrect(enabled : bool):
 	Door.open()
 
 func onCallWrong():

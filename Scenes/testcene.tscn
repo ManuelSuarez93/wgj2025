@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ftyvnfq8bysl"]
+[gd_scene load_steps=42 format=3 uid="uid://ftyvnfq8bysl"]
 
 [ext_resource type="PackedScene" uid="uid://ddgp1kqvms6fp" path="res://Assets/Prefabs/player.tscn" id="1_a6omc"]
 [ext_resource type="PackedScene" uid="uid://6gg6inqwrpu" path="res://Assets/Prefabs/puzzle_area.tscn" id="2_d4maf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwp10jgc1hfv7" path="res://Assets/2D/Calendario.png" id="4_h1tcu"]
 [ext_resource type="Texture2D" uid="uid://bp2a4hpvnyqbv" path="res://Assets/2D/calendario sin fecha.png" id="5_m2ggp"]
 [ext_resource type="Script" uid="uid://dahbpbmf4b2b8" path="res://Scripts/PuzzleAhorcado/HangmanTrigger.gd" id="7_se04o"]
+[ext_resource type="AudioStream" uid="uid://icvq883s610g" path="res://Assets/Sounds/foleys/switch on ruido blanco.wav" id="8_m1017"]
 [ext_resource type="AudioStream" uid="uid://cos85mxn88jd6" path="res://Assets/Sounds/foleys/switch luz/switch on.wav" id="9_qhr7g"]
 [ext_resource type="Texture2D" uid="uid://bpqswnfqj3wh" path="res://Assets/2D/Interruptor apagado.png" id="9_r58c4"]
 [ext_resource type="AudioStream" uid="uid://27e28arstcr2" path="res://Assets/Sounds/foleys/switch luz/switch off.wav" id="10_2d7ec"]
@@ -24,14 +25,14 @@
 [ext_resource type="Script" uid="uid://blhoucj5m62yu" path="res://Assets/Prefabs/AreaAhorcado.gd" id="19_ttfme"]
 [ext_resource type="AudioStream" uid="uid://dnpqeufirkff3" path="res://Assets/Sounds/musica_loop_what_did_you_do.wav" id="23_ev46m"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhr7g"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1017"]
 
-[sub_resource type="Sky" id="Sky_2d7ec"]
-sky_material = SubResource("ProceduralSkyMaterial_qhr7g")
+[sub_resource type="Sky" id="Sky_m1017"]
+sky_material = SubResource("ProceduralSkyMaterial_m1017")
 
 [sub_resource type="Environment" id="Environment_h1tcu"]
 background_mode = 1
-sky = SubResource("Sky_2d7ec")
+sky = SubResource("Sky_m1017")
 ambient_light_source = 3
 ambient_light_color = Color(0.169245, 0.169245, 0.169245, 1)
 glow_enabled = true
@@ -125,23 +126,26 @@ visible = false
 mesh = SubResource("QuadMesh_r862i")
 skeleton = NodePath("../Cinematicas/LuzComienzo")
 
-[node name="Cinematicas" type="Node3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("timerLuzComienzo", "luzComienzo")]
+[node name="Cinematicas" type="Node3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("timerLuzComienzo", "luzComienzo", "audioLuzPlayer", "musica")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.526, -14.4325, 7.32136)
 script = ExtResource("10_h1tcu")
 timerLuzComienzo = NodePath("Timer")
 luzComienzo = NodePath("LuzComienzo")
+audioLuz = ExtResource("8_m1017")
+audioLuzPlayer = NodePath("AudioStreamPlayer3D")
+musica = NodePath("../../MusicPlayer")
 
 [node name="LuzComienzo" type="SpotLight3D" parent="PuzzleArea1Calendario/Cinematicas"]
-transform = Transform3D(-1, 8.74228e-08, 0, -1.04251e-15, -1.19249e-08, 1, 8.74228e-08, 1, 1.19249e-08, 31.7213, 16.56, -8.24332)
+transform = Transform3D(-1, 8.74228e-08, -1.90582e-21, -1.04251e-15, -1.19249e-08, 1, 8.74228e-08, 1, 1.19249e-08, 36.2645, 16.56, -7.38239)
 visible = false
 light_energy = 10.0
-spot_range = 6.9501
+spot_range = 7.92156
 
 [node name="Timer" type="Timer" parent="PuzzleArea1Calendario/Cinematicas"]
 one_shot = true
 autostart = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/Cinematicas"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/Cinematicas" groups=["Sound"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8592, 13.4783, -12.2842)
 
 [node name="LuzCalendario" type="CSGSphere3D" parent="PuzzleArea1Calendario"]
@@ -173,7 +177,7 @@ skeleton = NodePath("../../../Cinematicas/LuzComienzo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123846, -3.55575, 2.7458)
 shape = SubResource("BoxShape3D_kam1k")
 
-[node name="AudioInterruptor" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/LuzCalendario/Interruptor"]
+[node name="AudioInterruptor" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/LuzCalendario/Interruptor" groups=["Sound"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.61042, 1.81235)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea1Calendario/LuzCalendario"]
@@ -218,7 +222,7 @@ shape = SubResource("BoxShape3D_crfcr")
 [node name="PUERTA" parent="PuzzleArea1Calendario/AnimatableBody3D" instance=ExtResource("13_ff4kf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73518, 1.9, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/AnimatableBody3D"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/AnimatableBody3D" groups=["Sound"]]
 
 [node name="Telephone" parent="PuzzleArea1Calendario" instance=ExtResource("3_nq0l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47096, -1.92789, -0.566449)
@@ -308,7 +312,7 @@ shape = SubResource("BoxShape3D_crfcr")
 [node name="PUERTA" parent="PuzzleArea2Fotos/AnimatableBody3D" instance=ExtResource("13_ff4kf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73518, 1.9, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea2Fotos/AnimatableBody3D"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea2Fotos/AnimatableBody3D" groups=["Sound"]]
 
 [node name="PuzzleArea3Ahorcado" parent="." instance=ExtResource("2_d4maf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29366, 13.9547, 6.72569)
@@ -328,9 +332,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176579, -2.15608, 0.0948753
 [node name="CollisionShape3D" parent="PuzzleArea3Ahorcado/Puzzle" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08012, 0)
 
-[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer3D" parent="." groups=["Music"]]
 stream = ExtResource("23_ev46m")
-autoplay = true
 
 [editable path="PuzzleArea1Calendario"]
 [editable path="PuzzleArea3Ahorcado/Puzzle"]

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp2a4hpvnyqbv"
 path.s3tc="res://.godot/imported/calendario sin fecha.png-f2add0155eeaf8efc99bbb5dd346c651.s3tc.ctex"
+path.etc2="res://.godot/imported/calendario sin fecha.png-f2add0155eeaf8efc99bbb5dd346c651.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/2D/calendario sin fecha.png"
-dest_files=["res://.godot/imported/calendario sin fecha.png-f2add0155eeaf8efc99bbb5dd346c651.s3tc.ctex"]
+dest_files=["res://.godot/imported/calendario sin fecha.png-f2add0155eeaf8efc99bbb5dd346c651.s3tc.ctex", "res://.godot/imported/calendario sin fecha.png-f2add0155eeaf8efc99bbb5dd346c651.etc2.ctex"]
 
 [params]
 

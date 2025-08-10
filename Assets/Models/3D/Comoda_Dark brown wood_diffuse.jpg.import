@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1ihdptwplt1h"
 path.s3tc="res://.godot/imported/Comoda_Dark brown wood_diffuse.jpg-8ec9dee707b3e0c1a82d9d8386362e6f.s3tc.ctex"
+path.etc2="res://.godot/imported/Comoda_Dark brown wood_diffuse.jpg-8ec9dee707b3e0c1a82d9d8386362e6f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Models/3D/Comoda_Dark brown wood_diffuse.jpg"
-dest_files=["res://.godot/imported/Comoda_Dark brown wood_diffuse.jpg-8ec9dee707b3e0c1a82d9d8386362e6f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Comoda_Dark brown wood_diffuse.jpg-8ec9dee707b3e0c1a82d9d8386362e6f.s3tc.ctex", "res://.godot/imported/Comoda_Dark brown wood_diffuse.jpg-8ec9dee707b3e0c1a82d9d8386362e6f.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5dafl0uxosvd"
 path.s3tc="res://.godot/imported/Comoda_Dark brown wood_Roughness.png-510bb67a1c7c43ace88d9598d20f0bce.s3tc.ctex"
+path.etc2="res://.godot/imported/Comoda_Dark brown wood_Roughness.png-510bb67a1c7c43ace88d9598d20f0bce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Models/3D/Comoda_Dark brown wood_Roughness.png"
-dest_files=["res://.godot/imported/Comoda_Dark brown wood_Roughness.png-510bb67a1c7c43ace88d9598d20f0bce.s3tc.ctex"]
+dest_files=["res://.godot/imported/Comoda_Dark brown wood_Roughness.png-510bb67a1c7c43ace88d9598d20f0bce.s3tc.ctex", "res://.godot/imported/Comoda_Dark brown wood_Roughness.png-510bb67a1c7c43ace88d9598d20f0bce.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6e2jdw8uts81"
 path.s3tc="res://.godot/imported/light table_Dark brown wood_normal.jpg-0c2cca773e239911fa549b98665e7e15.s3tc.ctex"
+path.etc2="res://.godot/imported/light table_Dark brown wood_normal.jpg-0c2cca773e239911fa549b98665e7e15.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Models/3D/light table_Dark brown wood_normal.jpg"
-dest_files=["res://.godot/imported/light table_Dark brown wood_normal.jpg-0c2cca773e239911fa549b98665e7e15.s3tc.ctex"]
+dest_files=["res://.godot/imported/light table_Dark brown wood_normal.jpg-0c2cca773e239911fa549b98665e7e15.s3tc.ctex", "res://.godot/imported/light table_Dark brown wood_normal.jpg-0c2cca773e239911fa549b98665e7e15.etc2.ctex"]
 
 [params]
 
