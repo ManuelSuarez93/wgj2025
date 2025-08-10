@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ddgp1kqvms6fp"]
+[gd_scene load_steps=43 format=3 uid="uid://ddgp1kqvms6fp"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dl84e22yyy4ru" path="res://Assets/2D/mouse cerrado.png" id="6_hmsos"]
 [ext_resource type="FontFile" uid="uid://dlqh6olm6lao3" path="res://Assets/Font/BarlowCondensed-Light.ttf" id="7_fpcuf"]
 [ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/MenuPhone.gd" id="7_j73l1"]
+[ext_resource type="Texture2D" uid="uid://d4owdvlpumwn" path="res://Assets/2D/game over screen.png" id="7_mcoha"]
 [ext_resource type="AudioStream" uid="uid://bhmg2px0263td" path="res://Assets/Sounds/foleys/ahorcado/incorrecto.wav" id="7_v0672"]
 [ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="8_8nnst"]
 [ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="8_eot0c"]
@@ -30,17 +31,14 @@
 [ext_resource type="Texture2D" uid="uid://k17tosxhr2v6" path="res://Assets/2D/ahorcado/ahorcado 4.png" id="17_bn4bl"]
 [ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="17_iyhcw"]
 [ext_resource type="Texture2D" uid="uid://c2gb7sxo3av01" path="res://Assets/2D/ahorcado/ahorcado 5.png" id="18_jfl0m"]
+[ext_resource type="Texture2D" uid="uid://bt5dkpyys6bo5" path="res://Assets/2D/ahorcado/ahorcado 7.png" id="18_kk4dl"]
 [ext_resource type="Texture2D" uid="uid://chm7mdcbtr6rm" path="res://Assets/2D/ahorcado/ahorcado 6.png" id="19_hw4ag"]
 [ext_resource type="AudioStream" uid="uid://daemfa1yjvofp" path="res://Assets/Sounds/foleys/telefono/beep 1.wav" id="19_pblxa"]
 [ext_resource type="AudioStream" uid="uid://bx7od3fyu5w36" path="res://Assets/Sounds/foleys/telefono/beep 2.wav" id="20_7erfr"]
-[ext_resource type="Script" path="res://Assets/Prefabs/MenPause.gd" id="22_muf8v"]
+[ext_resource type="Script" uid="uid://fttabnivwj7g" path="res://Assets/Prefabs/MenPause.gd" id="22_muf8v"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8nnst"]
-font = ExtResource("7_fpcuf")
-font_size = 128
 
 [sub_resource type="LabelSettings" id="LabelSettings_7erfr"]
 font = ExtResource("7_fpcuf")
@@ -49,10 +47,14 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_j73l1"]
 font_size = 64
 
+[sub_resource type="LabelSettings" id="LabelSettings_8nnst"]
+font = ExtResource("7_fpcuf")
+font_size = 128
+
 [sub_resource type="LabelSettings" id="LabelSettings_muf8v"]
 font_size = 24
 
-[node name="Player2" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer", "AudioTimer")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "UI", "AudioPlayer", "AudioTimer")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
 raycast = NodePath("Camera3D/DetectObjectRaycast")
@@ -92,7 +94,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
 shape = SubResource("CapsuleShape3D_d4maf")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("player", "ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver", "play_button", "quit_button", "quitButtonPause", "BlackoutImage")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("player", "ManoAbierta", "ManoCerrada", "MenuHangman", "MenuTelefono", "MenuPause", "MenuImages", "MenuGameOver", "Credits", "EndGameTimer", "play_button", "quit_button", "quitButtonPause", "BlackoutImage")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1916.0
@@ -106,6 +108,8 @@ MenuTelefono = NodePath("MenuPhone")
 MenuPause = NodePath("MenuPause")
 MenuImages = NodePath("MenuPicture")
 MenuGameOver = NodePath("MenuGameOver")
+Credits = NodePath("")
+EndGameTimer = NodePath("EndGameTimer")
 play_button = NodePath("MenuPause/Play")
 quit_button = NodePath("MenuGameOver/TextureButton")
 quitButtonPause = NodePath("MenuPause/QuitButton")
@@ -140,33 +144,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/MenuGameOver"]
-layout_mode = 0
+[node name="ColorRect" type="TextureRect" parent="UI/MenuGameOver"]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="UI/MenuGameOver/ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="UI/MenuGameOver/ColorRect/TextureRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="UI/MenuGameOver"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 719.0
-offset_top = 471.0
-offset_right = 1173.0
-offset_bottom = 625.0
-grow_horizontal = 2
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_8nnst")
+texture = ExtResource("7_mcoha")
 
 [node name="TextureButton" type="TextureButton" parent="UI/MenuGameOver"]
 process_mode = 3
@@ -182,7 +163,7 @@ grow_horizontal = 0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("8_eot0c")
 
-[node name="MenuAhorcado" type="Control" parent="UI" node_paths=PackedStringArray("game_over_audio")]
+[node name="MenuAhorcado" type="Control" parent="UI" node_paths=PackedStringArray("game_over_audio", "ahorcadoImages")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -194,6 +175,7 @@ script = ExtResource("5_1kvxw")
 game_over_audio = NodePath("../../GameOverStream")
 audioCorrect = ExtResource("6_7xaxw")
 audioIncorrect = ExtResource("7_v0672")
+ahorcadoImages = [NodePath("AhorcadoStages/Ahorcado2"), NodePath("AhorcadoStages/Ahorcado3"), NodePath("AhorcadoStages/Ahorcado4"), NodePath("AhorcadoStages/Ahorcado5"), NodePath("AhorcadoStages/Ahorcado6"), NodePath("AhorcadoStages/Ahorcado7")]
 
 [node name="AhorcadoStages" type="Control" parent="UI/MenuAhorcado"]
 anchors_preset = 0
@@ -207,34 +189,46 @@ offset_bottom = 40.0
 texture = ExtResource("14_onktn")
 
 [node name="Ahorcado2" type="TextureRect" parent="UI/MenuAhorcado/AhorcadoStages"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("15_mcoha")
 
 [node name="Ahorcado3" type="TextureRect" parent="UI/MenuAhorcado/AhorcadoStages"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("16_ycl3y")
 
 [node name="Ahorcado4" type="TextureRect" parent="UI/MenuAhorcado/AhorcadoStages"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("17_bn4bl")
 
 [node name="Ahorcado5" type="TextureRect" parent="UI/MenuAhorcado/AhorcadoStages"]
+visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1829.0
+offset_bottom = 1066.0
 texture = ExtResource("18_jfl0m")
 
 [node name="Ahorcado6" type="TextureRect" parent="UI/MenuAhorcado/AhorcadoStages"]
+visible = false
+layout_mode = 2
+offset_right = 1829.0
+offset_bottom = 1066.0
+texture = ExtResource("19_hw4ag")
+
+[node name="Ahorcado7" type="TextureRect" parent="UI/MenuAhorcado/AhorcadoStages"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("19_hw4ag")
+texture = ExtResource("18_kk4dl")
 
 [node name="Tutorila" type="Label" parent="UI/MenuAhorcado"]
 layout_mode = 2
@@ -735,6 +729,10 @@ layout_mode = 0
 offset_right = 2401.0
 offset_bottom = 1392.0
 color = Color(0, 0, 0, 1)
+
+[node name="EndGameTimer" type="Timer" parent="UI"]
+one_shot = true
+autostart = true
 
 [node name="GameOverStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_sfrhn")

@@ -13,6 +13,8 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var MenuPause : MenuPause 
 @export var MenuImages : MenuPicture
 @export var MenuGameOver : Control
+@export var Credits : AnimatedSprite3D
+@export var EndGameTimer : Timer
 
 @export var play_button : TextureButton
 
@@ -22,16 +24,19 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var BlackoutImage : ColorRect
 
 @onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages, MenuGameOver]
-
+ 
 var collider : Triggerable 
 var isOnMenu : bool
 var currentMenu : Menu
+var isGameOver : bool
 
 var is_interacting : bool = false
 
 func _ready():
 	isOnMenu = false
+	isGameOver = false
 	player.interacted.connect(interact)
+	EndGameTimer.timeout.connect(showEndCredits)
 	
 	quit_button.pressed.connect(func(): get_tree().quit())
 	quitButtonPause.pressed.connect(func(): get_tree().quit())
@@ -46,7 +51,7 @@ func _input(event):
 	captureMouse(event)
 
 func captureMouse(event):
-	if GameManager.player.levelStarted and event.is_action_pressed("ui_cancel") and GameManager.player.levelStarted:
+	if GameManager.player.levelStarted and !isGameOver and event.is_action_pressed("ui_cancel") and GameManager.player.levelStarted:
 		if !isOnMenu:
 			isOnMenu = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -96,13 +101,21 @@ func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 			MenuPause.visible = isVisible
 			MenuGameOver.visible = !isVisible
 		Menu.GameOver:
+			isGameOver = true
 			MenuHangman.visible = !isVisible
 			MenuTelefono.visible = !isVisible
 			MenuPause.visible = !isVisible
-			MenuGameOver.visible = isVisible
+			MenuGameOver.visible = isVisible 
+			EndGameTimer.start()
 		Menu.None: 
 			MenuHangman.visible = isVisible
 			MenuTelefono.visible = isVisible
 			MenuPause.visible = isVisible
 			MenuGameOver.visible = isVisible
 			currentMenu = Menu.None 
+
+func showEndCredits(): 
+	print("HOLA????")
+	Credits.visible = true
+	MenuGameOver.visible = false
+	Credits.play()
