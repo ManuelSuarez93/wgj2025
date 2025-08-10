@@ -19,7 +19,8 @@ func onLightTurnedOn(trigger : Triggerable):
 	InterrutporApagado.visible = !isVisible
 	InterruptorPrendido.visible = isVisible
 
-func onCallCorrect(enabled : bool):
+func onCallCorrect(enabled : bool): 
+	GameManager.cinematics.playDialogue(GameManager.cinematics.dialogo2)
 	Door.open()
 
 func onCallWrong():

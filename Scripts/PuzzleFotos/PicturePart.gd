@@ -16,4 +16,4 @@ func doTrigger():
 	picturePickedUp.emit(picturePartNumber, true)
 	canTrigger = false
 	GameManager.player.playSound(pickupAudio)
-	self.visible = false
+	queue_free()

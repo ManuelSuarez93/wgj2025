@@ -10,7 +10,7 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var ManoCerrada : Control 
 @export var MenuHangman : Control
 @export var MenuTelefono : MenuPhone
-@export var MenuPause : Control 
+@export var MenuPause : MenuPause 
 @export var MenuImages : MenuPicture
 @export var MenuGameOver : Control
 

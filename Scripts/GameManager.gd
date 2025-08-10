@@ -11,3 +11,9 @@ var enviroment : WorldEnvironment:
 		if enviroment == null: 
 			enviroment = get_tree().get_first_node_in_group("Enviroment")
 		return enviroment
+
+var cinematics : Cinematics:	
+	get:
+		if cinematics == null: 
+			cinematics = get_tree().get_first_node_in_group("Cinematics")
+		return cinematics
