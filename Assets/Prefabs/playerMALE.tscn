@@ -1210,7 +1210,7 @@ MenuPause = NodePath("MenuPause")
 MenuImages = NodePath("MenuPicture")
 MenuGameOver = NodePath("MenuGameOver")
 play_button = NodePath("MenuPause/Play")
-quit_button = NodePath("TextureButton")
+quit_button = NodePath("MenuGameOver/TextureButton")
 
 [node name="ManoAbierta" type="TextureRect" parent="UI"]
 visible = false
@@ -1240,12 +1240,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/MenuGameOver"]
-visible = false
+[node name="ColorRect" type="TextureRect" parent="UI/MenuGameOver"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
+texture = ExtResource("9_138bc")
 
 [node name="Label" type="Label" parent="UI/MenuGameOver"]
 visible = false
@@ -1260,13 +1259,7 @@ grow_horizontal = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_8nnst")
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("9_138bc")
-
-[node name="TextureButton" type="TextureButton" parent="UI"]
+[node name="TextureButton" type="TextureButton" parent="UI/MenuGameOver"]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 1

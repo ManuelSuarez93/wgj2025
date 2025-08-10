@@ -1073,7 +1073,7 @@ cache/0/1/0/glyphs/66/size = Vector2(3, 3)
 cache/0/1/0/glyphs/66/uv_rect = Rect2(6, 1, 3, 3)
 cache/0/1/0/glyphs/66/texture_idx = 0
 
-[sub_resource type="Image" id="Image_hmsos"]
+[sub_resource type="Image" id="Image_eot0c"]
 data = {
 "data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///2D///8A////AP///wD///8A////AP///wD///8A////AP///2D///9g////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///wD///8A////AP///2D///+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////YP///7////+/////v////2D///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///9g////v////7////+/////YP///2D///+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////YP///7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////+/////v////7////9g////AP///wD///8A////AP///wD///8A////AP///2D///+/////v////7////9g////YP///7////+/////v////2D///8A////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////+/////YP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///8A////AP///2D///+/////v////7////9g////AP///wD///9g////v////7////9g////AP///wD///8A////AP///wD///8A////YP///7////+/////YP///wD///8A////AP///2D///9g////AP///wD///8A////AP///wD///8A////AP///wD///9g////YP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
 "format": "RGBA8",
@@ -1083,7 +1083,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_v0672"]
-image = SubResource("Image_hmsos")
+image = SubResource("Image_eot0c")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ehil"]
 content_margin_left = 4.0
@@ -1245,6 +1245,15 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="UI/MenuGameOver/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="UI/MenuGameOver/ColorRect/TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="UI/MenuGameOver"]
 layout_mode = 1
