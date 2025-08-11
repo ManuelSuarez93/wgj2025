@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ftyvnfq8bysl"]
+[gd_scene load_steps=67 format=3 uid="uid://ftyvnfq8bysl"]
 
 [ext_resource type="PackedScene" uid="uid://ddgp1kqvms6fp" path="res://Assets/Prefabs/player.tscn" id="1_a6omc"]
 [ext_resource type="PackedScene" uid="uid://6gg6inqwrpu" path="res://Assets/Prefabs/puzzle_area.tscn" id="2_d4maf"]
@@ -35,10 +35,41 @@
 [ext_resource type="AudioStream" uid="uid://bl12wxrn0js08" path="res://Assets/Sounds/dialogo.wav" id="25_wp0vb"]
 
 [sub_resource type="Environment" id="Environment_2a36k"]
+background_energy_multiplier = 0.5
 volumetric_fog_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxt64"]
+size = Vector3(6.27197, 4.9082, 1.14258)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1tcu"]
-size = Vector3(15, 7.096, 1.602)
+size = Vector3(10.2836, 7.096, 1.602)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ieufj"]
+size = Vector3(1.79443, 5.68481, 10.3394)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcxcd"]
+size = Vector3(27.5588, 8.58044, 6.21045)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qy1yr"]
+size = Vector3(15.1655, 7.3634, 5.6571)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ymngv"]
+size = Vector3(1, 16.7734, 20.1669)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvkt7"]
+size = Vector3(4.27454, 1, 4.20007)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iysib"]
+size = Vector3(4.2981, 2.33411, 1.83276)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgrem"]
+size = Vector3(3.08691, 4.10022, 14.0101)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1d0a"]
+size = Vector3(1, 10.3809, 15.1177)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0obp"]
+size = Vector3(1, 4.98981, 20.4976)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r862i"]
 size = Vector3(42.3065, 1, 32.5833)
@@ -124,16 +155,61 @@ visible = false
 [node name="house" parent="Nivel" instance=ExtResource("2_uxt64")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.05264, 8.46718, 16.1641)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Nivel"]
-transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -1.15141, 14.0701, -3.41786)
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(2.54846, 0, 0, 0, 1.78595, 0, 0, 0, 1.00002, -5.26514, 12.116, 12.5012)
+shape = SubResource("BoxShape3D_uxt64")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -3.50967, 14.0701, 2.74447)
 shape = SubResource("BoxShape3D_h1tcu")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Nivel"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -8.9255, 13.3659, 8.31945)
+shape = SubResource("BoxShape3D_ieufj")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 15.6072, 14.4676, 5.71417)
+shape = SubResource("BoxShape3D_lcxcd")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 5.91282, 14.1669, 24.0432)
+shape = SubResource("BoxShape3D_qy1yr")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 1.76242, 9.24114, 22.4776)
+shape = SubResource("BoxShape3D_ymngv")
+
+[node name="Cama" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 9.07857, 10.7646, 16.5822)
+shape = SubResource("BoxShape3D_rvkt7")
+
+[node name="Mesada" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 9.13752, 11.7149, 9.9841)
+shape = SubResource("BoxShape3D_iysib")
+
+[node name="Mesada2" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 26.3666, 12.8068, 17.3994)
+shape = SubResource("BoxShape3D_fgrem")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 16.2722, 13.5335, 20.5065)
+shape = SubResource("BoxShape3D_l1d0a")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 30.6232, 14.4846, 16.7998)
+shape = SubResource("BoxShape3D_r0obp")
+disabled = true
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Nivel"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 15.6072, 14.4676, 28.514)
+shape = SubResource("BoxShape3D_lcxcd")
+
+[node name="PISO" type="CollisionShape3D" parent="Nivel"]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 10.5989, 10.89, 11.3754)
 shape = SubResource("BoxShape3D_r862i")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_a6omc")]
-transform = Transform3D(0.729446, 0, -0.684038, 0, 1, 0, 0.684038, 0, 0.729446, 19.0499, 11.7781, 23.2906)
+transform = Transform3D(0.729446, 0, -0.684038, 0, 1, 0, 0.684038, 0, 0.729446, 19.0499, 10.3816, 23.2906)
 
 [node name="PuzzleArea1Calendario" parent="." node_paths=PackedStringArray("CalendarioApagado", "CalendarioPrendido", "InterrutporApagado", "InterruptorPrendido", "Interruptor", "Door") instance=ExtResource("2_d4maf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1713, 14.4325, 16.5406)
@@ -232,7 +308,7 @@ light_energy = 10.0
 spot_range = 7.92156
 
 [node name="StartTimer" type="Timer" parent="PuzzleArea1Calendario/Cinematicas"]
-wait_time = 0.001
+wait_time = 8.2
 one_shot = true
 autostart = true
 

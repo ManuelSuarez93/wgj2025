@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=3 uid="uid://cuuie6xusfdod"]
+
+[ext_resource type="Script" uid="uid://8fqghgvlv822" path="res://Scenes/EndCredits.gd" id="1_8q276"]
+[ext_resource type="Texture2D" uid="uid://c6ywsb1dysbe7" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_1.png" id="2_8q276"]
+[ext_resource type="Texture2D" uid="uid://dh2dap4bt5rj3" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_2.png" id="3_wm7pb"]
+[ext_resource type="Texture2D" uid="uid://dmh61t7bkgwfx" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_3.png" id="4_jw5n7"]
+[ext_resource type="Texture2D" uid="uid://bypxbuu75vpfx" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_4.png" id="5_mguny"]
+[ext_resource type="Texture2D" uid="uid://mjr5cnu0kxu8" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_5.png" id="6_dvfba"]
+[ext_resource type="Texture2D" uid="uid://4kktckvcrdd5" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_6.png" id="7_8udvn"]
+[ext_resource type="Texture2D" uid="uid://dboabuc2yjekt" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_7.png" id="8_qsffy"]
+[ext_resource type="Texture2D" uid="uid://tn4uwb3i6c17" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_8.png" id="9_dmjyx"]
+[ext_resource type="Texture2D" uid="uid://c722wkk8insnj" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_9.png" id="10_4lq2y"]
+[ext_resource type="Texture2D" uid="uid://mnsaaejcf5lw" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_10.png" id="11_ut8qr"]
+[ext_resource type="Texture2D" uid="uid://qg2c4hphe5ge" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_11.png" id="12_71h7p"]
+[ext_resource type="AudioStream" uid="uid://dnpqeufirkff3" path="res://Assets/Sounds/musica_loop_what_did_you_do.wav" id="12_jf7ne"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8k2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8q276")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wm7pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jw5n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mguny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dvfba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8udvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qsffy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dmjyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4lq2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ut8qr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_71h7p")
+}],
+"loop": true,
+"name": &"anim",
+"speed": 5.0
+}]
+
+[node name="EndCredits" type="Node2D" node_paths=PackedStringArray("creditos")]
+script = ExtResource("1_8q276")
+creditos = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_x8k2e")
+animation = &"anim"
+autoplay = "anim"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_jf7ne")
+autoplay = true

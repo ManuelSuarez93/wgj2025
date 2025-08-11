@@ -14,7 +14,6 @@ enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
 @export var MenuImages : MenuPicture
 @export var MenuGameOver : Control
 @export var Credits : AnimatedSprite3D
-@export var EndGameTimer : Timer
 
 @export var play_button : TextureButton
 
@@ -36,7 +35,6 @@ func _ready():
 	isOnMenu = false
 	isGameOver = false
 	player.interacted.connect(interact)
-	EndGameTimer.timeout.connect(showEndCredits)
 	
 	quit_button.pressed.connect(func(): get_tree().quit())
 	quitButtonPause.pressed.connect(func(): get_tree().quit())
@@ -105,17 +103,12 @@ func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
 			MenuHangman.visible = !isVisible
 			MenuTelefono.visible = !isVisible
 			MenuPause.visible = !isVisible
-			MenuGameOver.visible = isVisible 
-			EndGameTimer.start()
+			MenuGameOver.visible = isVisible  
+			await get_tree().create_timer(0.3).timeout
+			get_tree().change_scene_to_file("res://Scenes/end_credits.tscn")
 		Menu.None: 
 			MenuHangman.visible = isVisible
 			MenuTelefono.visible = isVisible
 			MenuPause.visible = isVisible
 			MenuGameOver.visible = isVisible
 			currentMenu = Menu.None 
-
-func showEndCredits(): 
-	print("HOLA????")
-	Credits.visible = true
-	MenuGameOver.visible = false
-	Credits.play()

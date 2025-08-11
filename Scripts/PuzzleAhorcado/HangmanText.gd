@@ -42,5 +42,4 @@ func checkAllCorrectLetters():
 	if(correctLetters == letters.size()):
 		GameManager.player.UI.SetMenuVisible(PlayerUI.Menu.GameOver, true, false)
 		game_over_audio.play()
-		get_tree().paused = true
 		
