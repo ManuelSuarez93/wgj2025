@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq6lyygic2su3"]
+
+[ext_resource type="Script" uid="uid://dwnknw7kpmmv2" path="res://Scripts/PuzzleFotos/MenuPicture.gd" id="1_riib0"]
+[ext_resource type="Texture2D" uid="uid://cet1fwjse4qe2" path="res://Assets/2D/Fotos/foto_1.png" id="2_pkmil"]
+[ext_resource type="Texture2D" uid="uid://ywqvh5jjk05l" path="res://Assets/2D/Fotos/foto_2.png" id="3_cfja4"]
+[ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="4_k64ic"]
+[ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="5_hmwxh"]
+
+[node name="MenuPicture" type="Control" node_paths=PackedStringArray("Fotos", "PosicionFinalFotos")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_riib0")
+Fotos = [NodePath("foto 1"), NodePath("foto 2"), NodePath("foto 3"), NodePath("foto 4")]
+PosicionFinalFotos = [NodePath("foto 5"), NodePath("foto 6"), NodePath("foto 7"), NodePath("foto 8")]
+Menu = 1
+
+[node name="foto 1" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 492.0
+offset_top = 218.0
+offset_right = 778.0
+offset_bottom = 490.0
+texture = ExtResource("2_pkmil")
+expand_mode = 1
+
+[node name="foto 2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 794.0
+offset_top = 217.0
+offset_right = 1080.0
+offset_bottom = 489.0
+texture = ExtResource("3_cfja4")
+expand_mode = 1
+
+[node name="foto 3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 503.0
+offset_top = 551.0
+offset_right = 789.0
+offset_bottom = 823.0
+texture = ExtResource("4_k64ic")
+expand_mode = 1
+
+[node name="foto 4" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 846.0
+offset_top = 549.0
+offset_right = 1132.0
+offset_bottom = 821.0
+texture = ExtResource("5_hmwxh")
+expand_mode = 1
+
+[node name="foto 5" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 626.0
+offset_top = 335.0
+offset_right = 912.0
+offset_bottom = 607.0
+texture = ExtResource("2_pkmil")
+expand_mode = 1
+
+[node name="foto 6" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 755.0
+offset_top = 335.0
+offset_right = 1041.0
+offset_bottom = 607.0
+texture = ExtResource("3_cfja4")
+expand_mode = 1
+
+[node name="foto 7" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 420.0
+offset_right = 926.0
+offset_bottom = 692.0
+texture = ExtResource("4_k64ic")
+expand_mode = 1
+
+[node name="foto 8" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 792.0
+offset_top = 409.0
+offset_right = 1078.0
+offset_bottom = 681.0
+texture = ExtResource("5_hmwxh")
+expand_mode = 1

@@ -1,0 +1,206 @@
+[gd_scene load_steps=15 format=3 uid="uid://lhjadagkma7"]
+
+[ext_resource type="Script" uid="uid://yf1asljkyusg" path="res://Scripts/PuzzleAhorcado/HangmanMenu.gd" id="1_d2v27"]
+[ext_resource type="AudioStream" uid="uid://xq1r7mf0kgh1" path="res://Assets/Sounds/foleys/ahorcado/correcto.wav" id="2_sderd"]
+[ext_resource type="AudioStream" uid="uid://bhmg2px0263td" path="res://Assets/Sounds/foleys/ahorcado/incorrecto.wav" id="3_0qfby"]
+[ext_resource type="Texture2D" uid="uid://db7eu6ksnnl8b" path="res://Assets/2D/ahorcado/ahorcado 1.png" id="4_mg2cg"]
+[ext_resource type="Texture2D" uid="uid://b1vt03rgpkyk5" path="res://Assets/2D/ahorcado/ahorcado 2.png" id="5_6vtax"]
+[ext_resource type="Texture2D" uid="uid://bkakl85m7a241" path="res://Assets/2D/ahorcado/ahorcado 3.png" id="6_s6r0x"]
+[ext_resource type="Texture2D" uid="uid://k17tosxhr2v6" path="res://Assets/2D/ahorcado/ahorcado 4.png" id="7_p5xhy"]
+[ext_resource type="Texture2D" uid="uid://c2gb7sxo3av01" path="res://Assets/2D/ahorcado/ahorcado 5.png" id="8_h6438"]
+[ext_resource type="Texture2D" uid="uid://chm7mdcbtr6rm" path="res://Assets/2D/ahorcado/ahorcado 6.png" id="9_lgcmf"]
+[ext_resource type="Texture2D" uid="uid://bt5dkpyys6bo5" path="res://Assets/2D/ahorcado/ahorcado 7.png" id="10_vli8p"]
+[ext_resource type="Theme" uid="uid://bacft48tk83a1" path="res://Assets/Styles/themeLetters.tres" id="11_4063p"]
+[ext_resource type="FontFile" uid="uid://dlqh6olm6lao3" path="res://Assets/Font/BarlowCondensed-Light.ttf" id="12_82lmw"]
+[ext_resource type="Script" uid="uid://cve1j5827av64" path="res://Scripts/PuzzleAhorcado/hangmanLetter.gd" id="13_5tsam"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7erfr"]
+font = ExtResource("12_82lmw")
+font_size = 32
+
+[node name="MenuAhorcado" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d2v27")
+audioCorrect = ExtResource("2_sderd")
+audioIncorrect = ExtResource("3_0qfby")
+Menu = 2
+
+[node name="AhorcadoStages" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ahorcado1" type="TextureRect" parent="AhorcadoStages"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_mg2cg")
+
+[node name="Ahorcado2" type="TextureRect" parent="AhorcadoStages"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_6vtax")
+
+[node name="Ahorcado3" type="TextureRect" parent="AhorcadoStages"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_s6r0x")
+
+[node name="Ahorcado4" type="TextureRect" parent="AhorcadoStages"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_p5xhy")
+
+[node name="Ahorcado5" type="TextureRect" parent="AhorcadoStages"]
+visible = false
+layout_mode = 0
+offset_right = 1829.0
+offset_bottom = 1066.0
+texture = ExtResource("8_h6438")
+
+[node name="Ahorcado6" type="TextureRect" parent="AhorcadoStages"]
+visible = false
+layout_mode = 2
+offset_right = 1829.0
+offset_bottom = 1066.0
+texture = ExtResource("9_lgcmf")
+
+[node name="Ahorcado7" type="TextureRect" parent="AhorcadoStages"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_vli8p")
+
+[node name="Tutorila" type="Label" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1104.0
+offset_top = 763.0
+offset_right = -192.0
+offset_bottom = -269.0
+theme = ExtResource("11_4063p")
+text = "Click on the box, write the letter and press enter to submit"
+label_settings = SubResource("LabelSettings_7erfr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 275.0
+offset_top = 89.5
+offset_right = 675.0
+offset_bottom = 129.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+use_top_left = true
+
+[node name="Letter1" type="LineEdit" parent="HBoxContainer/CenterContainer" groups=["HangmanLetter"]]
+layout_mode = 2
+theme = ExtResource("11_4063p")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+expand_to_text_length = true
+script = ExtResource("13_5tsam")
+correctLetter = "P"
+
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+use_top_left = true
+
+[node name="Letter2" type="LineEdit" parent="HBoxContainer/CenterContainer2" groups=["HangmanLetter"]]
+layout_mode = 2
+theme = ExtResource("11_4063p")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+expand_to_text_length = true
+script = ExtResource("13_5tsam")
+index = 1
+correctLetter = "O"
+
+[node name="CenterContainer3" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+use_top_left = true
+
+[node name="Letter3" type="LineEdit" parent="HBoxContainer/CenterContainer3" groups=["HangmanLetter"]]
+layout_mode = 2
+theme = ExtResource("11_4063p")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+expand_to_text_length = true
+script = ExtResource("13_5tsam")
+index = 2
+correctLetter = "I"
+
+[node name="CenterContainer4" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+use_top_left = true
+
+[node name="Letter4" type="LineEdit" parent="HBoxContainer/CenterContainer4" groups=["HangmanLetter"]]
+layout_mode = 2
+theme = ExtResource("11_4063p")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+expand_to_text_length = true
+script = ExtResource("13_5tsam")
+index = 3
+correctLetter = "S"
+
+[node name="CenterContainer5" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+use_top_left = true
+
+[node name="Letter5" type="LineEdit" parent="HBoxContainer/CenterContainer5" groups=["HangmanLetter"]]
+layout_mode = 2
+theme = ExtResource("11_4063p")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+expand_to_text_length = true
+script = ExtResource("13_5tsam")
+index = 4
+correctLetter = "O"
+
+[node name="CenterContainer6" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+use_top_left = true
+
+[node name="Letter6" type="LineEdit" parent="HBoxContainer/CenterContainer6" groups=["HangmanLetter"]]
+layout_mode = 2
+theme = ExtResource("11_4063p")
+theme_override_font_sizes/font_size = 64
+placeholder_text = "_"
+alignment = 1
+max_length = 1
+expand_to_text_length = true
+script = ExtResource("13_5tsam")
+index = 5
+correctLetter = "N"

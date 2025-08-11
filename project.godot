@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="WGJ2025"
+config/name="WhatDidYouDo"
 run/main_scene="uid://ckaog0cq0rn8u"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -40,6 +40,8 @@ Music=""
 Sound=""
 Dialogue=""
 Cinematics=""
+UI=""
+PlayerSoundEffects=""
 
 [input]
 

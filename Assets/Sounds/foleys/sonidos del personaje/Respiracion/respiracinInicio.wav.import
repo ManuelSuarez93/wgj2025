@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dv4un4v6dbe0w"
+path="res://.godot/imported/respiracinInicio.wav-279f747c2ea0c655e6b31b3d76700549.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/foleys/sonidos del personaje/Respiracion/respiracinInicio.wav"
+dest_files=["res://.godot/imported/respiracinInicio.wav-279f747c2ea0c655e6b31b3d76700549.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

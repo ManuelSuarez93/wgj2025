@@ -1,4 +1,4 @@
 extends Triggerable
 
 func doTrigger():
-	GameManager.player.UI.SetMenuVisible(PlayerUI.Menu.Hangman, true, false)
+	GameManager.UI.setMenuVisible(UIMenu.MenuType.Hangman, true, false)

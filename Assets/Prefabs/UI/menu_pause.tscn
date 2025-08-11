@@ -1,0 +1,212 @@
+[gd_scene load_steps=9 format=3 uid="uid://cv848ujyq0u86"]
+
+[ext_resource type="Script" uid="uid://fttabnivwj7g" path="res://Scripts/MenPause.gd" id="1_05g6h"]
+[ext_resource type="FontFile" uid="uid://dlqh6olm6lao3" path="res://Assets/Font/BarlowCondensed-Light.ttf" id="2_y1xst"]
+[ext_resource type="Texture2D" uid="uid://4hy4dmkdlvjj" path="res://Assets/2D/iconos/play.svg" id="3_cemu4"]
+[ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="4_pnh2y"]
+[ext_resource type="StyleBox" uid="uid://c1i4mf3pw52uu" path="res://Assets/Styles/grabber.tres" id="5_mnkwf"]
+[ext_resource type="StyleBox" uid="uid://cxk141rvnx008" path="res://Assets/Styles/grabber highlight.tres" id="6_fjtmr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8nnst"]
+font = ExtResource("2_y1xst")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_muf8v"]
+font_size = 24
+
+[node name="MenuPause" type="Control" node_paths=PackedStringArray("EffectVoulmeSlider", "DialogueVolumeSlider", "MusicSlider", "play_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_05g6h")
+EffectVoulmeSlider = NodePath("OptionsMenu/VolumeSliders/VolumeEffect/Slider")
+DialogueVolumeSlider = NodePath("OptionsMenu/VolumeSliders/VolumeDialogue/Slider")
+MusicSlider = NodePath("OptionsMenu/VolumeSliders/VolumeMusic/Slider")
+play_button = NodePath("Play")
+quit_button = NodePath("QuitButton")
+Menu = 4
+
+[node name="BackgroundOverlay" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.301961)
+
+[node name="PauseLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 724.0
+offset_top = 421.0
+offset_right = 966.0
+offset_bottom = 596.0
+grow_horizontal = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_8nnst")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1024.0
+offset_top = 349.0
+offset_right = 1264.0
+offset_bottom = 589.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_cemu4")
+
+[node name="QuitButton" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1506.0
+offset_top = 62.0
+offset_right = 1746.0
+offset_bottom = 302.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("4_pnh2y")
+
+[node name="OptionsMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VolumeSliders" type="Control" parent="OptionsMenu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VolumeEffect" type="Control" parent="OptionsMenu/VolumeSliders"]
+layout_mode = 1
+anchor_right = 4.993
+anchor_bottom = 0.5
+offset_left = 806.0
+offset_top = 671.0
+offset_right = 646.28
+offset_bottom = 691.0
+
+[node name="Label" type="Label" parent="OptionsMenu/VolumeSliders/VolumeEffect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 18.25
+anchor_top = 17.975
+anchor_right = 25.2
+anchor_bottom = 19.75
+offset_left = -807.0
+offset_top = -721.0
+offset_right = -1019.0
+offset_bottom = -721.0
+grow_horizontal = 2
+text = "Effect
+"
+label_settings = SubResource("LabelSettings_muf8v")
+
+[node name="Slider" type="HSlider" parent="OptionsMenu/VolumeSliders/VolumeEffect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 25.275
+anchor_top = 18.05
+anchor_right = 31.3
+anchor_bottom = 18.25
+offset_left = -979.0
+offset_top = -714.0
+offset_right = -1020.0
+offset_bottom = -706.0
+theme_override_styles/grabber_area = ExtResource("5_mnkwf")
+theme_override_styles/grabber_area_highlight = ExtResource("6_fjtmr")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="VolumeDialogue" type="Control" parent="OptionsMenu/VolumeSliders"]
+layout_mode = 1
+anchor_right = 4.993
+anchor_bottom = 0.5
+offset_left = 806.0
+offset_top = 727.0
+offset_right = 646.28
+offset_bottom = 747.0
+
+[node name="Label" type="Label" parent="OptionsMenu/VolumeSliders/VolumeDialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 18.25
+anchor_top = 17.975
+anchor_right = 25.2
+anchor_bottom = 19.75
+offset_left = -807.0
+offset_top = -721.0
+offset_right = -1019.0
+offset_bottom = -721.0
+grow_horizontal = 2
+text = "Dialogue
+
+"
+label_settings = SubResource("LabelSettings_muf8v")
+
+[node name="Slider" type="HSlider" parent="OptionsMenu/VolumeSliders/VolumeDialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 25.275
+anchor_top = 18.05
+anchor_right = 31.3
+anchor_bottom = 18.25
+offset_left = -979.0
+offset_top = -714.0
+offset_right = -1020.0
+offset_bottom = -706.0
+theme_override_styles/grabber_area = ExtResource("5_mnkwf")
+theme_override_styles/grabber_area_highlight = ExtResource("6_fjtmr")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="VolumeMusic" type="Control" parent="OptionsMenu/VolumeSliders"]
+layout_mode = 1
+anchor_right = 4.993
+anchor_bottom = 0.5
+offset_left = 806.0
+offset_top = 783.0
+offset_right = 646.28
+offset_bottom = 803.0
+
+[node name="Label" type="Label" parent="OptionsMenu/VolumeSliders/VolumeMusic"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 18.25
+anchor_top = 17.975
+anchor_right = 25.2
+anchor_bottom = 19.75
+offset_left = -807.0
+offset_top = -721.0
+offset_right = -1019.0
+offset_bottom = -721.0
+grow_horizontal = 2
+text = "Music
+"
+label_settings = SubResource("LabelSettings_muf8v")
+
+[node name="Slider" type="HSlider" parent="OptionsMenu/VolumeSliders/VolumeMusic"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 25.275
+anchor_top = 18.05
+anchor_right = 31.3
+anchor_bottom = 18.25
+offset_left = -979.0
+offset_top = -714.0
+offset_right = -1020.0
+offset_bottom = -706.0
+theme_override_styles/grabber_area = ExtResource("5_mnkwf")
+theme_override_styles/grabber_area_highlight = ExtResource("6_fjtmr")
+max_value = 1.0
+step = 0.1
+value = 1.0

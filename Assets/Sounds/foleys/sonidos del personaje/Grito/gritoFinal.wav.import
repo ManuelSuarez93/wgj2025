@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bqd3qr6a6xojj"
+path="res://.godot/imported/gritoFinal.wav-31dee91128018169d01410b9b7307a5e.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/foleys/sonidos del personaje/Grito/gritoFinal.wav"
+dest_files=["res://.godot/imported/gritoFinal.wav-31dee91128018169d01410b9b7307a5e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

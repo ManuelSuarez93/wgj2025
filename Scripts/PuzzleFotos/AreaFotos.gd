@@ -5,7 +5,7 @@ func _ready():
 	
 func checkForFinishPuzzles():
 	if(finishedPuzzles.size() == puzzles.size()):
-		GameManager.player.UI.MenuImages.PlayAnimation(func(): 
+		GameManager.UI.Picture_Menu.PlayAnimation(func(): 
 			super.finishPuzzle()
-			GameManager.cinematics.playDialogue(GameManager.cinematics.dialogo3)
+			GameManager.Cinematics.playDialogue(GameManager.Cinematics.Dialogo3)
 		)

@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=3 uid="uid://b68fi1jpqrd7q"]
+
+[ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/PhoneMenu.gd" id="1_i3v6m"]
+[ext_resource type="AudioStream" uid="uid://didwjl2ivpw4f" path="res://Assets/Sounds/foleys/telefono/ring llamada.wav" id="2_a5u30"]
+[ext_resource type="AudioStream" uid="uid://bwq5mhv11i7sn" path="res://Assets/Sounds/foleys/telefono/fin de la llamada.wav" id="3_dljpa"]
+[ext_resource type="Texture2D" uid="uid://bmgy07dw3egtj" path="res://Assets/2D/telefono.svg" id="4_t5idr"]
+[ext_resource type="FontFile" uid="uid://o48xjchjoej5" path="res://Assets/Font/BarlowCondensed-BlackItalic.ttf" id="5_ahidk"]
+[ext_resource type="FontFile" uid="uid://q6k5or4uycpv" path="res://Assets/Font/BarlowCondensed-BoldItalic.ttf" id="6_qctxb"]
+[ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="7_us5nm"]
+[ext_resource type="AudioStream" uid="uid://daemfa1yjvofp" path="res://Assets/Sounds/foleys/telefono/beep 1.wav" id="8_aum2a"]
+[ext_resource type="AudioStream" uid="uid://bx7od3fyu5w36" path="res://Assets/Sounds/foleys/telefono/beep 2.wav" id="9_dalvl"]
+[ext_resource type="Texture2D" uid="uid://b607smcwpkf30" path="res://Assets/iconos/callTelephone.png" id="10_78d6v"]
+
+[sub_resource type="FontVariation" id="FontVariation_pr6kt"]
+base_font = ExtResource("5_ahidk")
+spacing_glyph = 24
+
+[node name="MenuPhone" type="Control" node_paths=PackedStringArray("Numpad", "NumberText", "callSoundPlayer", "callButton", "timerSoundPlayer")]
+layout_mode = 3
+anchor_right = 1.002
+anchor_bottom = 1.008
+offset_right = -1879.83
+offset_bottom = -1039.57
+script = ExtResource("1_i3v6m")
+Solution = "1212"
+Numpad = NodePath("Numpad")
+NumberText = NodePath("NumberDisplay/NumbersLabel")
+NumberLimit = 4
+callCorrectAudio = ExtResource("2_a5u30")
+callIncorrectAudio = ExtResource("3_dljpa")
+callSoundPlayer = NodePath("PhoneSoundPlayer")
+callButton = NodePath("Numpad/CallButton")
+timerSoundPlayer = NodePath("Timer")
+
+[node name="PhoneSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="PhoneImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 19.5
+anchor_top = 0.3
+anchor_right = 28.5
+anchor_bottom = 26.725
+offset_right = 0.999878
+texture = ExtResource("4_t5idr")
+expand_mode = 1
+
+[node name="NumberDisplay" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 20.799
+anchor_top = 8.6
+anchor_right = 27.199
+anchor_bottom = 10.0
+offset_left = -0.000671387
+offset_top = 0.0167847
+offset_right = -0.0131836
+offset_bottom = 0.0195313
+
+[node name="NumbersBackground" type="ColorRect" parent="NumberDisplay"]
+layout_mode = 0
+offset_left = -8.0
+offset_right = 264.0
+offset_bottom = 56.0
+color = Color(0, 0, 0, 1)
+
+[node name="NumbersLabel" type="Label" parent="NumberDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.670588, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_pr6kt")
+theme_override_font_sizes/font_size = 46
+horizontal_alignment = 2
+
+[node name="Numpad" type="GridContainer" parent="."]
+layout_mode = 2
+anchor_left = 20.8
+anchor_top = 11.2
+anchor_right = 27.2
+anchor_bottom = 20.0
+offset_left = -0.00012207
+offset_top = -3.05176e-05
+offset_bottom = -96.0078
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 3
+
+[node name="Button1" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "1"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button2" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "2"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button3" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "3"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button4" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "4"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button5" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "5"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button6" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "6"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button7" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "7"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button8" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "8"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="Button9" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+text = "9"
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="CallButton" type="Button" parent="Numpad"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_qctxb")
+theme_override_font_sizes/font_size = 35
+script = ExtResource("7_us5nm")
+telephoneSound = Array[AudioStream]([ExtResource("8_aum2a"), ExtResource("9_dalvl")])
+
+[node name="TextureRect" type="TextureRect" parent="Numpad/CallButton"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("10_78d6v")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="."]

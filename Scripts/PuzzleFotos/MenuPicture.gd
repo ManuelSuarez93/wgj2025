@@ -1,6 +1,6 @@
-extends Control
+extends UIMenu
 
-class_name MenuPicture 
+class_name PictureMenu 
 
 @export var Fotos : Array[TextureRect]
 @export var PosicionFinalFotos : Array [Control]
@@ -11,7 +11,7 @@ class_name MenuPicture
 
 var tween : Tween
  
-	
+
 func showPhoto(number : int, show : bool):
 	Fotos[number].visible = show
 	
@@ -23,9 +23,8 @@ func PlayAnimation(callback : Callable):
 		tween.tween_property(foto, "position", final.position, TweenDuration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
 	tween.tween_interval(CloseMenuWait)
-	tween.tween_callback(func() : 
-		print("LA PUTA MADRE QUE LOS PARIO")
-		GameManager.player.UI.MenuImages.visible = false
+	tween.tween_callback(func() :
+		GameManager.UI.Picture_Menu.visible = false
 		callback.call()
 		)
 	

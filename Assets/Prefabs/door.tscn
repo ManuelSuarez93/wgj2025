@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvfdpps2d3e4e"]
 
 [ext_resource type="Script" uid="uid://cv8utdgw6g7vt" path="res://Scripts/Door.gd" id="1_tx1ww"]
-[ext_resource type="PackedScene" uid="uid://dou5jrnrsilkw" path="res://Assets/Models/AssetsImported/puerta.tscn" id="2_5gein"]
+[ext_resource type="PackedScene" uid="uid://dou5jrnrsilkw" path="res://Assets/3D/AssetsImported/puerta.tscn" id="2_5gein"]
 [ext_resource type="AudioStream" uid="uid://c07wsxivaqmhs" path="res://Assets/Sounds/foleys/puerta.wav" id="2_fmnvw"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nq0l7"]
 size = Vector3(2, 4.05, 0.781952)

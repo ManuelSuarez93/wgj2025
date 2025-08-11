@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://g25q00nftybm"
+path="res://.godot/imported/Paso-02.wav-b82630b9e4b20132a9737db105f21036.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/foleys/sonidos del personaje/Pasos/Paso-02.wav"
+dest_files=["res://.godot/imported/Paso-02.wav-b82630b9e4b20132a9737db105f21036.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

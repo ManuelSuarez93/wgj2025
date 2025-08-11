@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://unki5kquekmr"]
+
+[ext_resource type="Script" uid="uid://bsuiio5dae7ct" path="res://Scripts/Player/UI.gd" id="1_rhao7"]
+[ext_resource type="Texture2D" uid="uid://bgq0aukwxtfyn" path="res://Assets/2D/mouse abierto.png" id="2_ev20k"]
+[ext_resource type="Texture2D" uid="uid://dl84e22yyy4ru" path="res://Assets/2D/mouse cerrado.png" id="3_jl73i"]
+[ext_resource type="PackedScene" uid="uid://3qwiug5dlb0u" path="res://Assets/Prefabs/UI/menu_game_over.tscn" id="4_q4c01"]
+[ext_resource type="PackedScene" uid="uid://lhjadagkma7" path="res://Assets/Prefabs/UI/menu_hangman.tscn" id="5_ga72t"]
+[ext_resource type="PackedScene" uid="uid://b68fi1jpqrd7q" path="res://Assets/Prefabs/UI/menu_phone.tscn" id="6_2p3kb"]
+[ext_resource type="PackedScene" uid="uid://cv848ujyq0u86" path="res://Assets/Prefabs/UI/menu_pause.tscn" id="7_ek1ap"]
+[ext_resource type="PackedScene" uid="uid://dq6lyygic2su3" path="res://Assets/Prefabs/UI/menu_picture.tscn" id="8_v852p"]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("Opened_Hand", "Closed_Hand", "Pause_Menu", "Game_Over_Menu", "Hangman_Menu", "Telephnone_Menu", "Picture_Menu", "uiAudioEffects", "BlackoutImage") groups=["UI"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1916.0
+offset_bottom = 1071.0
+script = ExtResource("1_rhao7")
+Opened_Hand = NodePath("ManoAbierta")
+Closed_Hand = NodePath("ManoCerrada")
+Pause_Menu = NodePath("MenuPause")
+Game_Over_Menu = NodePath("MenuGameOver")
+Hangman_Menu = NodePath("MenuHangman")
+Telephnone_Menu = NodePath("MenuPhone")
+Picture_Menu = NodePath("MenuPicture")
+uiAudioEffects = NodePath("UISounds")
+BlackoutImage = NodePath("BlackoutStart")
+
+[node name="ManoAbierta" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 940.0
+offset_top = 540.0
+offset_right = 1083.0
+offset_bottom = 722.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ev20k")
+
+[node name="ManoCerrada" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 940.0
+offset_top = 540.0
+offset_right = 1083.0
+offset_bottom = 722.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_jl73i")
+
+[node name="MenuGameOver" parent="." instance=ExtResource("4_q4c01")]
+visible = false
+layout_mode = 1
+
+[node name="MenuHangman" parent="." instance=ExtResource("5_ga72t")]
+visible = false
+layout_mode = 1
+
+[node name="MenuPhone" parent="." instance=ExtResource("6_2p3kb")]
+visible = false
+layout_mode = 1
+
+[node name="MenuPause" parent="." instance=ExtResource("7_ek1ap")]
+process_mode = 2
+visible = false
+
+[node name="MenuPicture" parent="." instance=ExtResource("8_v852p")]
+visible = false
+
+[node name="BlackoutStart" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2401.0
+offset_bottom = 1392.0
+color = Color(0, 0, 0, 1)
+
+[node name="EndGameTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="UISounds" type="AudioStreamPlayer" parent="." groups=["Sound"]]

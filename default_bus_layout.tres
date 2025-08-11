@@ -1,0 +1,18 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://554x8ok1m6kf"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
+resource_name = "Reverb"
+room_size = 0.18
+damping = 0.66
+spread = 0.46
+
+[resource]
+bus/0/volume_db = -2.51026
+bus/1/name = &"DialogueBus"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -17.0211
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_g28q7")
+bus/1/effect/0/enabled = true

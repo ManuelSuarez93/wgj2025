@@ -9,8 +9,8 @@ extends PuzzleArea
 
 func _ready():
 	Interruptor.onTrigger.connect(onLightTurnedOn)
-	GameManager.player.UI.MenuTelefono.onCallCorrect.connect(onCallCorrect)
-	GameManager.player.UI.MenuTelefono.onCallWrong.connect(onCallWrong)
+	GameManager.UI.Telephnone_Menu.onCallCorrect.connect(onCallCorrect)
+	GameManager.UI.Telephnone_Menu.onCallWrong.connect(onCallWrong)
 	
 func onLightTurnedOn(trigger : Triggerable):
 	var isVisible = CalendarioApagado.visible
@@ -20,7 +20,7 @@ func onLightTurnedOn(trigger : Triggerable):
 	InterruptorPrendido.visible = isVisible
 
 func onCallCorrect(enabled : bool): 
-	GameManager.cinematics.playDialogue(GameManager.cinematics.dialogo2)
+	GameManager.Cinematics.playDialogue(GameManager.Cinematics.Dialogo2)
 	Door.open()
 
 func onCallWrong():

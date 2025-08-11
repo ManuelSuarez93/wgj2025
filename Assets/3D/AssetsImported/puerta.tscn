@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dou5jrnrsilkw"]
+
+[ext_resource type="PackedScene" uid="uid://g0dps07bgwhv" path="res://Assets/3D/3D/PUERTA.glb" id="1_rir4e"]
+
+
+[node name="PUERTA" instance=ExtResource("1_rir4e")]
+
+[node name="puertas" parent="." index="0"]
+transform = Transform3D(0, -0.0465118, 0, 0.07, 0, 0, 0, 0, 0.07, 0, 0, 0)

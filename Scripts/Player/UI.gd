@@ -2,113 +2,94 @@ extends Control
 
 class_name PlayerUI
 
-enum Menu {Phone, Photo, Hangman, None, Pause, GameOver}
-
-@export var player : Player
-
-@export var ManoAbierta : Control
-@export var ManoCerrada : Control 
-@export var MenuHangman : Control
-@export var MenuTelefono : MenuPhone
-@export var MenuPause : MenuPause 
-@export var MenuImages : MenuPicture
-@export var MenuGameOver : Control
-@export var Credits : AnimatedSprite3D
-
-@export var play_button : TextureButton
-
-@export var quit_button : TextureButton
-@export var quitButtonPause : TextureButton
-
+@export_group("Cursors")
+@export var Opened_Hand : Control
+@export var Closed_Hand : Control 
+@export_group("Game menus") 
+@export var Pause_Menu : MenuPause 
+@export var Game_Over_Menu : GameOverMenu
+@export var Hangman_Menu : HangmanMenu
+@export var Telephnone_Menu : PhoneMenu
+@export var Picture_Menu : PictureMenu
+@export_group("Audio")
+@export var uiAudioEffects : AudioStreamPlayer
 @export var BlackoutImage : ColorRect
 
-@onready var Menus := [MenuTelefono, MenuHangman, MenuPause, MenuImages, MenuGameOver]
+@onready var Menus = {
+ 	UIMenu.MenuType.Phone: Telephnone_Menu, 
+ 	UIMenu.MenuType.Photo: Picture_Menu, 
+ 	UIMenu.MenuType.Hangman: Hangman_Menu
+	}
  
-var collider : Triggerable 
-var isOnMenu : bool
-var currentMenu : Menu
-var isGameOver : bool
-
+var collider : Triggerable  
+var currentMenu : UIMenu.MenuType   
 var is_interacting : bool = false
 
-func _ready():
-	isOnMenu = false
-	isGameOver = false
-	player.interacted.connect(interact)
-	
-	quit_button.pressed.connect(func(): get_tree().quit())
-	quitButtonPause.pressed.connect(func(): get_tree().quit())
-	play_button.pressed.connect(func():
-		isOnMenu = false
-		SetMenuVisible(Menu.None, false, true) 
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED))
-	# Capturar y ocultar el mouse
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+func _ready():  
+	currentMenu = UIMenu.MenuType.None
+	GameManager.Player.interacted.connect(interact)   
+	captureMouse()
 
 func _input(event):
-	captureMouse(event)
+	if event.is_action_pressed("ui_cancel"): 
+		setPauseMenu()
+		captureMouse() 
 
-func captureMouse(event):
-	if GameManager.player.levelStarted and !isGameOver and event.is_action_pressed("ui_cancel") and GameManager.player.levelStarted:
-		if !isOnMenu:
-			isOnMenu = true
+func captureMouse():
+	if (!GameManager.LevelStarted):  
+		print("LEVEL NOT STARTED CAPTURED")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif (GameManager.LevelOver):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else: 
+		if(GameManager.GamePaused):
+			print("PAUSED VISIBLE")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			SetMenuVisible(Menu.Pause, true, false)
-		else:
-			isOnMenu = false
-			SetMenuVisible(Menu.None, false, true) 
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+		else: 
+			if(currentMenu != UIMenu.MenuType.None): 
+				print("GAME MENU VISIBLE")
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			else: 
+				print("GAME MENU CAPTURED")
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func interact(): 
 	is_interacting = true
-	ManoCerrada.visible = true
-	ManoAbierta.visible = false
+	Closed_Hand.visible = true
+	Opened_Hand.visible = false
 	await get_tree().create_timer(0.3).timeout
 	is_interacting = false
 
 func onDetectedObject(collider):  
 	if is_interacting == false:
-		ManoCerrada.visible = false
-		ManoAbierta.visible = true
+		Closed_Hand.visible = false
+		Opened_Hand.visible = true
 
 func onNonDetectingObject(): 
-	ManoCerrada.visible = false
-	ManoAbierta.visible = false
+	Closed_Hand.visible = false
+	Opened_Hand.visible = false
 
-func SetMenuVisible(menuToOpen : Menu, isVisible : bool, enableMovement : bool):
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	GameManager.player.setEnableMovement(enableMovement)
-	isOnMenu = isVisible
-	if isOnMenu:
-		currentMenu = menuToOpen
-	match menuToOpen:
-		Menu.Phone:
-			MenuTelefono.visible = isVisible
-			MenuHangman.visible = !isVisible
-			MenuPause.visible = !isVisible
-			MenuGameOver.visible = !isVisible
-			
-		Menu.Hangman:
-			MenuHangman.visible = isVisible
-			MenuTelefono.visible = !isVisible
-			MenuPause.visible = !isVisible
-			MenuGameOver.visible = !isVisible
-		Menu.Pause:
-			MenuHangman.visible = !isVisible
-			MenuTelefono.visible = !isVisible
-			MenuPause.visible = isVisible
-			MenuGameOver.visible = !isVisible
-		Menu.GameOver:
-			isGameOver = true
-			MenuHangman.visible = !isVisible
-			MenuTelefono.visible = !isVisible
-			MenuPause.visible = !isVisible
-			MenuGameOver.visible = isVisible  
-			await get_tree().create_timer(0.3).timeout
-			get_tree().change_scene_to_file("res://Scenes/end_credits.tscn")
-		Menu.None: 
-			MenuHangman.visible = isVisible
-			MenuTelefono.visible = isVisible
-			MenuPause.visible = isVisible
-			MenuGameOver.visible = isVisible
-			currentMenu = Menu.None 
+func setMenuVisible(menuToOpen : UIMenu.MenuType, isVisible : bool, enableMovement : bool): 
+	if(menuToOpen != UIMenu.MenuType.None):
+		Menus[menuToOpen].visible = isVisible
+		if(isVisible) : currentMenu = menuToOpen
+		else: currentMenu = UIMenu.MenuType.None
+	else:
+		for menu in Menus:
+			menu.visible = false
+		currentMenu = UIMenu.MenuType.None
+		
+	captureMouse()
+
+func setPauseMenu():
+	Pause_Menu.visible = !Pause_Menu.visible
+	GameManager.pauseGame(Pause_Menu.visible)
+
+func gameOverMenu(): 
+	GameManager.LevelOver = true 
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://Scenes/end_credits.tscn")
+
+func playSound(sound : AudioStream):
+	uiAudioEffects.stop()
+	uiAudioEffects.stream = sound
+	uiAudioEffects.play()

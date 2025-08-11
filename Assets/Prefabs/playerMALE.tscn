@@ -4,13 +4,13 @@
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://bsuiio5dae7ct" path="res://Scripts/Player/UI.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://cudrv2bl5i8q1" path="res://Scripts/Player/LabelDialogo.gd" id="3_hqtel"]
-[ext_resource type="Script" uid="uid://yf1asljkyusg" path="res://Scripts/PuzzleAhorcado/HangmanText.gd" id="5_1kvxw"]
+[ext_resource type="Script" uid="uid://yf1asljkyusg" path="res://Scripts/PuzzleAhorcado/HangmanMenu.gd" id="5_1kvxw"]
 [ext_resource type="Texture2D" uid="uid://bgq0aukwxtfyn" path="res://Assets/2D/mouse abierto.png" id="5_b5xh7"]
 [ext_resource type="Script" uid="uid://cve1j5827av64" path="res://Scripts/PuzzleAhorcado/hangmanLetter.gd" id="5_m0ojv"]
 [ext_resource type="AudioStream" uid="uid://xq1r7mf0kgh1" path="res://Assets/Sounds/foleys/ahorcado/correcto.wav" id="6_7xaxw"]
 [ext_resource type="Texture2D" uid="uid://dl84e22yyy4ru" path="res://Assets/2D/mouse cerrado.png" id="6_hmsos"]
 [ext_resource type="FontFile" uid="uid://dlqh6olm6lao3" path="res://Assets/Font/BarlowCondensed-Light.ttf" id="7_fpcuf"]
-[ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/MenuPhone.gd" id="7_j73l1"]
+[ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/PhoneMenu.gd" id="7_j73l1"]
 [ext_resource type="AudioStream" uid="uid://bhmg2px0263td" path="res://Assets/Sounds/foleys/ahorcado/incorrecto.wav" id="7_v0672"]
 [ext_resource type="Script" uid="uid://dpy6utahe4obt" path="res://Scripts/PuzzleTelefono/TelephoneButton.gd" id="8_8nnst"]
 [ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="8_eot0c"]
@@ -23,9 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://4hy4dmkdlvjj" path="res://Assets/2D/iconos/play.svg" id="15_u4lcu"]
 [ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="16_l3xo7"]
 [ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="17_iyhcw"]
-[ext_resource type="StyleBox" uid="uid://c1i4mf3pw52uu" path="res://grabber.tres" id="19_gnwoc"]
-[ext_resource type="StyleBox" uid="uid://cxk141rvnx008" path="res://grabber highlight.tres" id="20_fqql5"]
+[ext_resource type="StyleBox" uid="uid://c1i4mf3pw52uu" path="res://Assets/Styles/grabber.tres" id="19_gnwoc"]
+[ext_resource type="StyleBox" uid="uid://cxk141rvnx008" path="res://Assets/Styles/grabber highlight.tres" id="20_fqql5"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="22_sfrhn"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
 

@@ -9,11 +9,11 @@ class_name PicturePart
 signal picturePickedUp(number : int, show : bool)
 
 func _ready():
-	picturePickedUp.connect(GameManager.player.UI.MenuImages.showPhoto)
+	picturePickedUp.connect(GameManager.UI.Picture_Menu.showPhoto)
 
 func doTrigger(): 
 	onTrigger.emit(self)
 	picturePickedUp.emit(picturePartNumber, true)
 	canTrigger = false
-	GameManager.player.playSound(pickupAudio)
+	GameManager.Player.playEffectSounds(pickupAudio)
 	queue_free()
