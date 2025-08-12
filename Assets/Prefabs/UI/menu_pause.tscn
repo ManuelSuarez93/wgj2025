@@ -25,7 +25,6 @@ DialogueVolumeSlider = NodePath("OptionsMenu/VolumeSliders/VolumeDialogue/Slider
 MusicSlider = NodePath("OptionsMenu/VolumeSliders/VolumeMusic/Slider")
 play_button = NodePath("Play")
 quit_button = NodePath("QuitButton")
-Menu = 4
 
 [node name="BackgroundOverlay" type="ColorRect" parent="."]
 layout_mode = 0

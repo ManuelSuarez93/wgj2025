@@ -11,11 +11,10 @@ func _ready():
 	text_submitted.connect(onTextChanged)
 	
 func onTextChanged(newText : String):
-	if(text == ""):
-		text = "_"
-	else:
-		text = text.to_upper()
-		onLetterPressed.emit(self)
+	text = text.to_upper()
+	if(!isCorrectLetter()):
+		text = ""
+	onLetterPressed.emit(self)
 		
 func isCorrectLetter() -> bool:
 	return text.to_upper() == correctLetter

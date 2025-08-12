@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://lhjadagkma7"]
+[gd_scene load_steps=16 format=3 uid="uid://lhjadagkma7"]
 
 [ext_resource type="Script" uid="uid://yf1asljkyusg" path="res://Scripts/PuzzleAhorcado/HangmanMenu.gd" id="1_d2v27"]
 [ext_resource type="AudioStream" uid="uid://xq1r7mf0kgh1" path="res://Assets/Sounds/foleys/ahorcado/correcto.wav" id="2_sderd"]
@@ -13,12 +13,13 @@
 [ext_resource type="Theme" uid="uid://bacft48tk83a1" path="res://Assets/Styles/themeLetters.tres" id="11_4063p"]
 [ext_resource type="FontFile" uid="uid://dlqh6olm6lao3" path="res://Assets/Font/BarlowCondensed-Light.ttf" id="12_82lmw"]
 [ext_resource type="Script" uid="uid://cve1j5827av64" path="res://Scripts/PuzzleAhorcado/hangmanLetter.gd" id="13_5tsam"]
+[ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="14_d8bw6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7erfr"]
 font = ExtResource("12_82lmw")
 font_size = 32
 
-[node name="MenuAhorcado" type="Control"]
+[node name="MenuAhorcado" type="Control" node_paths=PackedStringArray("ahorcadoImages", "quitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +29,8 @@ grow_vertical = 2
 script = ExtResource("1_d2v27")
 audioCorrect = ExtResource("2_sderd")
 audioIncorrect = ExtResource("3_0qfby")
-Menu = 2
+ahorcadoImages = [NodePath("AhorcadoStages/Ahorcado2"), NodePath("AhorcadoStages/Ahorcado3"), NodePath("AhorcadoStages/Ahorcado4"), NodePath("AhorcadoStages/Ahorcado5"), NodePath("AhorcadoStages/Ahorcado6"), NodePath("AhorcadoStages/Ahorcado7")]
+quitButton = NodePath("QuitButton")
 
 [node name="AhorcadoStages" type="Control" parent="."]
 anchors_preset = 0
@@ -83,7 +85,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_vli8p")
 
-[node name="Tutorila" type="Label" parent="."]
+[node name="Tutorial" type="Label" parent="."]
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,3 +206,18 @@ expand_to_text_length = true
 script = ExtResource("13_5tsam")
 index = 5
 correctLetter = "N"
+
+[node name="QuitButton" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.861
+anchor_right = 0.948
+anchor_bottom = 0.161
+offset_left = -0.120117
+offset_top = 6.00002
+offset_right = 72.8398
+offset_bottom = 72.12
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("14_d8bw6")

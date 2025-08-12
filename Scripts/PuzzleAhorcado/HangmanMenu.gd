@@ -8,27 +8,25 @@ class_name HangmanMenu
 @export var ahorcadoImages : Array[Control]
 
 var letters : Array[HangmanLetter]
+signal allLettersCorrect
 
 func _ready() -> void:
-	
+	allLettersCorrect.connect(GameManager.Cinematics.Ahorcado.puzzleFinished.emit)
+	quitButton.pressed.connect(func(): GameManager.UI.setMenuVisible(UIMenu.MenuType.Hangman,false,true))
 	for letter in get_tree().get_nodes_in_group("HangmanLetter"):
 		if letter is HangmanLetter:
 			letters.append(letter)
 			letter.onLetterPressed.connect(onLetterSubmitted) 
 
 func onLetterSubmitted(letter: HangmanLetter):
-	var audioPlayer = GameManager.Player.AudioPlayer
-	
-	audioPlayer.stop()
-	if(letter.isCorrectLetter()):
-		audioPlayer.stream = audioCorrect
+	if(letter.isCorrectLetter()): 
+		GameManager.UI.playSound(audioCorrect) 
 		for image in ahorcadoImages:
 			if !image.visible:
 				image.visible = true
 				break
 	else:
-		audioPlayer.stream = audioIncorrect
-	audioPlayer.play() 
+		GameManager.UI.playSound(audioIncorrect) 
 	checkAllCorrectLetters()
 
 func checkAllCorrectLetters():
@@ -38,6 +36,6 @@ func checkAllCorrectLetters():
 				letter.editable = false;
 				correctLetters += 1
 	
-	if(correctLetters == letters.size()):
-		GameManager.UI.setMenuVisible(UIMenu.MenuType.GameOver, true, false)
-		
+	if correctLetters == letters.size():
+		allLettersCorrect.emit()
+	

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://3qwiug5dlb0u"]
+[gd_scene load_steps=3 format=3 uid="uid://3qwiug5dlb0u"]
 
 [ext_resource type="Script" uid="uid://bt86mgbxlju3y" path="res://Assets/Prefabs/GameOverMenu.gd" id="1_wfxcg"]
 [ext_resource type="Texture2D" uid="uid://d4owdvlpumwn" path="res://Assets/2D/game over screen.png" id="2_8glgp"]
-[ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="3_25nu0"]
 
 [node name="MenuGameOver" type="Control"]
 layout_mode = 3
@@ -12,24 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wfxcg")
-Menu = 5
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_8glgp")
-
-[node name="TextureButton" type="TextureButton" parent="."]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -256.0
-offset_top = 62.0
-offset_right = -16.0
-offset_bottom = 302.0
-grow_horizontal = 0
-scale = Vector2(0.7, 0.7)
-texture_normal = ExtResource("3_25nu0")

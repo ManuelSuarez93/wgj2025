@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b68fi1jpqrd7q"]
+[gd_scene load_steps=13 format=3 uid="uid://b68fi1jpqrd7q"]
 
 [ext_resource type="Script" uid="uid://7jj06hu5nl20" path="res://Scripts/PuzzleTelefono/PhoneMenu.gd" id="1_i3v6m"]
 [ext_resource type="AudioStream" uid="uid://didwjl2ivpw4f" path="res://Assets/Sounds/foleys/telefono/ring llamada.wav" id="2_a5u30"]
@@ -10,12 +10,13 @@
 [ext_resource type="AudioStream" uid="uid://daemfa1yjvofp" path="res://Assets/Sounds/foleys/telefono/beep 1.wav" id="8_aum2a"]
 [ext_resource type="AudioStream" uid="uid://bx7od3fyu5w36" path="res://Assets/Sounds/foleys/telefono/beep 2.wav" id="9_dalvl"]
 [ext_resource type="Texture2D" uid="uid://b607smcwpkf30" path="res://Assets/iconos/callTelephone.png" id="10_78d6v"]
+[ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="11_a5u30"]
 
 [sub_resource type="FontVariation" id="FontVariation_pr6kt"]
 base_font = ExtResource("5_ahidk")
 spacing_glyph = 24
 
-[node name="MenuPhone" type="Control" node_paths=PackedStringArray("Numpad", "NumberText", "callSoundPlayer", "callButton", "timerSoundPlayer")]
+[node name="MenuPhone" type="Control" node_paths=PackedStringArray("Numpad", "NumberText", "callButton", "quitButton")]
 layout_mode = 3
 anchor_right = 1.002
 anchor_bottom = 1.008
@@ -28,9 +29,8 @@ NumberText = NodePath("NumberDisplay/NumbersLabel")
 NumberLimit = 4
 callCorrectAudio = ExtResource("2_a5u30")
 callIncorrectAudio = ExtResource("3_dljpa")
-callSoundPlayer = NodePath("PhoneSoundPlayer")
 callButton = NodePath("Numpad/CallButton")
-timerSoundPlayer = NodePath("Timer")
+quitButton = NodePath("QuitButton")
 
 [node name="PhoneSoundPlayer" type="AudioStreamPlayer3D" parent="."]
 
@@ -185,3 +185,18 @@ texture = ExtResource("10_78d6v")
 expand_mode = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="QuitButton" type="TextureButton" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 39.582
+anchor_right = 43.399
+anchor_bottom = 3.383
+offset_left = 7.99561
+offset_top = -2.0
+offset_right = 80.0094
+offset_bottom = 71.996
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("11_a5u30")

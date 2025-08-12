@@ -36,22 +36,19 @@ func _input(event):
 		captureMouse() 
 
 func captureMouse():
-	if (!GameManager.LevelStarted):  
-		print("LEVEL NOT STARTED CAPTURED")
+	if (!GameManager.LevelStarted):   
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif (GameManager.LevelOver):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else: 
-		if(GameManager.GamePaused):
-			print("PAUSED VISIBLE")
+		if(GameManager.GamePaused): 
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else: 
-			if(currentMenu != UIMenu.MenuType.None): 
-				print("GAME MENU VISIBLE")
+			if(currentMenu != UIMenu.MenuType.None):  
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			else: 
-				print("GAME MENU CAPTURED")
+			else:  
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func interact(): 
 	is_interacting = true
 	Closed_Hand.visible = true
@@ -69,6 +66,7 @@ func onNonDetectingObject():
 	Opened_Hand.visible = false
 
 func setMenuVisible(menuToOpen : UIMenu.MenuType, isVisible : bool, enableMovement : bool): 
+	GameManager.Player.enableMovement = enableMovement
 	if(menuToOpen != UIMenu.MenuType.None):
 		Menus[menuToOpen].visible = isVisible
 		if(isVisible) : currentMenu = menuToOpen
@@ -84,10 +82,9 @@ func setPauseMenu():
 	Pause_Menu.visible = !Pause_Menu.visible
 	GameManager.pauseGame(Pause_Menu.visible)
 
-func gameOverMenu(): 
-	GameManager.LevelOver = true 
-	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://Scenes/end_credits.tscn")
+func setGameOver(): 
+	Game_Over_Menu.visible = true
+	GameManager.LevelOver = true
 
 func playSound(sound : AudioStream):
 	uiAudioEffects.stop()

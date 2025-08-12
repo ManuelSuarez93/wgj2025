@@ -19,9 +19,9 @@ class_name PhoneMenu
 var numbers : String
 
 signal onCallCorrect(enable : bool)
-signal onCallWrong()
 
 func _ready():
+	quitButton.pressed.connect(closeMenu)
 	callButton.pressed.connect(doCall)
 
 	for button in Numpad.get_children():
@@ -42,7 +42,8 @@ func checkIfNumberCorrect():
 	if(numbers == Solution):
 		onCallCorrect.emit(false)
 		GameManager.UI.playSound(callCorrectAudio)
-		GameManager.UI.setMenuVisible(UIMenu.MenuType.Phone, false, true)
-	else:
-		onCallWrong.emit() 		
+	else: 
 		GameManager.UI.playSound(callIncorrectAudio)
+
+func closeMenu(): 
+	GameManager.UI.setMenuVisible(UIMenu.MenuType.Phone, false, true)

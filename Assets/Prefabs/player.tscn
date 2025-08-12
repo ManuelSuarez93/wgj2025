@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d0bpi0u460egg" path="res://Assets/Sounds/foleys/sonidos del personaje/Pasos/Paso-04.wav" id="5_7xaxw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
+height = 3.0
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "raycast", "PlayerEffects", "AudioTimer", "StepsAudioPlayer", "StepTimer")]
 script = ExtResource("1_4flbx")
@@ -33,7 +34,7 @@ wait_time = 0.6
 autostart = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1044, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93102, 0)
 
 [node name="DetectObjectRaycast" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148726, -0.152356)
@@ -55,5 +56,5 @@ script = ExtResource("3_hqtel")
 current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CapsuleShape3D_d4maf")

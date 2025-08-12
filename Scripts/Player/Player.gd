@@ -17,6 +17,7 @@ class_name PlayerChar
 
 var detectedObject : Triggerable
 var enableMovement : bool 
+var isInCinematic : bool
 var canPlaySound : bool
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -32,14 +33,15 @@ func _ready():
 	raycast.notDetecting.connect(removeDetectedObject)
 
 func _input(event):
-	if(enableMovement):
+	if(enableMovement and !isInCinematic):
 		cameraRotation(event)
+		
 	if event.is_action_pressed("interact") && detectedObject != null:
 		interacted.emit()
 		detectedObject.doTrigger()
 
 func _physics_process(delta):
-	if(enableMovement):
+	if(enableMovement and !isInCinematic):
 		move(delta)
 #endregion
 
@@ -99,8 +101,7 @@ func playEffectSounds(sound : AudioStream, startAt: float = 0, endAt : float =0)
 	PlayerEffects.play(startAt)
 	
 func playStep():
-	print("starting the timer" + str(StepTimer.time_left))
-	if(canPlaySound):
+	if(canPlaySound and enableMovement and !isInCinematic):
 		StepTimer.start()
 		StepsAudioPlayer.stream = Steps[RandomNumberGenerator.new().randi_range(0, Steps.size() - 1)]
 		StepsAudioPlayer.play()

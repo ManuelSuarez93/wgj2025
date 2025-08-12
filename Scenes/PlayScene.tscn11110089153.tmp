@@ -1,0 +1,629 @@
+[gd_scene load_steps=74 format=3 uid="uid://ftyvnfq8bysl"]
+
+[ext_resource type="PackedScene" uid="uid://ddgp1kqvms6fp" path="res://Assets/Prefabs/player.tscn" id="1_a6omc"]
+[ext_resource type="PackedScene" uid="uid://unki5kquekmr" path="res://Assets/Prefabs/UI/ui.tscn" id="2_40cr3"]
+[ext_resource type="PackedScene" uid="uid://6gg6inqwrpu" path="res://Assets/Prefabs/puzzle_area.tscn" id="2_d4maf"]
+[ext_resource type="Script" uid="uid://bmyllshloler0" path="res://Scripts/PuzzleTelefono/LightSwitch.gd" id="3_4gvat"]
+[ext_resource type="AudioStream" uid="uid://dv4un4v6dbe0w" path="res://Assets/Sounds/foleys/sonidos del personaje/Respiracion/respiracinInicio.wav" id="3_40cr3"]
+[ext_resource type="PackedScene" uid="uid://bg6fwxh3xbt8" path="res://Assets/Prefabs/puzzle.tscn" id="3_nq0l7"]
+[ext_resource type="Script" uid="uid://hjsd30fl4sdl" path="res://Scripts/PuzzleTelefono/AreaCalendario.gd" id="4_b0s15"]
+[ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="4_bgpls"]
+[ext_resource type="Texture2D" uid="uid://dwp10jgc1hfv7" path="res://Assets/2D/Calendario.png" id="4_h1tcu"]
+[ext_resource type="AudioStream" uid="uid://dnpqeufirkff3" path="res://Assets/Sounds/musica_loop_what_did_you_do.wav" id="5_bgpls"]
+[ext_resource type="Texture2D" uid="uid://bp2a4hpvnyqbv" path="res://Assets/2D/calendario sin fecha.png" id="5_m2ggp"]
+[ext_resource type="Script" uid="uid://dahbpbmf4b2b8" path="res://Scripts/PuzzleAhorcado/HangmanTrigger.gd" id="7_se04o"]
+[ext_resource type="AudioStream" uid="uid://icvq883s610g" path="res://Assets/Sounds/foleys/switch on ruido blanco.wav" id="8_m1017"]
+[ext_resource type="AudioStream" uid="uid://cv0isaalx1e4x" path="res://Assets/Sounds/Dialogue/audio 1.wav" id="9_2a36k"]
+[ext_resource type="AudioStream" uid="uid://cos85mxn88jd6" path="res://Assets/Sounds/foleys/switch luz/switch on.wav" id="9_qhr7g"]
+[ext_resource type="Texture2D" uid="uid://bpqswnfqj3wh" path="res://Assets/2D/Interruptor apagado.png" id="9_r58c4"]
+[ext_resource type="AudioStream" uid="uid://27e28arstcr2" path="res://Assets/Sounds/foleys/switch luz/switch off.wav" id="10_2d7ec"]
+[ext_resource type="PackedScene" uid="uid://bdcxu00swrnal" path="res://Assets/3D/AssetsImported/house.tscn" id="10_g62kn"]
+[ext_resource type="Script" uid="uid://dv0swg851lvkt" path="res://Scripts/PuzzleTelefono/CinematicsManager.gd" id="10_h1tcu"]
+[ext_resource type="Texture2D" uid="uid://dbd4uneqawxa0" path="res://Assets/2D/Interruptor encendido.png" id="10_h1yu4"]
+[ext_resource type="Script" uid="uid://bio4a0e50wwia" path="res://Scripts/PuzzleTelefono/Telephone.gd" id="11_m2ggp"]
+[ext_resource type="Script" uid="uid://cv8utdgw6g7vt" path="res://Scripts/Door.gd" id="13_crfcr"]
+[ext_resource type="PackedScene" uid="uid://dou5jrnrsilkw" path="res://Assets/3D/AssetsImported/puerta.tscn" id="13_ff4kf"]
+[ext_resource type="AudioStream" uid="uid://c07wsxivaqmhs" path="res://Assets/Sounds/foleys/puerta.wav" id="14_crfcr"]
+[ext_resource type="Script" uid="uid://cbhvx0m5hppjl" path="res://Scripts/PuzzleFotos/AreaFotos.gd" id="16_2d7ec"]
+[ext_resource type="Script" uid="uid://dlmvk5y3osoha" path="res://Scripts/PuzzleFotos/PicturePart.gd" id="16_i5mvb"]
+[ext_resource type="AudioStream" uid="uid://c6jxuubeynsd3" path="res://Assets/Sounds/foleys/acciones/pick up.wav" id="18_bynss"]
+[ext_resource type="Script" uid="uid://blhoucj5m62yu" path="res://Scripts/AreaAhorcado.gd" id="19_ttfme"]
+[ext_resource type="Texture2D" uid="uid://cet1fwjse4qe2" path="res://Assets/2D/Fotos/foto_1.png" id="22_r5t40"]
+[ext_resource type="Texture2D" uid="uid://ywqvh5jjk05l" path="res://Assets/2D/Fotos/foto_2.png" id="23_b6btb"]
+[ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="24_2woa5"]
+[ext_resource type="Texture2D" uid="uid://cs2gmqj5gi3h8" path="res://Assets/2D/Fotos/foto_4.png" id="25_1uib4"]
+[ext_resource type="AudioStream" uid="uid://bl12wxrn0js08" path="res://Assets/Sounds/Dialogue/dialogo.wav" id="25_wp0vb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bgpls"]
+
+[sub_resource type="Sky" id="Sky_40cr3"]
+sky_material = SubResource("ProceduralSkyMaterial_bgpls")
+
+[sub_resource type="Environment" id="Environment_2a36k"]
+background_energy_multiplier = 0.05
+sky = SubResource("Sky_40cr3")
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+tonemap_mode = 2
+tonemap_exposure = 2.0
+ssao_enabled = true
+ssao_radius = 16.0
+ssao_intensity = 8.46
+ssil_enabled = true
+ssil_radius = 10.45
+sdfgi_use_occlusion = true
+sdfgi_bounce_feedback = 1.19
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.15
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40cr3"]
+size = Vector3(2.1416, 2.22754, 4.57324)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g62kn"]
+size = Vector3(1.89209, 0.423828, 2.99304)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mphjd"]
+size = Vector3(2.87207, 1, 2.85925)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqhfx"]
+size = Vector3(1.60791, 4.35071, 2.39844)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgrem"]
+size = Vector3(3.61377, 2.09004, 4.09637)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iysib"]
+size = Vector3(4.77112, 2.33411, 1.83276)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvkt7"]
+size = Vector3(4.27454, 1.01685, 4.49737)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxt64"]
+size = Vector3(6.27197, 4.9082, 1.14258)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1tcu"]
+size = Vector3(10.2836, 7.096, 1.602)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ieufj"]
+size = Vector3(4.39947, 5.68481, 10.3394)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcxcd"]
+size = Vector3(27.5588, 8.58044, 0.922608)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qy1yr"]
+size = Vector3(15.1655, 7.3634, 5.6571)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ymngv"]
+size = Vector3(1, 16.7734, 20.1669)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1d0a"]
+size = Vector3(1, 10.3809, 15.1177)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r862i"]
+size = Vector3(42.3065, 0.00170898, 32.5833)
+
+[sub_resource type="LightmapGIData" id="LightmapGIData_40cr3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r58c4"]
+albedo_texture = ExtResource("5_m2ggp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h1yu4"]
+material = SubResource("StandardMaterial3D_r58c4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1tcu"]
+albedo_texture = ExtResource("4_h1tcu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r862i"]
+material = SubResource("StandardMaterial3D_h1tcu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4maf"]
+albedo_color = Color(0.919875, 0.966723, 0.996456, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yu4"]
+albedo_texture = ExtResource("9_r58c4")
+uv1_scale = Vector3(0.47, 0.47, 0.47)
+uv1_offset = Vector3(0.25, 0.22, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m2ggp"]
+material = SubResource("StandardMaterial3D_h1yu4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u2f0"]
+albedo_texture = ExtResource("10_h1yu4")
+uv1_scale = Vector3(0.47, 0.47, 0.47)
+uv1_offset = Vector3(0.25, 0.22, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qhr7g"]
+material = SubResource("StandardMaterial3D_6u2f0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kam1k"]
+size = Vector3(0.846467, 1, 0.171806)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crfcr"]
+size = Vector3(2, 4.05, 0.781952)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2d7ec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6btb"]
+transparency = 1
+albedo_texture = ExtResource("22_r5t40")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wp0vb"]
+material = SubResource("StandardMaterial3D_b6btb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqnm1"]
+transparency = 1
+albedo_texture = ExtResource("23_b6btb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2woa5"]
+material = SubResource("StandardMaterial3D_tqnm1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcjxj"]
+transparency = 1
+albedo_texture = ExtResource("24_2woa5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1uib4"]
+material = SubResource("StandardMaterial3D_xcjxj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a36k"]
+transparency = 1
+albedo_texture = ExtResource("25_1uib4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uxt64"]
+material = SubResource("StandardMaterial3D_2a36k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40cr3"]
+shading_mode = 0
+albedo_color = Color(0.827451, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["Enviroment"]]
+environment = SubResource("Environment_2a36k")
+
+[node name="Cinematicas" type="Node3D" parent="." node_paths=PackedStringArray("Timer_Comienzo_Escena", "Luz_Comienzo", "Audio_Luz_Player", "Dialogue_player", "Musica") groups=["Cinematics"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3547, 0, 23.862)
+script = ExtResource("10_h1tcu")
+Timer_Comienzo_Escena = NodePath("Comienzo/StartTimer")
+Luz_Comienzo = NodePath("../PuzzleArea1Calendario/LuzComienzo")
+Audio_Luz = ExtResource("8_m1017")
+Audio_Respiracion = ExtResource("3_40cr3")
+Audio_Luz_Player = NodePath("../PuzzleArea1Calendario/AudioStreamPlayer3D")
+Dialogue_player = NodePath("DialoguePlayer")
+Musica = NodePath("MusicPlayer")
+
+[node name="DialoguePlayer" type="AudioStreamPlayer" parent="Cinematicas" groups=["Dialogue"]]
+stream = ExtResource("9_2a36k")
+bus = &"DialogueBus"
+
+[node name="GameOverStream" type="AudioStreamPlayer" parent="Cinematicas" groups=["Sound"]]
+stream = ExtResource("4_bgpls")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Cinematicas" groups=["Music"]]
+stream = ExtResource("5_bgpls")
+
+[node name="Comienzo" type="Node3D" parent="Cinematicas"]
+
+[node name="StartTimer" type="Timer" parent="Cinematicas/Comienzo"]
+wait_time = 0.001
+one_shot = true
+autostart = true
+
+[node name="Llamada" type="Node3D" parent="Cinematicas"]
+
+[node name="TimerStart" type="Timer" parent="Cinematicas/Llamada"]
+wait_time = 1.15
+
+[node name="TimerEnd" type="Timer" parent="Cinematicas/Llamada"]
+wait_time = 1.18
+
+[node name="Player" parent="Cinematicas" groups=["Player"] instance=ExtResource("1_a6omc")]
+transform = Transform3D(0.729446, 0, -0.684038, 0, 1, 0, 0.684038, 0, 0.729446, 32.4046, 10.3816, -0.5714)
+
+[node name="UI" parent="." instance=ExtResource("2_40cr3")]
+
+[node name="Nivel" type="Node3D" parent="."]
+
+[node name="importedHouse" parent="Nivel" instance=ExtResource("10_g62kn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.05264, 8.46718, 16.1641)
+
+[node name="Techo" type="CSGBox3D" parent="Nivel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.4981, 0)
+size = Vector3(100, 1, 100)
+
+[node name="Colisiones" type="Node3D" parent="Nivel"]
+
+[node name="Sillon" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Mesada2" type="CollisionShape3D" parent="Nivel/Colisiones/Sillon"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 27.0939, 11.531, 20.3896)
+shape = SubResource("BoxShape3D_40cr3")
+
+[node name="MesaTelefono" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Mesada2" type="CollisionShape3D" parent="Nivel/Colisiones/MesaTelefono"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 23.8661, 11.2429, 20.0273)
+shape = SubResource("BoxShape3D_g62kn")
+
+[node name="MesaTelefono2" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Mesada2" type="CollisionShape3D" parent="Nivel/Colisiones/MesaTelefono2"]
+transform = Transform3D(0.961761, 0, 0.273965, 0, 1, 0, -0.273965, 0, 0.961761, 23.4149, 11.2429, 16.34)
+shape = SubResource("BoxShape3D_mphjd")
+
+[node name="MesaTelefono3" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Mesada2" type="CollisionShape3D" parent="Nivel/Colisiones/MesaTelefono3"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.461079, 12.9183, 4.155)
+shape = SubResource("BoxShape3D_uqhfx")
+
+[node name="MesaComer" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Mesada1" type="CollisionShape3D" parent="Nivel/Colisiones/MesaComer"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 26.1032, 11.6265, 11.8856)
+shape = SubResource("BoxShape3D_fgrem")
+
+[node name="Mesada2" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Mesada2" type="CollisionShape3D" parent="Nivel/Colisiones/Mesada2"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 9.37403, 11.7149, 9.9841)
+shape = SubResource("BoxShape3D_iysib")
+
+[node name="Cama" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="Cama" type="CollisionShape3D" parent="Nivel/Colisiones/Cama"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 9.07857, 11.5743, 16.7309)
+shape = SubResource("BoxShape3D_rvkt7")
+
+[node name="Paredes" type="StaticBody3D" parent="Nivel/Colisiones"]
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(2.54846, 0, 0, 0, 1.78595, 0, 0, 0, 1.00002, -5.26514, 12.116, 12.5012)
+shape = SubResource("BoxShape3D_uxt64")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -3.50967, 14.0701, 2.74447)
+shape = SubResource("BoxShape3D_h1tcu")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -7.62295, 13.3659, 8.31945)
+shape = SubResource("BoxShape3D_ieufj")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 15.6072, 14.4676, 5.71417)
+shape = SubResource("BoxShape3D_lcxcd")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 5.91282, 14.1669, 24.0432)
+shape = SubResource("BoxShape3D_qy1yr")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 1.76242, 9.24114, 22.4776)
+shape = SubResource("BoxShape3D_ymngv")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 16.2722, 13.5335, 20.5065)
+shape = SubResource("BoxShape3D_l1d0a")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 30.6232, 14.4846, 16.7998)
+disabled = true
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 15.6072, 14.4676, 25.87)
+shape = SubResource("BoxShape3D_lcxcd")
+
+[node name="Piso" type="CollisionShape3D" parent="Nivel/Colisiones/Paredes"]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 10.5989, 10.3909, 11.3754)
+shape = SubResource("BoxShape3D_r862i")
+
+[node name="PuzzleArea1Calendario" parent="." node_paths=PackedStringArray("CalendarioApagado", "CalendarioPrendido", "InterrutporApagado", "InterruptorPrendido", "Interruptor", "Door") instance=ExtResource("2_d4maf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1713, 14.4325, 16.5406)
+script = ExtResource("4_b0s15")
+CalendarioApagado = NodePath("AreaCalendario/CalendarioApagado")
+CalendarioPrendido = NodePath("AreaCalendario/CalendarioPrendido")
+InterrutporApagado = NodePath("AreaCalendario/LuzCalendario/Interruptor/InterruptorApagado")
+InterruptorPrendido = NodePath("AreaCalendario/LuzCalendario/Interruptor/InterruptorEncendido")
+Interruptor = NodePath("AreaCalendario/LuzCalendario/Interruptor")
+Door = NodePath("AnimatableBody3D")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="PuzzleArea1Calendario"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.61644, -1.26849, 0.640987)
+size = Vector3(14.4603, 7.26082, 18.586)
+ambient_mode = 2
+ambient_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+ambient_color_energy = 1.6
+
+[node name="LightmapGI" type="LightmapGI" parent="PuzzleArea1Calendario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709932, -3.4325, -1.91726)
+light_data = SubResource("LightmapGIData_40cr3")
+
+[node name="LuzComienzo" type="SpotLight3D" parent="PuzzleArea1Calendario"]
+transform = Transform3D(-1, 8.74228e-08, -1.90582e-21, -1.04251e-15, -1.19249e-08, 1, 8.74228e-08, 1, 1.19249e-08, 2.685, 2.1275, 3.74092)
+light_color = Color(0.854902, 1, 1, 1)
+light_energy = 10.0
+light_volumetric_fog_energy = 0.0
+light_specular = 1.95
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 4.08
+distance_fade_enabled = true
+spot_range = 7.92156
+spot_angle_attenuation = 10.5561
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario" groups=["Sound"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6668, -0.9542, -4.96284)
+
+[node name="Ventana" type="MeshInstance3D" parent="PuzzleArea1Calendario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52291, -1.55288, -7.67205)
+skeleton = NodePath("../LuzComienzo")
+
+[node name="AreaCalendario" type="Node3D" parent="PuzzleArea1Calendario"]
+
+[node name="CalendarioApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario/AreaCalendario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52291, -1.55288, -7.67205)
+mesh = SubResource("QuadMesh_h1yu4")
+skeleton = NodePath("../../LuzComienzo")
+
+[node name="CalendarioPrendido" type="MeshInstance3D" parent="PuzzleArea1Calendario/AreaCalendario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52291, -1.55288, -7.67205)
+mesh = SubResource("QuadMesh_r862i")
+skeleton = NodePath("../../LuzComienzo")
+
+[node name="LuzCalendario" type="CSGSphere3D" parent="PuzzleArea1Calendario/AreaCalendario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47135, 0.0729351, -7.66332)
+material = SubResource("StandardMaterial3D_d4maf")
+
+[node name="Interruptor" type="Area3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario" node_paths=PackedStringArray("lights", "audioPlayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02, 1.132, -1.82475)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_4gvat")
+lights = [NodePath("../LuzEnRespuesta"), NodePath("../FocoDeLuz")]
+interruptorOnAudio = ExtResource("9_qhr7g")
+interruptorOffAudio = ExtResource("10_2d7ec")
+audioPlayer = NodePath("AudioInterruptor")
+
+[node name="InterruptorApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario/Interruptor"]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.61042, 1.83109)
+mesh = SubResource("QuadMesh_m2ggp")
+skeleton = NodePath("../../../../LuzComienzo")
+
+[node name="InterruptorEncendido" type="MeshInstance3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario/Interruptor"]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.61042, 1.81235)
+visible = false
+mesh = SubResource("QuadMesh_qhr7g")
+skeleton = NodePath("../../../../LuzComienzo")
+
+[node name="Collision" type="CollisionShape3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario/Interruptor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0253201, -2.54102, 1.83944)
+shape = SubResource("BoxShape3D_kam1k")
+
+[node name="AudioInterruptor" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario/Interruptor" groups=["Sound"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.61042, 1.81235)
+
+[node name="LuzEnRespuesta" type="OmniLight3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario"]
+transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.0386982, -1.49774, 0.115336)
+visible = false
+light_color = Color(1, 1, 0.701961, 1)
+light_energy = 4.913
+light_indirect_energy = 3.045
+light_volumetric_fog_energy = 0.7
+light_specular = 0.83
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 0.341478
+omni_attenuation = -1.638
+
+[node name="FocoDeLuz" type="SpotLight3D" parent="PuzzleArea1Calendario/AreaCalendario/LuzCalendario"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -0.0254822, -0.361685, 0)
+visible = false
+light_color = Color(1, 1, 0.701961, 1)
+light_indirect_energy = 6.235
+light_specular = 1.332
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 4.67169
+spot_attenuation = -0.18
+spot_angle = 30.6445
+spot_angle_attenuation = 1.27456
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("AudioPlayer")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.71016, -4.1585, -4.54087)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("13_crfcr")
+TweenRotation = Vector3(0, -1.5, 0)
+TweenDuration = 1.0
+Audio = ExtResource("14_crfcr")
+AudioPlayer = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea1Calendario/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985181, 1.9, -0.155777)
+shape = SubResource("BoxShape3D_crfcr")
+
+[node name="PUERTA" parent="PuzzleArea1Calendario/AnimatableBody3D" instance=ExtResource("13_ff4kf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73518, 1.9, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/AnimatableBody3D" groups=["Sound"]]
+
+[node name="Telephone" parent="PuzzleArea1Calendario" instance=ExtResource("3_nq0l7")]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6802, -2.73949, 2.7682)
+script = ExtResource("11_m2ggp")
+
+[node name="CSGBox3D" parent="PuzzleArea1Calendario/Telephone" index="0"]
+visible = false
+
+[node name="PuzzleArea2Fotos" parent="." instance=ExtResource("2_d4maf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07975, 13.3562, 12.2925)
+script = ExtResource("16_2d7ec")
+
+[node name="PicturePart" type="Area3D" parent="PuzzleArea2Fotos" groups=["Picture"]]
+transform = Transform3D(0.403187, -0.910644, 0.0903741, -0.00179618, 0.0979691, 0.995188, -0.915116, -0.401409, 0.0378642, 5.18094, -0.958904, -1.97949)
+collision_layer = 2
+script = ExtResource("16_i5mvb")
+pickupAudio = ExtResource("18_bynss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart"]
+shape = SubResource("BoxShape3D_2d7ec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleArea2Fotos/PicturePart"]
+mesh = SubResource("QuadMesh_wp0vb")
+
+[node name="PicturePart2" type="Area3D" parent="PuzzleArea2Fotos" groups=["Picture"]]
+transform = Transform3D(-0.204701, -0.978825, -4.27858e-08, 0, -4.37114e-08, 1, -0.978825, 0.204701, 8.94777e-09, 6.00768, -1.84919, 5.8405)
+collision_layer = 2
+script = ExtResource("16_i5mvb")
+picturePartNumber = 1
+pickupAudio = ExtResource("18_bynss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart2"]
+shape = SubResource("BoxShape3D_2d7ec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleArea2Fotos/PicturePart2"]
+mesh = SubResource("QuadMesh_2woa5")
+
+[node name="PicturePart3" type="Area3D" parent="PuzzleArea2Fotos" groups=["Picture"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.15405, -3.04855, 1.70965)
+collision_layer = 2
+script = ExtResource("16_i5mvb")
+picturePartNumber = 3
+pickupAudio = ExtResource("18_bynss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart3"]
+shape = SubResource("BoxShape3D_2d7ec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleArea2Fotos/PicturePart3"]
+mesh = SubResource("QuadMesh_1uib4")
+
+[node name="PicturePart4" type="Area3D" parent="PuzzleArea2Fotos" groups=["Picture"]]
+transform = Transform3D(-0.00893235, 0.996097, -0.0878154, 0.1008, 0.0882685, 0.990983, 0.994867, 0, -0.101195, 0.233877, -2.96932, -2.91056)
+collision_layer = 2
+script = ExtResource("16_i5mvb")
+picturePartNumber = 2
+pickupAudio = ExtResource("18_bynss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/PicturePart4"]
+shape = SubResource("BoxShape3D_2d7ec")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PuzzleArea2Fotos/PicturePart4"]
+mesh = SubResource("QuadMesh_uxt64")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="PuzzleArea2Fotos" node_paths=PackedStringArray("AudioPlayer")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.47508, -3.11406, -0.229911)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("13_crfcr")
+TweenRotation = Vector3(0, -1.5, 0)
+TweenDuration = 1.0
+Audio = ExtResource("14_crfcr")
+AudioPlayer = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PuzzleArea2Fotos/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985181, 1.9, -0.155777)
+shape = SubResource("BoxShape3D_crfcr")
+
+[node name="PUERTA" parent="PuzzleArea2Fotos/AnimatableBody3D" instance=ExtResource("13_ff4kf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.73518, 1.9, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea2Fotos/AnimatableBody3D" groups=["Sound"]]
+
+[node name="LuzCuarto" type="SpotLight3D" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.95353, 2.13697, 1.72154)
+visible = false
+light_color = Color(1, 1, 0.803922, 1)
+light_indirect_energy = 12.607
+light_volumetric_fog_energy = 3.312
+spot_range = 8.04503
+spot_angle = 50.8
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86633, -0.173695, 0)
+size = Vector3(14.2673, 7.07519, 20)
+
+[node name="LuzLampara" type="OmniLight3D" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.222458, -0.468922, 6.44657)
+light_color = Color(0.937255, 1, 0.87451, 1)
+light_energy = 0.1
+light_indirect_energy = 15.613
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 3.1948
+
+[node name="LuzTele" type="OmniLight3D" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09322, 0.940394, -3.7119)
+light_energy = 0.05
+light_indirect_energy = 1.801
+light_volumetric_fog_energy = 4.227
+shadow_enabled = true
+omni_range = 4.664
+
+[node name="LuzLampara2" type="OmniLight3D" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.23838, -1.09948, 6.5796)
+light_color = Color(0.937255, 1, 0.87451, 1)
+light_energy = 0.1
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 0.375
+distance_fade_enabled = true
+omni_range = 4.83588
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2563, -0.464759, 6.488)
+light_color = Color(1, 1, 0.862745, 1)
+light_energy = 0.545
+light_indirect_energy = 1.065
+distance_fade_enabled = true
+omni_range = 4.15968
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="PuzzleArea2Fotos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.33343, -1.08084, 6.62676)
+light_color = Color(1, 1, 0.862745, 1)
+light_energy = 0.545
+light_indirect_energy = 1.065
+distance_fade_enabled = true
+omni_range = 3.60882
+
+[node name="PuzzleArea3Ahorcado" parent="." instance=ExtResource("2_d4maf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29366, 13.9547, 6.72569)
+script = ExtResource("19_ttfme")
+
+[node name="Puzzle" parent="PuzzleArea3Ahorcado" instance=ExtResource("3_nq0l7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35574, 0.984306, -2.05428)
+script = ExtResource("7_se04o")
+
+[node name="CSGBox3D" parent="PuzzleArea3Ahorcado/Puzzle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118012, -2.15608, -0.201719)
+visible = false
+
+[node name="CollisionShape3D" parent="PuzzleArea3Ahorcado/Puzzle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.08012, 0)
+
+[node name="LuzCocinaModelo2" type="Node3D" parent="PuzzleArea3Ahorcado"]
+
+[node name="LuzCocina" type="SpotLight3D" parent="PuzzleArea3Ahorcado/LuzCocinaModelo2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.91987, 1.66494, 0.0065031)
+light_color = Color(0.929412, 1, 1, 1)
+spot_range = 5.99043
+spot_angle = 48.249
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PuzzleArea3Ahorcado/LuzCocinaModelo2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02682, 1.90764, 0.240122)
+size = Vector3(1, 0.546448, 5.25726)
+
+[node name="LuzCocinaModelo" type="CSGBox3D" parent="PuzzleArea3Ahorcado/LuzCocinaModelo2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04414, 1.68086, 0.183716)
+size = Vector3(0.380371, 0.252441, 4.87964)
+material = SubResource("StandardMaterial3D_40cr3")
+
+[node name="DialoguePlayer" type="AudioStreamPlayer3D" parent="." groups=["Dialogue"]]
+stream = ExtResource("25_wp0vb")
+
+[editable path="PuzzleArea1Calendario"]
+[editable path="PuzzleArea1Calendario/Telephone"]
+[editable path="PuzzleArea3Ahorcado/Puzzle"]

@@ -7,6 +7,8 @@ class_name PuzzleArea
 var puzzles : Array[Triggerable]
 var finishedPuzzles: Array[Triggerable]
 
+signal puzzleFinished
+
 func checkForPuzzles():
 	for children in self.get_children():
 		if children is Triggerable:
@@ -19,7 +21,4 @@ func puzzleSolved(puzzle : Triggerable):
 	
 func checkForFinishPuzzles():
 	if(finishedPuzzles.size() == puzzles.size()):
-		finishPuzzle()
-		
-func finishPuzzle():
-	Door.open()
+		puzzleFinished.emit()

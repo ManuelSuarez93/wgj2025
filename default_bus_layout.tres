@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://554x8ok1m6kf"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://554x8ok1m6kf"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
 resource_name = "Reverb"
@@ -6,13 +6,49 @@ room_size = 0.18
 damping = 0.66
 spread = 0.46
 
+[sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_j3pel"]
+resource_name = "BandPassFilter"
+cutoff_hz = 11047.0
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_j3pel"]
+resource_name = "Phaser"
+range_max_hz = 1572.09
+rate_hz = 0.01
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+
 [resource]
-bus/0/volume_db = -2.51026
+bus/0/volume_db = 3.2425
 bus/1/name = &"DialogueBus"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -17.0211
+bus/1/volume_db = -1.51925
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectReverb_g28q7")
 bus/1/effect/0/enabled = true
+bus/2/name = &"TelefonBus"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -1.32149
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectBandPassFilter_j3pel")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectPhaser_j3pel")
+bus/2/effect/1/enabled = true
+bus/3/name = &"GritoFinal"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
+bus/3/effect/0/enabled = true
+bus/4/name = &"GameOverSound"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -8.79822
+bus/4/send = &"Master"

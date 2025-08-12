@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cuuie6xusfdod"]
+[gd_scene load_steps=16 format=3 uid="uid://cuuie6xusfdod"]
 
 [ext_resource type="Script" uid="uid://8fqghgvlv822" path="res://Scenes/EndCredits.gd" id="1_8q276"]
 [ext_resource type="Texture2D" uid="uid://c6ywsb1dysbe7" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_1.png" id="2_8q276"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://mnsaaejcf5lw" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_10.png" id="11_ut8qr"]
 [ext_resource type="Texture2D" uid="uid://qg2c4hphe5ge" path="res://Assets/2D/drive-download-20250810T155829Z-1-001/creditos/credit_11.png" id="12_71h7p"]
 [ext_resource type="AudioStream" uid="uid://dnpqeufirkff3" path="res://Assets/Sounds/musica_loop_what_did_you_do.wav" id="12_jf7ne"]
+[ext_resource type="Texture2D" uid="uid://byio8p5tufs3a" path="res://Assets/2D/iconos/cruz.svg" id="14_wm7pb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x8k2e"]
 animations = [{
@@ -55,9 +56,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="EndCredits" type="Node2D" node_paths=PackedStringArray("creditos")]
+[node name="EndCredits" type="Node2D" node_paths=PackedStringArray("creditos", "quitButton")]
 script = ExtResource("1_8q276")
 creditos = NodePath("AnimatedSprite2D")
+quitButton = NodePath("Control/QuitButton")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(960, 540)
@@ -68,3 +70,23 @@ autoplay = "anim"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_jf7ne")
 autoplay = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="QuitButton" type="TextureButton" parent="Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 39.582
+anchor_right = 39.582
+offset_left = -74533.4
+offset_top = -2.0
+offset_right = -74293.4
+offset_bottom = 238.0
+grow_horizontal = 0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("14_wm7pb")
