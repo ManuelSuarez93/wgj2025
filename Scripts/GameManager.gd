@@ -1,19 +1,34 @@
-extends Node3D
+extends Node
 
-var player : Player:
+var Player : PlayerChar:
 	get:
-		if player == null: 
-			player = get_tree().get_first_node_in_group("Player")
-		return player
+		if Player == null: 
+			Player = get_tree().get_first_node_in_group("Player")
+		return Player
 		
-var enviroment : WorldEnvironment:
+var Enviroment : WorldEnvironment:
 	get:
-		if enviroment == null: 
-			enviroment = get_tree().get_first_node_in_group("Enviroment")
-		return enviroment
+		if Enviroment == null: 
+			Enviroment = get_tree().get_first_node_in_group("Enviroment")
+		return Enviroment
 
-var cinematics : Cinematics:	
+var Cinematics : CinematicsManager:	
 	get:
-		if cinematics == null: 
-			cinematics = get_tree().get_first_node_in_group("Cinematics")
-		return cinematics
+		if Cinematics == null: 
+			Cinematics = get_tree().get_first_node_in_group("Cinematics")
+		return Cinematics
+
+var UI : PlayerUI:
+	get:
+		if UI == null: 
+			UI = get_tree().get_first_node_in_group("UI")
+		return UI
+
+var LevelStarted : bool
+var LevelOver : bool
+var GamePaused : bool
+
+func pauseGame(pause : bool):
+	Player.setEnableMovement(!pause)
+	GamePaused = pause
+	get_tree().paused = pause
