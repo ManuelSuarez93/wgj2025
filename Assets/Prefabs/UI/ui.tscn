@@ -55,12 +55,8 @@ layout_mode = 1
 [node name="MenuPhone" parent="." instance=ExtResource("6_2p3kb")]
 visible = false
 layout_mode = 1
-
-[node name="BlackoutStart" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 2401.0
-offset_bottom = 1392.0
-color = Color(0, 0, 0, 1)
+offset_left = 8.0
+offset_right = -1871.83
 
 [node name="MenuGameOver" parent="." instance=ExtResource("4_q4c01")]
 visible = false
@@ -70,8 +66,10 @@ layout_mode = 1
 process_mode = 2
 visible = false
 
-[node name="EndGameTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
+[node name="BlackoutStart" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2401.0
+offset_bottom = 1392.0
+color = Color(0, 0, 0, 1)
 
 [node name="UISounds" type="AudioStreamPlayer" parent="." groups=["Sound"]]

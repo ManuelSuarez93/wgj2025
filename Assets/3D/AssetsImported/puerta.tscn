@@ -1,9 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dou5jrnrsilkw"]
+[gd_scene load_steps=6 format=3 uid="uid://dou5jrnrsilkw"]
 
 [ext_resource type="PackedScene" uid="uid://g0dps07bgwhv" path="res://Assets/3D/3D/PUERTA.glb" id="1_rir4e"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xyfph"]
+points = PackedVector3Array(30.458, -1.7682, -2.56986, -27.5805, -4.48903, -25.2456, -27.5805, -1.7682, -25.2456, 30.458, -4.48903, -25.2456, -27.5805, -4.48903, -2.56986, -27.5805, -1.7682, -2.56986, 30.458, -1.7682, -25.2456, 30.458, -4.48903, -2.56986)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3j7h7"]
+points = PackedVector3Array(30.4637, -1.7682, 3.77873, 2.34578, -4.48903, -2.56924, 2.34578, -1.7682, -2.56924, 30.4637, -4.48903, -2.56924, 2.34578, -4.48903, 3.77873, 2.34578, -1.7682, 3.77873, 30.4637, -1.7682, -2.56924, 30.4637, -4.48903, 3.77873)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3i3bf"]
+points = PackedVector3Array(-2.19186, -1.7682, 3.77873, -27.5837, -4.48903, -2.56924, -27.5837, -1.7682, -2.56924, -2.19186, -4.48903, -2.56924, -27.5837, -4.48903, 3.77873, -27.5837, -1.7682, 3.77873, -2.19186, -1.7682, -2.56924, -2.19186, -4.48903, 3.77873)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jxh0q"]
+points = PackedVector3Array(-2.18937, -5.39553, -0.755445, 2.34578, -1.76829, 3.77873, -2.18937, -1.76829, 3.77873, 1.43795, 1.85992, -1.66203, 1.43795, -8.11742, -1.66203, -2.18937, -1.76829, -2.56924, -1.28199, -8.11742, 1.05773, -1.28199, 1.85992, 1.05773, 2.34578, -1.76829, -2.56924, 2.08475, -4.3326, 3.41336, -1.28199, -8.11742, -1.66203, 1.43795, -8.11742, 1.05773, -1.28199, 1.85992, -1.66203, 1.43795, 1.85992, 1.05773, -1.92834, -4.3326, 3.41336, -2.18937, -5.39553, 1.05773, 2.08475, -4.3326, -2.20387, -1.92834, -4.3326, -2.20387)
 
 [node name="PUERTA" instance=ExtResource("1_rir4e")]
 
 [node name="puertas" parent="." index="0"]
 transform = Transform3D(0, -0.0465118, 0, 0.07, 0, 0, 0, 0, 0.07, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="puertas" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="puertas/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_xyfph")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="puertas/StaticBody3D" index="1"]
+shape = SubResource("ConvexPolygonShape3D_3j7h7")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="puertas/StaticBody3D" index="2"]
+shape = SubResource("ConvexPolygonShape3D_3i3bf")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="puertas/StaticBody3D" index="3"]
+shape = SubResource("ConvexPolygonShape3D_jxh0q")

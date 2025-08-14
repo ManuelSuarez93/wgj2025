@@ -33,14 +33,21 @@ ahorcadoImages = [NodePath("AhorcadoStages/Ahorcado2"), NodePath("AhorcadoStages
 quitButton = NodePath("QuitButton")
 
 [node name="AhorcadoStages" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 1.667
+anchor_bottom = 1.667
+offset_right = -1880.38
+offset_bottom = -1040.22
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Ahorcado1" type="TextureRect" parent="AhorcadoStages"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_right = -0.00012207
+offset_bottom = -0.00012207
 texture = ExtResource("4_mg2cg")
 
 [node name="Ahorcado2" type="TextureRect" parent="AhorcadoStages"]
@@ -87,12 +94,12 @@ texture = ExtResource("10_vli8p")
 
 [node name="Tutorial" type="Label" parent="."]
 layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.667
+anchor_bottom = 1.671
 offset_left = 1104.0
 offset_top = 763.0
-offset_right = -192.0
-offset_bottom = -269.0
+offset_right = -960.384
+offset_bottom = -703.808
 theme = ExtResource("11_4063p")
 text = "Click on the box, write the letter and press enter to submit"
 label_settings = SubResource("LabelSettings_7erfr")

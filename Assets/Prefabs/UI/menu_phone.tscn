@@ -57,10 +57,14 @@ offset_right = -0.0131836
 offset_bottom = 0.0195313
 
 [node name="NumbersBackground" type="ColorRect" parent="NumberDisplay"]
-layout_mode = 0
-offset_left = -8.0
-offset_right = 264.0
-offset_bottom = 56.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_right = 0.993
+anchor_bottom = 0.815
+offset_left = 0.0318842
+offset_right = -0.043457
+offset_bottom = 0.00881577
 color = Color(0, 0, 0, 1)
 
 [node name="NumbersLabel" type="Label" parent="NumberDisplay"]
@@ -68,11 +72,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -0.651489
+offset_bottom = -12.7008
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0.670588, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_pr6kt")
 theme_override_font_sizes/font_size = 46
+text = "1234"
 horizontal_alignment = 2
 
 [node name="Numpad" type="GridContainer" parent="."]
@@ -81,9 +89,10 @@ anchor_left = 20.8
 anchor_top = 11.2
 anchor_right = 27.2
 anchor_bottom = 20.0
-offset_left = -0.00012207
-offset_top = -3.05176e-05
-offset_bottom = -96.0078
+offset_left = 15.5919
+offset_top = 8.41522
+offset_right = 15.592
+offset_bottom = -71.4014
 theme_override_constants/h_separation = 32
 theme_override_constants/v_separation = 32
 columns = 3

@@ -209,3 +209,39 @@ theme_override_styles/grabber_area_highlight = ExtResource("6_fjtmr")
 max_value = 1.0
 step = 0.1
 value = 1.0
+
+[node name="Resolutionss" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 17.6
+anchor_top = 20.8
+anchor_right = 27.2
+anchor_bottom = 22.4
+offset_top = -6.10352e-05
+offset_bottom = -6.10352e-05
+
+[node name="Label" type="Label" parent="Resolutionss"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 18.25
+anchor_top = 17.975
+anchor_right = 25.2
+anchor_bottom = 19.75
+offset_left = -6993.0
+offset_top = -1134.4
+offset_right = -9325.8
+offset_bottom = -1177.0
+grow_horizontal = 2
+text = "Effect
+"
+label_settings = SubResource("LabelSettings_muf8v")
+
+[node name="OptionButton" type="OptionButton" parent="Resolutionss"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.458
+anchor_top = 0.375
+anchor_right = 0.958
+anchor_bottom = 0.687
+offset_left = 0.127991
+offset_right = 0.127991
+offset_bottom = 0.0319977

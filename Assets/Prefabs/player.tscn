@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddgp1kqvms6fp"]
+[gd_scene load_steps=10 format=3 uid="uid://ddgp1kqvms6fp"]
 
 [ext_resource type="Script" uid="uid://jspwtj0ibn5y" path="res://Scripts/Player/Player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dnac7qvd8hcl5" path="res://Scripts/Player/DetectObjectRaycast.gd" id="2_i3pqv"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://g25q00nftybm" path="res://Assets/Sounds/foleys/sonidos del personaje/Pasos/Paso-02.wav" id="3_j73l1"]
 [ext_resource type="AudioStream" uid="uid://cctgoi6j0m6vn" path="res://Assets/Sounds/foleys/sonidos del personaje/Pasos/Paso-03.wav" id="4_8nnst"]
 [ext_resource type="AudioStream" uid="uid://d0bpi0u460egg" path="res://Assets/Sounds/foleys/sonidos del personaje/Pasos/Paso-04.wav" id="5_7xaxw"]
+[ext_resource type="FontFile" uid="uid://bhe2aragi8qm3" path="res://Assets/Font/BarlowCondensed-ExtraLightItalic.ttf" id="7_j73l1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d4maf"]
 height = 3.0
@@ -38,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93102, 0)
 
 [node name="DetectObjectRaycast" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148726, -0.152356)
+visible = false
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
 collide_with_areas = true
@@ -47,9 +49,10 @@ script = ExtResource("2_i3pqv")
 [node name="LabelDialogo" type="Label3D" parent="Camera3D"]
 transform = Transform3D(-0.709563, 0.118045, -0.694685, 0.0887824, 0.992988, 0.0780508, 0.699027, -0.00629378, -0.715068, -0.0986329, 0.418088, -1.93012)
 visible = false
-modulate = Color(1, 1, 1, 0)
-outline_modulate = Color(1, 1, 1, 0)
-text = "frerergeg"
+billboard = 1
+double_sided = false
+text = "What did you do?"
+font = ExtResource("7_j73l1")
 script = ExtResource("3_hqtel")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
