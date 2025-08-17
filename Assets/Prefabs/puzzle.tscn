@@ -2,7 +2,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d4maf"]
 
-[node name="Puzzle" type="Area3D" groups=["Puzzle"]]
+[node name="Puzzle" type="Area3D"]
 collision_layer = 2
 collision_mask = 0
 

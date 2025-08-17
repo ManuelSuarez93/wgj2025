@@ -49,10 +49,9 @@ sky_material = SubResource("ProceduralSkyMaterial_bgpls")
 [sub_resource type="Environment" id="Environment_2a36k"]
 background_energy_multiplier = 0.05
 sky = SubResource("Sky_40cr3")
-ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 1
 tonemap_mode = 2
-tonemap_exposure = 2.0
+tonemap_exposure = 1.86
 ssao_enabled = true
 ssao_radius = 16.0
 ssao_intensity = 8.46
@@ -60,8 +59,14 @@ ssil_enabled = true
 ssil_radius = 10.45
 sdfgi_use_occlusion = true
 sdfgi_bounce_feedback = 1.19
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 0.5
+fog_depth_end = 15.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.15
+volumetric_fog_albedo = Color(0.197937, 0.197937, 0.197937, 1)
+volumetric_fog_ambient_inject = 1.08
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4maf"]
 albedo_color = Color(0.919875, 0.966723, 0.996456, 1)
@@ -84,8 +89,6 @@ material = SubResource("StandardMaterial3D_6u2f0")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kam1k"]
 size = Vector3(0.846467, 1, 0.171806)
-
-[sub_resource type="LightmapGIData" id="LightmapGIData_40cr3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r58c4"]
 albedo_texture = ExtResource("5_m2ggp")
@@ -161,8 +164,19 @@ albedo_texture = ExtResource("35_uqhfx")
 [sub_resource type="QuadMesh" id="QuadMesh_allic"]
 material = SubResource("StandardMaterial3D_v1kvb")
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m1dgk"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdkau"]
 albedo_texture = ExtResource("39_m1dgk")
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0.187176, 0.187176, 0.187176, 1)
+emission_operator = 1
+emission_texture = ExtResource("39_m1dgk")
+rim = 0.25
+rim_tint = 1.0
+clearcoat_roughness = 1.0
+clearcoat_texture = SubResource("NoiseTexture2D_m1dgk")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ic4nc"]
 material = SubResource("StandardMaterial3D_bdkau")
@@ -336,12 +350,10 @@ spot_angle_attenuation = 1.27456
 [node name="LuzComienzo" type="SpotLight3D" parent="PuzzleArea1Calendario/Iluminacion"]
 transform = Transform3D(-1, 8.74228e-08, -1.90582e-21, -1.04251e-15, -1.19249e-08, 1, 8.74228e-08, 1, 1.19249e-08, 2.685, 2.1275, 3.74092)
 light_color = Color(0.854902, 1, 1, 1)
-light_energy = 10.0
-light_volumetric_fog_energy = 0.0
-light_specular = 1.95
+light_energy = 15.04
+light_indirect_energy = 9.139
 light_bake_mode = 1
 shadow_enabled = true
-shadow_normal_bias = 4.08
 distance_fade_enabled = true
 spot_range = 7.92156
 spot_angle_attenuation = 10.5561
@@ -353,14 +365,10 @@ ambient_mode = 2
 ambient_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
 ambient_color_energy = 1.6
 
-[node name="LightmapGI" type="LightmapGI" parent="PuzzleArea1Calendario/Iluminacion"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.709932, -3.4325, -1.91726)
-light_data = SubResource("LightmapGIData_40cr3")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario" groups=["Sound"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6668, -0.9542, -4.96284)
 
-[node name="PuzzleTelefono" parent="PuzzleArea1Calendario" instance=ExtResource("3_nq0l7")]
+[node name="PuzzleTelefono" parent="PuzzleArea1Calendario" groups=["Telephone"] instance=ExtResource("3_nq0l7")]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6802, -2.73949, 2.7682)
 script = ExtResource("11_m2ggp")
@@ -404,6 +412,7 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.25, 1.5, 1.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9202, 3.3562, 12.2925)
 script = ExtResource("16_2d7ec")
 Door = NodePath("Elementos/Puerta")
+PuzzleType = "Picture"
 
 [node name="Puzzle" type="Node3D" parent="PuzzleArea2Fotos"]
 
@@ -539,12 +548,16 @@ size = Vector3(14.2673, 7.07519, 20)
 [node name="PuzzleArea3Ahorcado" parent="." instance=ExtResource("2_d4maf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2937, 3.9547, 6.72569)
 script = ExtResource("19_ttfme")
+PuzzleType = "HangmanLetter"
 
 [node name="Iluminacion" type="Node3D" parent="PuzzleArea3Ahorcado"]
 
 [node name="ReflectionProbe2" type="ReflectionProbe" parent="PuzzleArea3Ahorcado/Iluminacion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.748388, -0.772195, 1.44181)
+intensity = 0.22
 size = Vector3(9.25, 7.07519, 9.75)
+mesh_lod_threshold = 0.0
+ambient_color = Color(0.0419419, 0.107368, 0.178597, 1)
 
 [node name="LuzCocina" type="SpotLight3D" parent="PuzzleArea3Ahorcado/Iluminacion"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.91987, 1.66494, 0.00650311)
@@ -553,14 +566,18 @@ spot_range = 5.99043
 spot_angle = 48.249
 
 [node name="LuzVentana" type="OmniLight3D" parent="PuzzleArea3Ahorcado/Iluminacion"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.856159, -0.8922, 5.93681)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.856159, -0.8922, 5.48236)
+layers = 2
 light_color = Color(0.232997, 0.34085, 0.347511, 1)
-light_energy = 1.92
+light_energy = 0.43
+light_indirect_energy = 0.95
+light_volumetric_fog_energy = 0.765
+light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.0
+shadow_blur = 0.0
 distance_fade_enabled = true
-omni_range = 2.5
-omni_shadow_mode = 0
+omni_range = 3.457
+omni_attenuation = -1.214
 
 [node name="Elementos" type="Node3D" parent="PuzzleArea3Ahorcado"]
 
@@ -586,13 +603,13 @@ mesh = SubResource("QuadMesh_allic")
 skeleton = NodePath("../..")
 
 [node name="Ventana" type="MeshInstance3D" parent="PuzzleArea3Ahorcado/Elementos"]
-transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0.856159, -0.8922, 5.68681)
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0.856159, -0.8922, 5.71834)
 mesh = SubResource("QuadMesh_ic4nc")
 skeleton = NodePath("../../..")
 
 [node name="Puzzle" type="Node3D" parent="PuzzleArea3Ahorcado"]
 
-[node name="PuzzleAhorcado" parent="PuzzleArea3Ahorcado/Puzzle" instance=ExtResource("3_nq0l7")]
+[node name="PuzzleAhorcado" parent="PuzzleArea3Ahorcado/Puzzle" groups=["HangmanLetter"] instance=ExtResource("3_nq0l7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35574, 0.984306, -2.05428)
 script = ExtResource("7_se04o")
 
