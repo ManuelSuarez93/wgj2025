@@ -50,11 +50,10 @@ func _ready():
 	#Seteo de comienzo
 	GameManager.UI.Telephnone_Menu.onCallCorrect.connect(onTelephonePuzzleFinished)
 	Timer_Comienzo_Escena.timeout.connect(onTimerFirstSceneFinished)
-	GameManager.Cinematics.playDialogue(GameManager.Cinematics.Dialogo1)
+	#GameManager.Cinematics.playDialogue(GameManager.Cinematics.Dialogo1)
 	#Seteo llamada
 	
 	Timer_Comienza_Llamada.timeout.connect(func():
-		GameManager.Player.isInCinematic = true
 		AudioTelefono.stream = LetMeExplain
 		AudioTelefono.play())
 	Timer_Termina_Llamada.timeout.connect(func(): 
@@ -99,6 +98,7 @@ func onTimerFirstSceneFinished():
 	GameManager.UI.BlackoutImage.visible = false
 
 func onTelephonePuzzleFinished(enable : bool):
+	GameManager.Player.isInCinematic = true
 	Timer_Comienza_Llamada.start()
 	Timer_Termina_Llamada.start()
 	Musica.play()

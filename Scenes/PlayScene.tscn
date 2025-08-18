@@ -1,10 +1,11 @@
-[gd_scene load_steps=76 format=3 uid="uid://ftyvnfq8bysl"]
+[gd_scene load_steps=77 format=3 uid="uid://ftyvnfq8bysl"]
 
 [ext_resource type="PackedScene" uid="uid://ddgp1kqvms6fp" path="res://Assets/Prefabs/player.tscn" id="1_a6omc"]
 [ext_resource type="PackedScene" uid="uid://unki5kquekmr" path="res://Assets/Prefabs/UI/ui.tscn" id="2_40cr3"]
 [ext_resource type="PackedScene" uid="uid://6gg6inqwrpu" path="res://Assets/Prefabs/puzzle_area.tscn" id="2_d4maf"]
 [ext_resource type="Script" uid="uid://bmyllshloler0" path="res://Scripts/PuzzleTelefono/LightSwitch.gd" id="3_4gvat"]
 [ext_resource type="AudioStream" uid="uid://dv4un4v6dbe0w" path="res://Assets/Sounds/foleys/sonidos del personaje/Respiracion/respiracinInicio.wav" id="3_40cr3"]
+[ext_resource type="FontFile" uid="uid://be7f8ts02digx" path="res://Assets/Font/BarlowCondensed-Bold.ttf" id="3_bdkau"]
 [ext_resource type="PackedScene" uid="uid://bg6fwxh3xbt8" path="res://Assets/Prefabs/puzzle.tscn" id="3_nq0l7"]
 [ext_resource type="Script" uid="uid://hjsd30fl4sdl" path="res://Scripts/PuzzleTelefono/AreaCalendario.gd" id="4_b0s15"]
 [ext_resource type="AudioStream" uid="uid://bjebandvo64l2" path="res://Assets/Sounds/game over.wav" id="4_bgpls"]
@@ -29,7 +30,7 @@
 [ext_resource type="Script" uid="uid://cbhvx0m5hppjl" path="res://Scripts/PuzzleFotos/AreaFotos.gd" id="16_2d7ec"]
 [ext_resource type="Script" uid="uid://dlmvk5y3osoha" path="res://Scripts/PuzzleFotos/PicturePart.gd" id="16_i5mvb"]
 [ext_resource type="AudioStream" uid="uid://c6jxuubeynsd3" path="res://Assets/Sounds/foleys/acciones/pick up.wav" id="18_bynss"]
-[ext_resource type="Script" uid="uid://blhoucj5m62yu" path="res://Scripts/AreaAhorcado.gd" id="19_ttfme"]
+[ext_resource type="Script" uid="uid://blhoucj5m62yu" path="res://Scripts/PuzzleAhorcado/AreaAhorcado.gd" id="19_ttfme"]
 [ext_resource type="Texture2D" uid="uid://cet1fwjse4qe2" path="res://Assets/2D/Fotos/foto_1.png" id="22_r5t40"]
 [ext_resource type="Texture2D" uid="uid://ywqvh5jjk05l" path="res://Assets/2D/Fotos/foto_2.png" id="23_b6btb"]
 [ext_resource type="Texture2D" uid="uid://cpmoqjdk5syhh" path="res://Assets/2D/Fotos/foto_3.png" id="24_2woa5"]
@@ -71,6 +72,24 @@ volumetric_fog_ambient_inject = 1.08
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4maf"]
 albedo_color = Color(0.919875, 0.966723, 0.996456, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r58c4"]
+albedo_texture = ExtResource("5_m2ggp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h1yu4"]
+material = SubResource("StandardMaterial3D_r58c4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1tcu"]
+albedo_texture = ExtResource("4_h1tcu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r862i"]
+material = SubResource("StandardMaterial3D_h1tcu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1dgk"]
+albedo_texture = ExtResource("38_allic")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bdkau"]
+material = SubResource("StandardMaterial3D_m1dgk")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yu4"]
 albedo_texture = ExtResource("9_r58c4")
 uv1_scale = Vector3(0.47, 0.47, 0.47)
@@ -89,24 +108,6 @@ material = SubResource("StandardMaterial3D_6u2f0")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kam1k"]
 size = Vector3(0.846467, 1, 0.171806)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r58c4"]
-albedo_texture = ExtResource("5_m2ggp")
-
-[sub_resource type="QuadMesh" id="QuadMesh_h1yu4"]
-material = SubResource("StandardMaterial3D_r58c4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1tcu"]
-albedo_texture = ExtResource("4_h1tcu")
-
-[sub_resource type="QuadMesh" id="QuadMesh_r862i"]
-material = SubResource("StandardMaterial3D_h1tcu")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1dgk"]
-albedo_texture = ExtResource("38_allic")
-
-[sub_resource type="QuadMesh" id="QuadMesh_bdkau"]
-material = SubResource("StandardMaterial3D_m1dgk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2d7ec"]
 
@@ -192,8 +193,9 @@ transform = Transform3D(0.729446, 0, -0.684038, 0, 1, 0, 0.684038, 0, 0.729446, 
 [node name="UI" parent="." instance=ExtResource("2_40cr3")]
 
 [node name="Label3D" type="Label3D" parent="UI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9962, 13.6841, 8.83701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674, 3.72109, 26.2787)
 text = "It was a bright day"
+font = ExtResource("3_bdkau")
 horizontal_alignment = 0
 vertical_alignment = 0
 
@@ -229,7 +231,7 @@ stream = ExtResource("5_bgpls")
 [node name="Comienzo" type="Node3D" parent="Cinematicas"]
 
 [node name="PrimerDialogoTimer" type="Timer" parent="Cinematicas/Comienzo"]
-wait_time = 8.2
+wait_time = 0.001
 one_shot = true
 autostart = true
 
@@ -282,9 +284,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1713, 4.4325, 16.5406)
 script = ExtResource("4_b0s15")
 CalendarioApagado = NodePath("Elementos/AreaCalendario/CalendarioApagado")
 CalendarioPrendido = NodePath("Elementos/AreaCalendario/CalendarioPrendido")
-InterrutporApagado = NodePath("Iluminacion/LuzCalendario/Interruptor/InterruptorApagado")
-InterruptorPrendido = NodePath("Iluminacion/LuzCalendario/Interruptor/InterruptorEncendido")
-Interruptor = NodePath("Iluminacion/LuzCalendario/Interruptor")
+InterrutporApagado = NodePath("Elementos/Interruptor/InterruptorApagado")
+InterruptorPrendido = NodePath("Elementos/Interruptor/InterruptorEncendido")
+Interruptor = NodePath("Elementos/Interruptor")
 Door = NodePath("Puerta")
 
 [node name="Iluminacion" type="Node3D" parent="PuzzleArea1Calendario"]
@@ -292,34 +294,6 @@ Door = NodePath("Puerta")
 [node name="LuzCalendario" type="CSGSphere3D" parent="PuzzleArea1Calendario/Iluminacion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47135, 0.0729351, -7.66332)
 material = SubResource("StandardMaterial3D_d4maf")
-
-[node name="Interruptor" type="Area3D" parent="PuzzleArea1Calendario/Iluminacion/LuzCalendario" node_paths=PackedStringArray("lights", "audioPlayer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02, 1.132, -1.82475)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("3_4gvat")
-lights = [NodePath("../LuzEnRespuesta"), NodePath("../FocoDeLuz")]
-interruptorOnAudio = ExtResource("9_qhr7g")
-interruptorOffAudio = ExtResource("10_2d7ec")
-audioPlayer = NodePath("AudioInterruptor")
-
-[node name="InterruptorApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario/Iluminacion/LuzCalendario/Interruptor"]
-transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.61042, 1.83109)
-mesh = SubResource("QuadMesh_m2ggp")
-skeleton = NodePath("../../../LuzComienzo")
-
-[node name="InterruptorEncendido" type="MeshInstance3D" parent="PuzzleArea1Calendario/Iluminacion/LuzCalendario/Interruptor"]
-transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.61042, 1.81235)
-visible = false
-mesh = SubResource("QuadMesh_qhr7g")
-skeleton = NodePath("../../../LuzComienzo")
-
-[node name="Collision" type="CollisionShape3D" parent="PuzzleArea1Calendario/Iluminacion/LuzCalendario/Interruptor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0253201, -2.54102, 1.83944)
-shape = SubResource("BoxShape3D_kam1k")
-
-[node name="AudioInterruptor" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/Iluminacion/LuzCalendario/Interruptor" groups=["Sound"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.61042, 1.81235)
 
 [node name="LuzEnRespuesta" type="OmniLight3D" parent="PuzzleArea1Calendario/Iluminacion/LuzCalendario"]
 transform = Transform3D(0.99991, -0.00453784, 0.0126008, -0.0123294, 0.0555595, 0.998379, -0.00523058, -0.998445, 0.0554986, 0.0386982, -1.49774, 0.115336)
@@ -396,15 +370,43 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 3.8912, -1.0575, -7.690
 mesh = SubResource("QuadMesh_bdkau")
 skeleton = NodePath("../../..")
 
+[node name="Interruptor" type="Area3D" parent="PuzzleArea1Calendario/Elementos" node_paths=PackedStringArray("lights", "audioPlayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54865, 1.20494, -9.48807)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_4gvat")
+lights = [NodePath("../../Iluminacion/LuzCalendario/LuzEnRespuesta"), NodePath("../../Iluminacion/LuzCalendario/FocoDeLuz")]
+interruptorOnAudio = ExtResource("9_qhr7g")
+interruptorOffAudio = ExtResource("10_2d7ec")
+audioPlayer = NodePath("AudioInterruptor")
+
+[node name="InterruptorApagado" type="MeshInstance3D" parent="PuzzleArea1Calendario/Elementos/Interruptor"]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.61042, 1.83109)
+mesh = SubResource("QuadMesh_m2ggp")
+skeleton = NodePath("../../../Iluminacion/LuzComienzo")
+
+[node name="InterruptorEncendido" type="MeshInstance3D" parent="PuzzleArea1Calendario/Elementos/Interruptor"]
+transform = Transform3D(0.35, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.61042, 1.81235)
+mesh = SubResource("QuadMesh_qhr7g")
+skeleton = NodePath("../../../Iluminacion/LuzComienzo")
+
+[node name="Collision" type="CollisionShape3D" parent="PuzzleArea1Calendario/Elementos/Interruptor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0253201, -2.54102, 1.83944)
+shape = SubResource("BoxShape3D_kam1k")
+
+[node name="AudioInterruptor" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/Elementos/Interruptor" groups=["Sound"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.61042, 1.81235)
+
 [node name="Puerta" type="Node3D" parent="PuzzleArea1Calendario" node_paths=PackedStringArray("AudioPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, -3.75, -6.25)
 script = ExtResource("13_crfcr")
 TweenRotation = Vector3(0, 1.5, 0)
+TweenDuration = 1.0
 Audio = ExtResource("14_crfcr")
 AudioPlayer = NodePath("AudioStreamPlayer3D")
 
 [node name="Modelo" parent="PuzzleArea1Calendario/Puerta" instance=ExtResource("13_ff4kf")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.25, 1.5, 1.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20592, 1.28034, 1.463)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PuzzleArea1Calendario/Puerta"]
 
@@ -566,7 +568,7 @@ spot_range = 5.99043
 spot_angle = 48.249
 
 [node name="LuzVentana" type="OmniLight3D" parent="PuzzleArea3Ahorcado/Iluminacion"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.856159, -0.8922, 5.48236)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.856159, -0.8922, 5.72665)
 layers = 2
 light_color = Color(0.232997, 0.34085, 0.347511, 1)
 light_energy = 0.43
@@ -603,7 +605,7 @@ mesh = SubResource("QuadMesh_allic")
 skeleton = NodePath("../..")
 
 [node name="Ventana" type="MeshInstance3D" parent="PuzzleArea3Ahorcado/Elementos"]
-transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0.856159, -0.8922, 5.71834)
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0.856159, -0.8922, 5.71147)
 mesh = SubResource("QuadMesh_ic4nc")
 skeleton = NodePath("../../..")
 

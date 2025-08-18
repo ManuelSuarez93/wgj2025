@@ -28,7 +28,7 @@ metadata/_edit_vertical_guides_ = [754.0, 1158.0, 870.0, 901.0, 1011.0, 1040.0]
 
 [node name="Timer" type="Timer" parent="PlayerEffectsSounds"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["Player"]]
 
 [node name="StepTimer" type="Timer" parent="AudioStreamPlayer"]
 wait_time = 0.6
@@ -39,7 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93102, 0)
 
 [node name="DetectObjectRaycast" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148726, -0.152356)
-visible = false
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
 collide_with_areas = true
@@ -48,7 +47,6 @@ script = ExtResource("2_i3pqv")
 
 [node name="LabelDialogo" type="Label3D" parent="Camera3D"]
 transform = Transform3D(-0.709563, 0.118045, -0.694685, 0.0887824, 0.992988, 0.0780508, 0.699027, -0.00629378, -0.715068, -0.0986329, 0.418088, -1.93012)
-visible = false
 billboard = 1
 double_sided = false
 text = "What did you do?"

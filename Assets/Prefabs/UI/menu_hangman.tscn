@@ -44,52 +44,69 @@ grow_vertical = 2
 [node name="Ahorcado1" type="TextureRect" parent="AhorcadoStages"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 48.0
-anchor_bottom = 27.0
-offset_right = -0.00012207
-offset_bottom = -0.00012207
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("4_mg2cg")
 
 [node name="Ahorcado2" type="TextureRect" parent="AhorcadoStages"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("5_6vtax")
 
 [node name="Ahorcado3" type="TextureRect" parent="AhorcadoStages"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("6_s6r0x")
 
 [node name="Ahorcado4" type="TextureRect" parent="AhorcadoStages"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("7_p5xhy")
 
 [node name="Ahorcado5" type="TextureRect" parent="AhorcadoStages"]
 visible = false
-layout_mode = 0
-offset_right = 1829.0
-offset_bottom = 1066.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("8_h6438")
 
 [node name="Ahorcado6" type="TextureRect" parent="AhorcadoStages"]
 visible = false
 layout_mode = 2
-offset_right = 1829.0
-offset_bottom = 1066.0
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("9_lgcmf")
 
 [node name="Ahorcado7" type="TextureRect" parent="AhorcadoStages"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.454
+anchor_bottom = 1.421
+offset_right = 0.341675
+offset_bottom = -0.15918
 texture = ExtResource("10_vli8p")
 
 [node name="Tutorial" type="Label" parent="."]

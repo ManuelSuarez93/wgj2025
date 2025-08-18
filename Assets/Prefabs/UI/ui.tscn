@@ -67,6 +67,7 @@ process_mode = 2
 visible = false
 
 [node name="BlackoutStart" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 2401.0
 offset_bottom = 1392.0
